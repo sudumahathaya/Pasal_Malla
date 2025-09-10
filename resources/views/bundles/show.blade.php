@@ -73,12 +73,12 @@
                     <!-- Add to Cart -->
                     <div class="flex gap-4">
                         <div class="flex items-center border border-gray-200 rounded-lg">
-                            <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-minus"></i>
                             </button>
                             <input type="number" value="1" min="1"
                                    class="w-16 text-center border-0 focus:outline-none">
-                            <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>

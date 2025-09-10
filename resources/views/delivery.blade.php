@@ -244,11 +244,11 @@
                 <h2 class="text-2xl font-bold mb-4">Questions About Delivery?</h2>
                 <p class="text-blue-100 mb-6">Our customer service team is here to help with any delivery-related questions</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="tel:+94771234567" class="bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                    <a href="tel:+94771234567" class="btn-white px-6 py-3 rounded-lg font-semibold">
                         <i class="fas fa-phone mr-2"></i>
                         Call: 077 123 4567
                     </a>
-                    <a href="https://wa.me/94771234567" class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center justify-center">
+                    <a href="https://wa.me/94771234567" class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors inline-flex items-center justify-center hover:scale-105">
                         <i class="fab fa-whatsapp mr-2"></i>
                         WhatsApp Us
                     </a>

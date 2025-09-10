@@ -33,10 +33,13 @@
                     </select>
                 </div>
                 <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold">
+                    <i class="fas fa-filter mr-2"></i>
                     Filter
                 </button>
                 @if(request()->hasAny(['search', 'grade']))
-                <a href="{{ route('bundles.index') }}" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors">
+                <a href="{{ route('bundles.index') }}" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors inline-flex items-center">
+                    <i class="fas fa-times mr-2"></i>
+                    <i class="fas fa-arrow-left mr-2"></i>
                     Clear
                 </a>
                 @endif
@@ -70,11 +73,11 @@
                         </div>
                     </div>
                     <div class="flex gap-2">
-                        <a href="{{ route('bundles.show', $bundle) }}"
-                           class="flex-1 btn-primary text-white py-3 rounded-xl font-semibold text-center">
+                        <a href="{{ route('bundles.show', $bundle) }}" class="flex-1 btn-primary text-white py-3 rounded-xl font-semibold text-center">
+                            <i class="fas fa-eye mr-2"></i>
                             View Bundle
                         </a>
-                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-3 rounded-xl transition-colors">
+                        <button class="bg-orange-100 hover:bg-orange-200 text-orange-700 px-4 py-3 rounded-xl transition-colors hover:scale-105">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                     </div>

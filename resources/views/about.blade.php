@@ -189,13 +189,11 @@
                     Join thousands of happy parents who trust PasalMalla for their children's school needs
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="{{ route('products.index') }}"
-                       class="btn-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center">
+                    <a href="{{ route('products.index') }}" class="btn-white px-8 py-4 rounded-xl font-semibold text-lg">
                         <i class="fas fa-shopping-bag mr-3"></i>
                         Start Shopping
                     </a>
-                    <a href="{{ route('contact') }}"
-                       class="bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                    <a href="{{ route('contact') }}" class="btn-glass px-8 py-4 rounded-xl font-semibold text-lg border-white">
                         <i class="fas fa-phone mr-3"></i>
                         Contact Us
                     </a>

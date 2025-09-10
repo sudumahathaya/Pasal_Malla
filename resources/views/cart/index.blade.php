@@ -40,16 +40,16 @@
                                 </div>
                                 <div class="flex items-center space-x-3">
                                     <div class="flex items-center border border-gray-200 rounded-lg">
-                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <button class="px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                         <input type="number" value="3" min="1" class="w-16 text-center border-0 focus:outline-none">
-                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <button class="px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                             <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
                                     <span class="text-lg font-bold text-gray-800 w-20 text-right">Rs. 360.00</span>
-                                    <button class="text-red-500 hover:text-red-700 p-2">
+                                    <button class="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -73,16 +73,16 @@
                                 </div>
                                 <div class="flex items-center space-x-3">
                                     <div class="flex items-center border border-gray-200 rounded-lg">
-                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <button class="px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                         <input type="number" value="5" min="1" class="w-16 text-center border-0 focus:outline-none">
-                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <button class="px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                             <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
                                     <span class="text-lg font-bold text-gray-800 w-20 text-right">Rs. 100.00</span>
-                                    <button class="text-red-500 hover:text-red-700 p-2">
+                                    <button class="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -109,16 +109,16 @@
                                 </div>
                                 <div class="flex items-center space-x-3">
                                     <div class="flex items-center border border-gray-200 rounded-lg">
-                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <button class="px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                         <input type="number" value="1" min="1" class="w-16 text-center border-0 focus:outline-none">
-                                        <button class="px-3 py-2 text-gray-600 hover:text-gray-800">
+                                        <button class="px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                             <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
                                     <span class="text-lg font-bold text-gray-800 w-20 text-right">Rs. 4,500.00</span>
-                                    <button class="text-red-500 hover:text-red-700 p-2">
+                                    <button class="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -128,7 +128,7 @@
 
                     <!-- Continue Shopping -->
                     <div class="p-6 bg-gray-50 border-t border-gray-200">
-                        <a href="{{ route('products.index') }}" class="text-orange-600 hover:text-orange-700 font-medium">
+                        <a href="{{ route('products.index') }}" class="text-orange-600 hover:text-orange-700 font-medium inline-flex items-center">
                             <i class="fas fa-arrow-left mr-2"></i>
                             Continue Shopping
                         </a>

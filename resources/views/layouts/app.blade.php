@@ -51,22 +51,69 @@
         .btn-primary {
             background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
         .btn-primary:hover {
             transform: translateY(-1px);
             box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+            background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
         }
         .btn-secondary {
-            background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
-            color: #f97316;
-            border: 2px solid #f97316;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            border: none;
             transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
         .btn-secondary:hover {
             transform: translateY(-1px);
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+        }
+        .btn-white {
+            background: white;
+            color: #f97316;
+            border: 2px solid #f97316;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .btn-white:hover {
+            transform: translateY(-1px);
+            background: #f97316;
             color: white;
             box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+        }
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .btn-glass:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
     </style>
 

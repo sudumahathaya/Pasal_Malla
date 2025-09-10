@@ -76,7 +76,9 @@
                         </button>
 
                         @if(request()->hasAny(['search', 'category', 'grade', 'sort']))
-                        <a href="{{ route('products.index') }}" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold text-center block mt-3 hover:bg-gray-200 transition-colors">
+                        <a href="{{ route('products.index') }}" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold text-center block mt-3 hover:bg-gray-200 transition-colors inline-flex items-center justify-center">
+                            <i class="fas fa-times mr-2"></i>
+                            <i class="fas fa-arrow-left mr-2"></i>
                             Clear Filters
                         </a>
                         @endif
@@ -133,11 +135,11 @@
                                 </div>
                             </div>
                             <div class="flex gap-2">
-                                <a href="{{ route('products.show', $product) }}"
-                                   class="flex-1 btn-primary text-white py-2 rounded-lg font-semibold text-center text-sm">
+                                <a href="{{ route('products.show', $product) }}" class="flex-1 btn-primary text-white py-2 rounded-lg font-semibold text-center text-sm">
+                                    <i class="fas fa-eye mr-1"></i>
                                     View Details
                                 </a>
-                                <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors">
+                                <button class="bg-orange-100 hover:bg-orange-200 text-orange-700 px-4 py-2 rounded-lg transition-colors hover:scale-105">
                                     <i class="fas fa-shopping-cart"></i>
                                 </button>
                             </div>

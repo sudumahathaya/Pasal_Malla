@@ -24,7 +24,7 @@
                         <i class="fas fa-shopping-bag mr-3"></i>
                         Shop Now
                     </a>
-                    <a href="{{ route('bundles.index') }}" class="bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                    <a href="{{ route('bundles.index') }}" class="btn-glass px-8 py-4 rounded-xl font-semibold text-lg">
                         <i class="fas fa-gift mr-3"></i>
                         Special Packs
                     </a>
@@ -108,8 +108,7 @@
         </div>
 
         <div class="text-center mt-12">
-            <a href="{{ route('bundles.index') }}"
-               class="btn-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center">
+            <a href="{{ route('bundles.index') }}" class="btn-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg">
                 <i class="fas fa-gift mr-3"></i>
                 View All Bundles
             </a>
@@ -171,10 +170,9 @@
         </div>
 
         <div class="text-center mt-12">
-            <a href="{{ route('products.index') }}"
-               class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center">
+            <a href="{{ route('products.index') }}" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg">
                 <i class="fas fa-shopping-bag mr-3"></i>
-                View All Products
+                Shop All Products
             </a>
         </div>
     </div>
@@ -233,13 +231,11 @@
             Join thousands of happy parents who trust PasalMalla for their children's school needs
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('products.index') }}"
-               class="btn-secondary text-white px-8 py-4 rounded-xl font-semibold text-lg inline-flex items-center justify-center">
+            <a href="{{ route('products.index') }}" class="btn-white px-8 py-4 rounded-xl font-semibold text-lg">
                 <i class="fas fa-shopping-bag mr-3"></i>
                 Start Shopping
             </a>
-            <a href="{{ route('contact') }}"
-               class="bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+            <a href="{{ route('contact') }}" class="btn-glass px-8 py-4 rounded-xl font-semibold text-lg border-white">
                 <i class="fas fa-phone mr-3"></i>
                 Contact Us
             </a>

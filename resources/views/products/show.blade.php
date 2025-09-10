@@ -93,16 +93,16 @@
                     <!-- Add to Cart -->
                     <div class="flex gap-4">
                         <div class="flex items-center border border-gray-200 rounded-lg">
-                            <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-minus"></i>
                             </button>
                             <input type="number" value="1" min="1" max="{{ $product->stock_quantity }}"
                                    class="w-16 text-center border-0 focus:outline-none">
-                            <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <button class="flex-1 btn-primary text-white py-3 rounded-lg font-semibold"
+                        <button class="flex-1 btn-primary text-white py-3 rounded-lg font-semibold {{ $product->stock_quantity <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}"
                                 {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}>
                             <i class="fas fa-shopping-cart mr-2"></i>
                             {{ $product->stock_quantity > 0 ? 'Add to Cart' : 'Out of Stock' }}
@@ -147,8 +147,8 @@
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-xl font-bold text-orange-600">Rs. {{ number_format($relatedProduct->getCurrentPrice(), 2) }}</span>
                         </div>
-                        <a href="{{ route('products.show', $relatedProduct) }}"
-                           class="w-full btn-primary text-white py-2 rounded-lg font-semibold text-center block text-sm">
+                        <a href="{{ route('products.show', $relatedProduct) }}" class="w-full btn-primary text-white py-2 rounded-lg font-semibold text-center block text-sm">
+                            <i class="fas fa-eye mr-1"></i>
                             View Details
                         </a>
                     </div>
