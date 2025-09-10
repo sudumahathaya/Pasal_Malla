@@ -31,7 +31,7 @@
             <!-- Product Info -->
             <div>
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="text-sm text-primary-600 font-medium mb-2">{{ $product->category->name }}</div>
+                    <div class="text-sm text-orange-600 font-medium mb-2">{{ $product->category->name }}</div>
                     <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ $product->name }}</h1>
                     @if($product->name_sinhala)
                     <p class="text-xl text-gray-600 mb-6">{{ $product->name_sinhala }}</p>
@@ -40,7 +40,7 @@
                     <!-- Price -->
                     <div class="mb-6">
                         <div class="flex items-center space-x-4">
-                            <span class="text-3xl font-bold text-primary-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
+                            <span class="text-3xl font-bold text-orange-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
                             @if($product->hasDiscount())
                             <span class="text-xl text-gray-500 line-through">Rs. {{ number_format($product->price, 2) }}</span>
                             <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
@@ -145,7 +145,7 @@
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $relatedProduct->name }}</h3>
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-xl font-bold text-primary-600">Rs. {{ number_format($relatedProduct->getCurrentPrice(), 2) }}</span>
+                            <span class="text-xl font-bold text-orange-600">Rs. {{ number_format($relatedProduct->getCurrentPrice(), 2) }}</span>
                         </div>
                         <a href="{{ route('products.show', $relatedProduct) }}"
                            class="w-full btn-primary text-white py-2 rounded-lg font-semibold text-center block text-sm">

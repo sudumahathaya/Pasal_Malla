@@ -24,7 +24,7 @@
                         <i class="fas fa-shopping-bag mr-3"></i>
                         Shop Now
                     </a>
-                    <a href="{{ route('bundles.index') }}" class="bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                    <a href="{{ route('bundles.index') }}" class="bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
                         <i class="fas fa-gift mr-3"></i>
                         Special Packs
                     </a>
@@ -61,7 +61,7 @@
                 <div class="text-4xl mb-4">{{ $category->icon ?? '📚' }}</div>
                 <h3 class="font-semibold text-gray-800 mb-2">{{ $category->name }}</h3>
                 <p class="text-sm text-gray-600">{{ $category->name_sinhala }}</p>
-                <div class="mt-4 text-primary-600 group-hover:text-primary-700 transition-colors">
+                <div class="mt-4 text-orange-600 group-hover:text-orange-700 transition-colors">
                     <i class="fas fa-arrow-right"></i>
                 </div>
             </a>
@@ -94,7 +94,7 @@
                     <p class="text-sm text-gray-500 mb-4">{{ Str::limit($bundle->description, 80) }}</p>
                     <div class="flex items-center justify-between mb-4">
                         <div>
-                            <span class="text-2xl font-bold text-primary-600">Rs. {{ number_format($bundle->price, 2) }}</span>
+                            <span class="text-2xl font-bold text-orange-600">Rs. {{ number_format($bundle->price, 2) }}</span>
                             <span class="text-sm text-gray-500 line-through ml-2">Rs. {{ number_format($bundle->original_price, 2) }}</span>
                         </div>
                     </div>
@@ -143,14 +143,14 @@
                     @endif
                 </div>
                 <div class="p-6">
-                    <div class="text-sm text-primary-600 font-medium mb-2">{{ $product->category->name }}</div>
+                    <div class="text-sm text-orange-600 font-medium mb-2">{{ $product->category->name }}</div>
                     <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $product->name }}</h3>
                     @if($product->name_sinhala)
                     <p class="text-gray-600 mb-3">{{ $product->name_sinhala }}</p>
                     @endif
                     <div class="flex items-center justify-between mb-4">
                         <div>
-                            <span class="text-xl font-bold text-primary-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
+                            <span class="text-xl font-bold text-orange-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
                             @if($product->hasDiscount())
                             <span class="text-sm text-gray-500 line-through ml-2">Rs. {{ number_format($product->price, 2) }}</span>
                             @endif
@@ -190,7 +190,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="text-center">
-                <div class="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-truck text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800 mb-4">Free Island-wide Delivery</h3>
@@ -201,7 +201,7 @@
             </div>
 
             <div class="text-center">
-                <div class="w-20 h-20 bg-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="w-20 h-20 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-money-bill-wave text-white text-2xl"></i>
                 </div>
                 <h3 class="text-xl font-bold text-gray-800 mb-4">Cash on Delivery</h3>
@@ -239,7 +239,7 @@
                 Start Shopping
             </a>
             <a href="{{ route('contact') }}"
-               class="bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+               class="bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
                 <i class="fas fa-phone mr-3"></i>
                 Contact Us
             </a>

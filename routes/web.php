@@ -13,6 +13,9 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 Route::get('/bundles', [BundleController::class, 'index'])->name('bundles.index');
 Route::get('/bundles/{bundle}', [BundleController::class, 'show'])->name('bundles.show');
 
+Route::view('/cart', 'cart.index')->name('cart.index');
+Route::view('/checkout', 'checkout.index')->name('checkout.index');
+
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
 Route::view('/delivery', 'delivery')->name('delivery');

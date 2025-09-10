@@ -30,7 +30,7 @@
             <div>
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
                     @if($bundle->grade_level)
-                    <div class="text-sm text-primary-600 font-medium mb-2">{{ $bundle->grade_level }}</div>
+                    <div class="text-sm text-orange-600 font-medium mb-2">{{ $bundle->grade_level }}</div>
                     @endif
                     <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ $bundle->name }}</h1>
                     <p class="text-xl text-gray-600 mb-6">{{ $bundle->name_sinhala }}</p>
@@ -51,7 +51,7 @@
                     <!-- Pricing -->
                     <div class="mb-8">
                         <div class="flex items-center space-x-4 mb-2">
-                            <span class="text-4xl font-bold text-primary-600">Rs. {{ number_format($bundle->price, 2) }}</span>
+                            <span class="text-4xl font-bold text-orange-600">Rs. {{ number_format($bundle->price, 2) }}</span>
                             <span class="text-2xl text-gray-500 line-through">Rs. {{ number_format($bundle->original_price, 2) }}</span>
                         </div>
                         <p class="text-lg text-green-600 font-bold">
@@ -108,7 +108,7 @@
                                 <p class="text-sm text-gray-600">{{ $product->name_sinhala }}</p>
                                 @endif
                                 <div class="flex items-center justify-between mt-2">
-                                    <span class="text-primary-600 font-bold">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
+                                    <span class="text-orange-600 font-bold">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
                                     <span class="text-sm text-gray-500">Qty: {{ $product->pivot->quantity }}</span>
                                 </div>
                             </div>

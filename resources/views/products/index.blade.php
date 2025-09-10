@@ -25,12 +25,14 @@
                             <input type="text" name="search" value="{{ request('search') }}"
                                    placeholder="Search products..."
                                    class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                           class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
                         </div>
 
                         <!-- Categories -->
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
                             <select name="category" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <select name="category" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
                                 <option value="">All Categories</option>
                                 @foreach($categories as $category)
                                 <option value="{{ $category->slug }}" {{ request('category') == $category->slug ? 'selected' : '' }}>
@@ -44,6 +46,7 @@
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
                             <select name="grade" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <select name="grade" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
                                 <option value="">All Grades</option>
                                 <option value="Grade 1" {{ request('grade') == 'Grade 1' ? 'selected' : '' }}>Grade 1</option>
                                 <option value="Grade 2" {{ request('grade') == 'Grade 2' ? 'selected' : '' }}>Grade 2</option>
@@ -60,6 +63,7 @@
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
                             <select name="sort" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+                            <select name="sort" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
                                 <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name A-Z</option>
                                 <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Price: Low to High</option>
                                 <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Price: High to Low</option>
@@ -108,7 +112,7 @@
                             @endif
                         </div>
                         <div class="p-6">
-                            <div class="text-sm text-primary-600 font-medium mb-2">{{ $product->category->name }}</div>
+                            <div class="text-sm text-orange-600 font-medium mb-2">{{ $product->category->name }}</div>
                             <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $product->name }}</h3>
                             @if($product->name_sinhala)
                             <p class="text-gray-600 mb-3">{{ $product->name_sinhala }}</p>
@@ -122,7 +126,7 @@
                             @endif
                             <div class="flex items-center justify-between mb-4">
                                 <div>
-                                    <span class="text-xl font-bold text-primary-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
+                                    <span class="text-xl font-bold text-orange-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
                                     @if($product->hasDiscount())
                                     <span class="text-sm text-gray-500 line-through ml-2">Rs. {{ number_format($product->price, 2) }}</span>
                                     @endif
