@@ -11,8 +11,13 @@
         <div class="flex-1">
             <form method="GET" action="{{ route('admin.products.index') }}" class="flex gap-4">
                 <div class="flex-1">
+<<<<<<< HEAD
                     <input type="text" name="search" value="{{ request('search') }}"
                            placeholder="Search products..."
+=======
+                    <input type="text" name="search" value="{{ request('search') }}" 
+                           placeholder="Search products..." 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <div>
@@ -63,7 +68,11 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-12 w-12">
+<<<<<<< HEAD
                                 <img src="{{ $product->image ? asset('storage/' . $product->image) : $product->getImageUrl() }}" alt="{{ $product->name }}"
+=======
+                                <img src="{{ $product->image ? asset('storage/' . $product->image) : $product->getImageUrl() }}" alt="{{ $product->name }}" 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                                      class="h-12 w-12 rounded-lg object-cover border border-gray-200">
                             </div>
                             <div class="ml-4">
@@ -86,7 +95,11 @@
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
+<<<<<<< HEAD
                         <span class="text-sm font-medium
+=======
+                        <span class="text-sm font-medium 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($product->stock_quantity <= 5) text-red-600
                             @elseif($product->stock_quantity <= 20) text-yellow-600
                             @else text-green-600 @endif">
@@ -94,7 +107,11 @@
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
+<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+=======
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($product->is_active) bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
                             {{ $product->is_active ? 'Active' : 'Inactive' }}
                         </span>
@@ -112,7 +129,11 @@
                             <a href="{{ route('admin.products.edit', $product) }}" class="text-green-600 hover:text-green-900">
                                 <i class="fas fa-edit"></i>
                             </a>
+<<<<<<< HEAD
                             <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="inline"
+=======
+                            <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="inline" 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                                   onsubmit="return confirm('Are you sure you want to delete this product?')">
                                 @csrf
                                 @method('DELETE')
@@ -137,11 +158,19 @@
             </tbody>
         </table>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     @if($products->hasPages())
     <div class="px-6 py-4 border-t border-gray-200">
         {{ $products->appends(request()->query())->links() }}
     </div>
     @endif
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

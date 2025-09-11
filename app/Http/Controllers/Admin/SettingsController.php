@@ -15,14 +15,22 @@ class SettingsController extends Controller
     {
         $admin = Auth::guard('admin')->user();
         $admins = Admin::orderBy('created_at', 'desc')->get();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         return view('admin.settings.index', compact('admin', 'admins'));
     }
 
     public function updateProfile(Request $request)
     {
         $admin = Auth::guard('admin')->user();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => ['required', 'email', Rule::unique('admins')->ignore($admin->id)],
@@ -97,4 +105,8 @@ class SettingsController extends Controller
         $admin->delete();
         return redirect()->back()->with('success', 'Admin deleted successfully!');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

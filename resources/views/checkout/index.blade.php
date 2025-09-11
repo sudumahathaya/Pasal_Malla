@@ -127,7 +127,11 @@
             <div class="lg:col-span-1">
                 <div class="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
                     <h2 class="text-xl font-bold text-gray-800 mb-6">Order Summary</h2>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <!-- Sample Cart Items -->
                     <div class="space-y-4 mb-6">
                         <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
@@ -139,7 +143,11 @@
                             </div>
                             <span class="font-bold text-gray-800">Rs. 360.00</span>
                         </div>
+<<<<<<< HEAD
 
+=======
+                        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                         <div class="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
                             <img src="https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=60"
                                  alt="Product" class="w-12 h-12 object-cover rounded">
@@ -190,12 +198,23 @@
 <script>
 document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
+<<<<<<< HEAD
 
     // Show success message
     alert('Order placed successfully! We will call you within 24 hours to confirm your order and delivery details.');
 
+=======
+    
+    // Show success message
+    alert('Order placed successfully! We will call you within 24 hours to confirm your order and delivery details.');
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     // Redirect to home page
     window.location.href = '/';
 });
 </script>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

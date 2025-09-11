@@ -129,4 +129,8 @@
         </section>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

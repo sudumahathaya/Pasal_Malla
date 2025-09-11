@@ -19,7 +19,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -32,7 +36,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -45,7 +53,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -81,7 +93,11 @@
                     </div>
                     <div class="text-right">
                         <p class="font-bold text-gray-900">Rs. {{ number_format($order->total, 2) }}</p>
+<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+=======
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($order->status == 'pending') bg-yellow-100 text-yellow-800
                             @elseif($order->status == 'confirmed') bg-blue-100 text-blue-800
                             @elseif($order->status == 'delivered') bg-green-100 text-green-800
@@ -100,7 +116,11 @@
             @endif
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <!-- Low Stock Alert -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-200">
         <div class="p-6 border-b border-gray-200">
@@ -145,21 +165,37 @@
             <i class="fas fa-plus text-2xl mb-2"></i>
             <p class="font-semibold">Add Product</p>
         </a>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         <a href="#" class="bg-green-500 hover:bg-green-600 text-white p-6 rounded-xl transition-colors">
             <i class="fas fa-gift text-2xl mb-2"></i>
             <p class="font-semibold">Create Bundle</p>
         </a>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         <a href="#" class="bg-purple-500 hover:bg-purple-600 text-white p-6 rounded-xl transition-colors">
             <i class="fas fa-tags text-2xl mb-2"></i>
             <p class="font-semibold">Add Category</p>
         </a>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         <a href="#" class="bg-orange-500 hover:bg-orange-600 text-white p-6 rounded-xl transition-colors">
             <i class="fas fa-chart-bar text-2xl mb-2"></i>
             <p class="font-semibold">View Reports</p>
         </a>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

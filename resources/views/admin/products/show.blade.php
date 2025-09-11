@@ -17,7 +17,11 @@
                 <a href="{{ route('admin.products.edit', $product) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
                     <i class="fas fa-edit mr-2"></i>Edit
                 </a>
+<<<<<<< HEAD
                 <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="inline"
+=======
+                <form method="POST" action="{{ route('admin.products.destroy', $product) }}" class="inline" 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                       onsubmit="return confirm('Are you sure you want to delete this product?')">
                     @csrf
                     @method('DELETE')
@@ -42,12 +46,20 @@
                     <h4 class="text-lg font-semibold text-gray-900">Product Image</h4>
                 </div>
                 <div class="p-6">
+<<<<<<< HEAD
                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+=======
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                          class="w-full max-w-md h-64 object-cover rounded-lg border border-gray-200">
                 </div>
             </div>
             @endif
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             <!-- Basic Information -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200">
                 <div class="p-6 border-b border-gray-200">
@@ -135,14 +147,22 @@
                 <div class="p-6 space-y-4">
                     <div class="flex items-center justify-between">
                         <span class="text-sm font-medium text-gray-500">Status</span>
+<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+=======
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($product->is_active) bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
                             {{ $product->is_active ? 'Active' : 'Inactive' }}
                         </span>
                     </div>
                     <div class="flex items-center justify-between">
                         <span class="text-sm font-medium text-gray-500">Featured</span>
+<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+=======
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($product->is_featured) bg-yellow-100 text-yellow-800 @else bg-gray-100 text-gray-800 @endif">
                             {{ $product->is_featured ? 'Yes' : 'No' }}
                         </span>
@@ -185,7 +205,11 @@
                 <div class="p-6">
                     <div class="flex items-center justify-between">
                         <span class="text-sm font-medium text-gray-500">Stock Quantity</span>
+<<<<<<< HEAD
                         <span class="text-2xl font-bold
+=======
+                        <span class="text-2xl font-bold 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($product->stock_quantity <= 5) text-red-600
                             @elseif($product->stock_quantity <= 20) text-yellow-600
                             @else text-green-600 @endif">
@@ -230,4 +254,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

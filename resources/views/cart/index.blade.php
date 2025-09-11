@@ -50,7 +50,11 @@
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                 <form id="customer-details-form" class="space-y-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
@@ -58,42 +62,66 @@
                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                placeholder="Enter your full name">
                     </div>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                         <input type="tel" id="customer-phone" required
                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                placeholder="077 123 4567">
                     </div>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                         <input type="email" id="customer-email"
                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                placeholder="your@email.com (optional)">
                     </div>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Delivery Address *</label>
                         <textarea id="customer-address" required rows="3"
                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                   placeholder="House number, street name, area, city"></textarea>
                     </div>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">City *</label>
                         <input type="text" id="customer-city" required
                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                placeholder="Enter your city">
                     </div>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Special Instructions</label>
                         <textarea id="customer-notes" rows="2"
                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                                   placeholder="Any special delivery instructions (optional)"></textarea>
                     </div>
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="flex gap-4">
                         <button type="button" id="cancel-order" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg font-semibold transition-colors">
                             Cancel
@@ -108,4 +136,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

@@ -39,7 +39,11 @@ class AuthController extends Controller
 
         Auth::guard('admin')->login($admin);
         $request->session()->regenerate();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         return redirect()->route('admin.dashboard')
             ->with('success', 'Registration successful! Welcome to PasalMalla Admin.');
     }
@@ -56,7 +60,11 @@ class AuthController extends Controller
 
         if (Auth::guard('admin')->attempt($credentials, $remember)) {
             $admin = Auth::guard('admin')->user();
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             if (!$admin->isActive()) {
                 Auth::guard('admin')->logout();
                 throw ValidationException::withMessages([
@@ -78,7 +86,14 @@ class AuthController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+<<<<<<< HEAD
 
         return redirect()->route('admin.login');
     }
 }
+=======
+        
+        return redirect()->route('admin.login');
+    }
+}
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

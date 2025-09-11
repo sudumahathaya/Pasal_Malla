@@ -21,7 +21,11 @@ class CustomerController extends Controller
             DB::raw('MAX(created_at) as last_order_date'),
             DB::raw('MIN(created_at) as first_order_date')
         ])
+<<<<<<< HEAD
             ->groupBy('customer_email', 'customer_name', 'customer_phone', 'city');
+=======
+        ->groupBy('customer_email', 'customer_name', 'customer_phone', 'city');
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
 
         if ($request->has('search') && $request->search) {
             $search = $request->search;
@@ -55,7 +59,11 @@ class CustomerController extends Controller
     public function show(Request $request, $email)
     {
         $customer = Order::where('customer_email', $email)->first();
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         if (!$customer) {
             abort(404);
         }
@@ -75,4 +83,8 @@ class CustomerController extends Controller
 
         return view('admin.customers.show', compact('customer', 'orders', 'stats'));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

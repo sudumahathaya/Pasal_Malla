@@ -18,7 +18,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white">
         <div class="flex items-center justify-between">
             <div>
@@ -30,7 +34,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
         <div class="flex items-center justify-between">
             <div>
@@ -42,7 +50,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg p-6 text-white">
         <div class="flex items-center justify-between">
             <div>
@@ -73,7 +85,11 @@
                 </div>
                 <span class="text-2xl font-bold text-blue-600">{{ $orderStats['total_orders'] }}</span>
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             <div class="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-yellow-500 rounded-lg flex items-center justify-center mr-3">
@@ -86,7 +102,11 @@
                 </div>
                 <span class="text-2xl font-bold text-yellow-600">{{ $orderStats['pending_orders'] }}</span>
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mr-3">
@@ -99,7 +119,11 @@
                 </div>
                 <span class="text-2xl font-bold text-green-600">{{ $orderStats['completed_orders'] }}</span>
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             <div class="flex items-center justify-between p-4 bg-red-50 rounded-lg">
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center mr-3">
@@ -131,7 +155,11 @@
                 </div>
                 <span class="text-2xl font-bold text-blue-600">{{ $productStats['total_products'] }}</span>
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mr-3">
@@ -144,7 +172,11 @@
                 </div>
                 <span class="text-2xl font-bold text-green-600">{{ $productStats['active_products'] }}</span>
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             <div class="flex items-center justify-between p-4 bg-orange-50 rounded-lg">
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center mr-3">
@@ -157,7 +189,11 @@
                 </div>
                 <span class="text-2xl font-bold text-orange-600">{{ $productStats['low_stock_products'] }}</span>
             </div>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             <div class="flex items-center justify-between p-4 bg-red-50 rounded-lg">
                 <div class="flex items-center">
                     <div class="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center mr-3">
@@ -193,7 +229,11 @@
                     @foreach($topProducts as $index => $product)
                     <tr class="border-b border-gray-100">
                         <td class="py-3 px-4">
+<<<<<<< HEAD
                             <span class="inline-flex items-center justify-center w-8 h-8 rounded-full
+=======
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                                 @if($index == 0) bg-yellow-100 text-yellow-800
                                 @elseif($index == 1) bg-gray-100 text-gray-800
                                 @elseif($index == 2) bg-orange-100 text-orange-800
@@ -224,7 +264,11 @@
             </div>
         </div>
     </a>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <a href="{{ route('admin.reports.products') }}" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
         <div class="flex items-center">
             <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
@@ -236,7 +280,11 @@
             </div>
         </div>
     </a>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <a href="{{ route('admin.reports.customers') }}" class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
         <div class="flex items-center">
             <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
@@ -249,4 +297,8 @@
         </div>
     </a>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

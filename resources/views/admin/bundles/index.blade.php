@@ -18,7 +18,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -30,7 +34,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -42,7 +50,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -62,8 +74,13 @@
         <div class="flex-1">
             <form method="GET" action="{{ route('admin.bundles.index') }}" class="flex gap-4">
                 <div class="flex-1">
+<<<<<<< HEAD
                     <input type="text" name="search" value="{{ request('search') }}"
                            placeholder="Search bundles..."
+=======
+                    <input type="text" name="search" value="{{ request('search') }}" 
+                           placeholder="Search bundles..." 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
@@ -104,7 +121,11 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-12 w-12">
+<<<<<<< HEAD
                                 <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=100"
+=======
+                                <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=100" 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                                      alt="{{ $bundle->name }}" class="h-12 w-12 rounded-lg object-cover border border-gray-200">
                             </div>
                             <div class="ml-4">
@@ -137,7 +158,11 @@
                         </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
+<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+=======
+                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($bundle->is_active) bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
                             {{ $bundle->is_active ? 'Active' : 'Inactive' }}
                         </span>
@@ -155,7 +180,11 @@
                             <a href="{{ route('admin.bundles.edit', $bundle) }}" class="text-green-600 hover:text-green-900">
                                 <i class="fas fa-edit"></i>
                             </a>
+<<<<<<< HEAD
                             <form method="POST" action="{{ route('admin.bundles.destroy', $bundle) }}" class="inline"
+=======
+                            <form method="POST" action="{{ route('admin.bundles.destroy', $bundle) }}" class="inline" 
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                                   onsubmit="return confirm('Are you sure you want to delete this bundle?')">
                                 @csrf
                                 @method('DELETE')
@@ -180,11 +209,19 @@
             </tbody>
         </table>
     </div>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     @if($bundles->hasPages())
     <div class="px-6 py-4 border-t border-gray-200">
         {{ $bundles->appends(request()->query())->links() }}
     </div>
     @endif
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

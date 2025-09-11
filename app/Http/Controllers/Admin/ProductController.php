@@ -67,7 +67,11 @@ class ProductController extends Controller
             $imagePath = $image->storeAs('products', $imageName, 'public');
             $data['image'] = $imagePath;
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         Product::create($data);
 
         return redirect()->route('admin.products.index')
@@ -112,7 +116,11 @@ class ProductController extends Controller
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             $image = $request->file('image');
             $imageName = time() . '_' . Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('products', $imageName, 'public');
@@ -130,9 +138,17 @@ class ProductController extends Controller
         if ($product->image && Storage::disk('public')->exists($product->image)) {
             Storage::disk('public')->delete($product->image);
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         $product->delete();
         return redirect()->route('admin.products.index')
             ->with('success', 'Product deleted successfully!');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

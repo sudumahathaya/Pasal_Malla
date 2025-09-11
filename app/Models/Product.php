@@ -73,9 +73,15 @@ class Product extends Model
         if ($this->image) {
             return asset('storage/' . $this->image);
         }
+<<<<<<< HEAD
 
         // Return default image based on category
         return match ($this->category->slug) {
+=======
+        
+        // Return default image based on category
+        return match($this->category->slug) {
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             'books-notebooks' => 'https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400',
             'stationery' => 'https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=400',
             'school-bags' => 'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=400',

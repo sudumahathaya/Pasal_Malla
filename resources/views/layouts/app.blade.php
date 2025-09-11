@@ -157,6 +157,7 @@
                         </div>
                     </a>
 
+<<<<<<< HEAD
                     <!-- Inline Navigation (moved up from below) -->
                     <nav class="flex-1 mx-8 hidden lg:flex items-center justify-center space-x-8">
                         <a href="{{ route('home') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
@@ -178,6 +179,20 @@
                             <i class="fas fa-phone mr-2"></i>Contact
                         </a>
                     </nav>
+=======
+                    <!-- Search Bar -->
+                    <div class="flex-1 max-w-lg mx-8">
+                        <form action="{{ route('products.index') }}" method="GET" class="relative">
+                            <input type="text" name="search" placeholder="Search for school supplies..."
+                                   value="{{ request('search') }}"
+                                   class="w-full px-4 py-3 pl-12 pr-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                                Search
+                            </button>
+                        </form>
+                    </div>
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
 
                     <!-- Cart & Actions -->
                     <div class="flex items-center space-x-4">
@@ -192,7 +207,33 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <!-- Navigation removed; now inline above -->
+=======
+            <!-- Navigation -->
+            <nav class="border-t border-gray-100 py-4">
+                <div class="flex items-center justify-center space-x-8">
+                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="{{ route('products.index') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                        <i class="fas fa-shopping-bag mr-2"></i>All Products
+                    </a>
+                    <a href="{{ route('bundles.index') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                        <i class="fas fa-gift mr-2"></i>Special Bundles
+                    </a>
+                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                        <i class="fas fa-info-circle mr-2"></i>About Us
+                    </a>
+                    <a href="{{ route('delivery') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                        <i class="fas fa-truck mr-2"></i>Delivery Info
+                    </a>
+                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                        <i class="fas fa-phone mr-2"></i>Contact
+                    </a>
+                </div>
+            </nav>
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         </div>
     </header>
 
@@ -286,7 +327,11 @@
 
     <!-- Cart JavaScript -->
     <script src="{{ asset('js/cart.js') }}"></script>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <!-- Custom Styles for Notifications -->
     <style>
         @keyframes slideInRight {
@@ -299,7 +344,11 @@
                 opacity: 1;
             }
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         @keyframes slideOutRight {
             from {
                 transform: translateX(0);
@@ -310,11 +359,19 @@
                 opacity: 0;
             }
         }
+<<<<<<< HEAD
 
         .animate-bounce {
             animation: bounce 1s infinite;
         }
 
+=======
+        
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         @keyframes bounce {
             0%, 20%, 53%, 80%, 100% {
                 transform: translate3d(0,0,0);
@@ -330,7 +387,11 @@
             }
         }
     </style>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     @stack('scripts')
 </body>
 </html>
