@@ -24,14 +24,12 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
                             <input type="text" name="search" value="{{ request('search') }}"
                                    placeholder="Search products..."
-                                   class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                           class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                   class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
                         </div>
 
                         <!-- Categories -->
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                            <select name="category" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <select name="category" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
                                 <option value="">All Categories</option>
                                 @foreach($categories as $category)
@@ -43,10 +41,24 @@
                         </div>
 
                         <!-- Grade Level -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
+                            <select name="grade" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                                <option value="">All Grades</option>
+                                <option value="Grade 1" {{ request('grade') == 'Grade 1' ? 'selected' : '' }}>Grade 1</option>
+                                <option value="Grade 2" {{ request('grade') == 'Grade 2' ? 'selected' : '' }}>Grade 2</option>
+                                <option value="Grade 3" {{ request('grade') == 'Grade 3' ? 'selected' : '' }}>Grade 3</option>
+                                <option value="Grade 4" {{ request('grade') == 'Grade 4' ? 'selected' : '' }}>Grade 4</option>
+                                <option value="Grade 5" {{ request('grade') == 'Grade 5' ? 'selected' : '' }}>Grade 5</option>
+                                <option value="Grade 6-9" {{ request('grade') == 'Grade 6-9' ? 'selected' : '' }}>Grade 6-9</option>
+                                <option value="O/L" {{ request('grade') == 'O/L' ? 'selected' : '' }}>O/L</option>
+                                <option value="A/L" {{ request('grade') == 'A/L' ? 'selected' : '' }}>A/L</option>
+                            </select>
+                        </div>
+
                         <!-- Sort -->
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
-                            <select name="sort" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
                             <select name="sort" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
                                 <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name A-Z</option>
                                 <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Price: Low to High</option>
@@ -55,13 +67,14 @@
                             </select>
                         </div>
 
-                        <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                        <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold mb-3">
+                            <i class="fas fa-filter mr-2"></i>
                             Apply Filters
                         </button>
 
-                        @if(request()->hasAny(['search', 'category', 'sort']))
+                        @if(request()->hasAny(['search', 'category', 'grade', 'sort']))
                         <a href="{{ route('products.index') }}" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold text-center block mt-3 hover:bg-gray-200 transition-colors flex items-center justify-center">
-                            <i class="fas fa-arrow-left mr-2"></i>
+                            <i class="fas fa-times mr-2"></i>
                             Clear Filters
                         </a>
                         @endif
