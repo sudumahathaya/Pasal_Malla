@@ -60,8 +60,7 @@
                         </button>
 
                         @if(request()->hasAny(['search', 'category', 'sort']))
-                        <a href="{{ route('products.index') }}" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold text-center block mt-3 hover:bg-gray-200 transition-colors inline-flex items-center justify-center">
-                            <i class="fas fa-times mr-2"></i>
+                        <a href="{{ route('products.index') }}" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold text-center block mt-3 hover:bg-gray-200 transition-colors flex items-center justify-center">
                             <i class="fas fa-arrow-left mr-2"></i>
                             Clear Filters
                         </a>

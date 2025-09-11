@@ -54,7 +54,7 @@
             <p class="text-xl text-gray-600">අයිතම වර්ග කරා යන්න</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
             @foreach($categories as $category)
             <a href="{{ route('products.index', ['category' => $category->slug]) }}"
                class="card-hover bg-gray-50 rounded-2xl p-6 text-center group">
