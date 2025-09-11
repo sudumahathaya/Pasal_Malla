@@ -405,6 +405,11 @@ class Cart {
             return;
         }
 
+        // Auto redirect to WhatsApp with order details
+        this.redirectToWhatsApp();
+    }
+
+    redirectToWhatsApp() {
         // Generate order message
         let message = "🛒 *New Order from PasalMalla*\n\n";
         message += "📋 *Order Details:*\n";
@@ -427,8 +432,8 @@ class Cart {
         message += "🚚 *Delivery: FREE*\n\n";
         
         message += "📞 *Next Steps:*\n";
+        message += "• Please provide your delivery details\n";
         message += "• We'll call you to confirm this order\n";
-        message += "• Provide your delivery address\n";
         message += "• Pay cash when you receive your items\n\n";
         
         message += "⏰ *Delivery Time: 2-5 working days*\n";
@@ -445,8 +450,9 @@ class Cart {
         // Open WhatsApp
         window.open(whatsappURL, '_blank');
         
-        // Show confirmation message
+        // Show confirmation and clear cart
         this.showOrderSentMessage();
+        this.clearCart();
     }
 
     showAddedToCartMessage(productName) {
