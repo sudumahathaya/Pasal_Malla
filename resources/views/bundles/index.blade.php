@@ -23,20 +23,11 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
-                    <select name="grade" class="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
-                        <option value="">All Grades</option>
-                        <option value="Grade 1" {{ request('grade') == 'Grade 1' ? 'selected' : '' }}>Grade 1</option>
-                        <option value="O/L" {{ request('grade') == 'O/L' ? 'selected' : '' }}>O/L</option>
-                        <option value="A/L" {{ request('grade') == 'A/L' ? 'selected' : '' }}>A/L</option>
-                        <option value="All Grades" {{ request('grade') == 'All Grades' ? 'selected' : '' }}>All Grades</option>
-                        <option value="Art & Craft" {{ request('grade') == 'Art & Craft' ? 'selected' : '' }}>Art & Craft</option>
-                    </select>
-                </div>
                 <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg font-semibold">
                     <i class="fas fa-filter mr-2"></i>
                     Filter
                 </button>
-                @if(request()->hasAny(['search', 'grade']))
+                @if(request()->hasAny(['search']))
                 <a href="{{ route('bundles.index') }}" class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition-colors inline-flex items-center">
                     <i class="fas fa-times mr-2"></i>
                     <i class="fas fa-arrow-left mr-2"></i>

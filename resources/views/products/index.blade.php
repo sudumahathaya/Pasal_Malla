@@ -43,22 +43,6 @@
                         </div>
 
                         <!-- Grade Level -->
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
-                            <select name="grade" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <select name="grade" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">All Grades</option>
-                                <option value="Grade 1" {{ request('grade') == 'Grade 1' ? 'selected' : '' }}>Grade 1</option>
-                                <option value="Grade 2" {{ request('grade') == 'Grade 2' ? 'selected' : '' }}>Grade 2</option>
-                                <option value="Grade 3" {{ request('grade') == 'Grade 3' ? 'selected' : '' }}>Grade 3</option>
-                                <option value="Grade 4" {{ request('grade') == 'Grade 4' ? 'selected' : '' }}>Grade 4</option>
-                                <option value="Grade 5" {{ request('grade') == 'Grade 5' ? 'selected' : '' }}>Grade 5</option>
-                                <option value="Grade 6-9" {{ request('grade') == 'Grade 6-9' ? 'selected' : '' }}>Grade 6-9</option>
-                                <option value="O/L" {{ request('grade') == 'O/L' ? 'selected' : '' }}>O/L</option>
-                                <option value="A/L" {{ request('grade') == 'A/L' ? 'selected' : '' }}>A/L</option>
-                            </select>
-                        </div>
-
                         <!-- Sort -->
                         <div class="mb-6">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
@@ -75,7 +59,7 @@
                             Apply Filters
                         </button>
 
-                        @if(request()->hasAny(['search', 'category', 'grade', 'sort']))
+                        @if(request()->hasAny(['search', 'category', 'sort']))
                         <a href="{{ route('products.index') }}" class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold text-center block mt-3 hover:bg-gray-200 transition-colors inline-flex items-center justify-center">
                             <i class="fas fa-times mr-2"></i>
                             <i class="fas fa-arrow-left mr-2"></i>
@@ -142,13 +126,6 @@
                             <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">{{ $product->name }}</h3>
                             @if($product->name_sinhala)
                             <p class="text-gray-600 mb-4 text-sm">{{ $product->name_sinhala }}</p>
-                            @endif
-                            @if($product->grades)
-                            <div class="flex flex-wrap gap-1 mb-4">
-                                @foreach($product->grades as $grade)
-                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">{{ $grade }}</span>
-                                @endforeach
-                            </div>
                             @endif
                             <div class="flex items-center justify-between mb-6">
                                 <div>

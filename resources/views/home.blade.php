@@ -68,36 +68,6 @@
             @endforeach
         </div>
 
-        <!-- Quick Grade Filters -->
-        <div class="mt-12 text-center">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Shop by Grade Level</h3>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="{{ route('products.index', ['grade' => 'Grade 1']) }}" class="bg-blue-100 hover:bg-blue-200 text-blue-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    Grade 1
-                </a>
-                <a href="{{ route('products.index', ['grade' => 'Grade 2']) }}" class="bg-green-100 hover:bg-green-200 text-green-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    Grade 2
-                </a>
-                <a href="{{ route('products.index', ['grade' => 'Grade 3']) }}" class="bg-purple-100 hover:bg-purple-200 text-purple-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    Grade 3
-                </a>
-                <a href="{{ route('products.index', ['grade' => 'Grade 4']) }}" class="bg-yellow-100 hover:bg-yellow-200 text-yellow-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    Grade 4
-                </a>
-                <a href="{{ route('products.index', ['grade' => 'Grade 5']) }}" class="bg-pink-100 hover:bg-pink-200 text-pink-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    Grade 5
-                </a>
-                <a href="{{ route('products.index', ['grade' => 'Grade 6-9']) }}" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    Grade 6-9
-                </a>
-                <a href="{{ route('products.index', ['grade' => 'O/L']) }}" class="bg-red-100 hover:bg-red-200 text-red-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    O/L
-                </a>
-                <a href="{{ route('products.index', ['grade' => 'A/L']) }}" class="bg-orange-100 hover:bg-orange-200 text-orange-800 px-6 py-3 rounded-full font-semibold transition-colors">
-                    A/L
-                </a>
-            </div>
-        </div>
     </div>
 </section>
 

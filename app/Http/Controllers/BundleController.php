@@ -11,11 +11,6 @@ class BundleController extends Controller
     {
         $query = Bundle::where('is_active', true);
 
-        // Filter by grade level
-        if ($request->has('grade') && $request->grade) {
-            $query->where('grade_level', $request->grade);
-        }
-
         // Search
         if ($request->has('search') && $request->search) {
             $search = $request->search;

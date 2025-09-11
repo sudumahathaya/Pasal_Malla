@@ -95,9 +95,6 @@
         @if($bundle->products->count() > 0)
         <section class="mb-16">
             <div class="bg-white rounded-2xl p-8 shadow-lg">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">What's Included in This Bundle</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    @foreach($bundle->products as $product)
                     <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                         <div class="flex items-start space-x-4">
                             <img src="https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=100"

@@ -67,18 +67,6 @@
                         @endif
                     </div>
 
-                    <!-- Grades -->
-                    @if($product->grades)
-                    <div class="mb-6">
-                        <h3 class="text-sm font-medium text-gray-700 mb-2">Suitable for:</h3>
-                        <div class="flex flex-wrap gap-2">
-                            @foreach($product->grades as $grade)
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">{{ $grade }}</span>
-                            @endforeach
-                        </div>
-                    </div>
-                    @endif
-
                     <!-- Description -->
                     @if($product->description)
                     <div class="mb-8">
