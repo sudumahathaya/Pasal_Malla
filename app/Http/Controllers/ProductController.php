@@ -20,7 +20,6 @@ class ProductController extends Controller
             }
         }
 
-
         // Search
         if ($request->has('search') && $request->search) {
             $search = $request->search;
