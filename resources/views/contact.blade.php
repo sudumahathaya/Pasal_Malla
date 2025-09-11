@@ -117,7 +117,7 @@
                             </div>
                             <div>
                                 <h3 class="font-semibold text-gray-800 mb-1">WhatsApp</h3>
-                                <p class="text-gray-600">077 123 4567</p>
+                                <p class="text-gray-600">077 186 9132</p>
                                 <p class="text-sm text-gray-500 mt-1">Quick support via WhatsApp</p>
                             </div>
                         </div>

@@ -273,7 +273,7 @@
                     <div class="space-y-3">
                         <div class="flex items-center">
                             <i class="fas fa-phone mr-3 text-orange-400"></i>
-                            <span class="text-gray-300">077 123 4567</span>
+                            <span class="text-gray-300">077 186 9132</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-envelope mr-3 text-orange-400"></i>
