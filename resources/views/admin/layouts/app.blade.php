@@ -70,32 +70,32 @@
                     Products
                 </a>
                 
-                <a href="#" class="sidebar-link flex items-center px-6 py-3 text-gray-700">
+                <a href="{{ route('admin.bundles.index') }}" class="sidebar-link flex items-center px-6 py-3 text-gray-700 {{ request()->routeIs('admin.bundles.*') ? 'active' : '' }}">
                     <i class="fas fa-gift mr-3"></i>
                     Bundles
                 </a>
                 
-                <a href="#" class="sidebar-link flex items-center px-6 py-3 text-gray-700">
+                <a href="{{ route('admin.categories.index') }}" class="sidebar-link flex items-center px-6 py-3 text-gray-700 {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
                     <i class="fas fa-tags mr-3"></i>
                     Categories
                 </a>
                 
-                <a href="#" class="sidebar-link flex items-center px-6 py-3 text-gray-700">
+                <a href="{{ route('admin.orders.index') }}" class="sidebar-link flex items-center px-6 py-3 text-gray-700 {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
                     <i class="fas fa-shopping-cart mr-3"></i>
                     Orders
                 </a>
                 
-                <a href="#" class="sidebar-link flex items-center px-6 py-3 text-gray-700">
+                <a href="{{ route('admin.customers.index') }}" class="sidebar-link flex items-center px-6 py-3 text-gray-700 {{ request()->routeIs('admin.customers.*') ? 'active' : '' }}">
                     <i class="fas fa-users mr-3"></i>
                     Customers
                 </a>
                 
-                <a href="#" class="sidebar-link flex items-center px-6 py-3 text-gray-700">
+                <a href="{{ route('admin.reports.index') }}" class="sidebar-link flex items-center px-6 py-3 text-gray-700 {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
                     <i class="fas fa-chart-bar mr-3"></i>
                     Reports
                 </a>
                 
-                <a href="#" class="sidebar-link flex items-center px-6 py-3 text-gray-700">
+                <a href="{{ route('admin.settings.index') }}" class="sidebar-link flex items-center px-6 py-3 text-gray-700 {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                     <i class="fas fa-cog mr-3"></i>
                     Settings
                 </a>
