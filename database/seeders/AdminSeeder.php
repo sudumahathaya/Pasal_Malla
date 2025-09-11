@@ -10,7 +10,7 @@ class AdminSeeder extends Seeder
 {
     public function run()
     {
-        Admin::create([
+        Admin::firstOrCreate(['email' => 'admin@pasalmalla.lk'], [
             'name' => 'Super Admin',
             'email' => 'admin@pasalmalla.lk',
             'password' => Hash::make('admin123'),
@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        Admin::create([
+        Admin::firstOrCreate(['email' => 'manager@pasalmalla.lk'], [
             'name' => 'Admin User',
             'email' => 'manager@pasalmalla.lk',
             'password' => Hash::make('manager123'),
