@@ -174,7 +174,7 @@
                     <div class="flex items-center space-x-4">
                         <a href="{{ route('cart.index') }}" class="relative p-3 text-gray-600 hover:text-orange-600 transition-colors">
                             <i class="fas fa-shopping-cart text-xl"></i>
-                            <span class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                            <span class="cart-count absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" style="display: none;">0</span>
                         </a>
                         <a href="{{ route('bundles.index') }}" class="btn-secondary text-white px-6 py-3 rounded-xl font-semibold">
                             Special Packs
@@ -297,6 +297,8 @@
         </div>
     </footer>
 
+    <!-- Cart JavaScript -->
+    <script src="{{ asset('js/cart.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

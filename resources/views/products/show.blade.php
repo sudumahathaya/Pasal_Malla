@@ -81,17 +81,23 @@
                     <!-- Add to Cart -->
                     <div class="flex gap-4">
                         <div class="flex items-center border border-gray-200 rounded-lg">
-                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
+                            <button class="qty-btn-decrease px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <input type="number" value="1" min="1" max="{{ $product->stock_quantity }}"
-                                   class="w-16 text-center border-0 focus:outline-none">
-                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
+                            <input type="number" value="1" min="1" max="{{ $product->stock_quantity }}" id="quantity-input"
+                                   class="w-16 text-center border-0 focus:outline-none" readonly>
+                            <button class="qty-btn-increase px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <button class="flex-1 btn-primary text-white py-3 rounded-lg font-semibold {{ $product->stock_quantity <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}"
-                                {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}>
+                        <button class="add-to-cart flex-1 btn-primary text-white py-3 rounded-lg font-semibold {{ $product->stock_quantity <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}"
+                                {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}
+                                data-id="{{ $product->id }}"
+                                data-name="{{ $product->name }}"
+                                data-name-sinhala="{{ $product->name_sinhala }}"
+                                data-price="{{ $product->getCurrentPrice() }}"
+                                data-image="{{ $product->getImageUrl() }}"
+                                data-type="product">
                             <i class="fas fa-shopping-cart mr-2"></i>
                             {{ $product->stock_quantity > 0 ? 'Add to Cart' : 'Out of Stock' }}
                         </button>
@@ -147,4 +153,43 @@
         @endif
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const quantityInput = document.getElementById('quantity-input');
+    const decreaseBtn = document.querySelector('.qty-btn-decrease');
+    const increaseBtn = document.querySelector('.qty-btn-increase');
+    const addToCartBtn = document.querySelector('.add-to-cart');
+    
+    if (quantityInput && decreaseBtn && increaseBtn) {
+        decreaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+        
+        increaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            let maxValue = parseInt(quantityInput.max);
+            if (currentValue < maxValue) {
+                quantityInput.value = currentValue + 1;
+            }
+        });
+    }
+    
+    // Override add to cart to include quantity
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const quantity = parseInt(quantityInput.value);
+            
+            // Add multiple items based on quantity
+            for (let i = 0; i < quantity; i++) {
+                window.cart.addToCart(this);
+            }
+        });
+    }
+});
+</script>
 @endsection

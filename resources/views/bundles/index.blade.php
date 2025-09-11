@@ -68,7 +68,13 @@
                             <i class="fas fa-eye mr-2"></i>
                             View Bundle
                         </a>
-                        <button class="bg-orange-100 hover:bg-orange-200 text-orange-700 px-4 py-3 rounded-xl transition-colors hover:scale-105">
+                        <button class="add-to-cart bg-orange-100 hover:bg-orange-200 text-orange-700 px-4 py-3 rounded-xl transition-colors hover:scale-105"
+                                data-id="{{ $bundle->id }}"
+                                data-name="{{ $bundle->name }}"
+                                data-name-sinhala="{{ $bundle->name_sinhala }}"
+                                data-price="{{ $bundle->price }}"
+                                data-image="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                data-type="bundle">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                     </div>

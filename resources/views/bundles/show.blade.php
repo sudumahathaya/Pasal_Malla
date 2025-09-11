@@ -73,16 +73,22 @@
                     <!-- Add to Cart -->
                     <div class="flex gap-4">
                         <div class="flex items-center border border-gray-200 rounded-lg">
-                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
+                            <button class="qty-btn-decrease px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <input type="number" value="1" min="1"
-                                   class="w-16 text-center border-0 focus:outline-none">
-                            <button class="px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
+                            <input type="number" value="1" min="1" id="bundle-quantity-input"
+                                   class="w-16 text-center border-0 focus:outline-none" readonly>
+                            <button class="qty-btn-increase px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <button class="flex-1 btn-primary text-white py-3 rounded-lg font-semibold">
+                        <button class="add-to-cart flex-1 btn-primary text-white py-3 rounded-lg font-semibold"
+                                data-id="{{ $bundle->id }}"
+                                data-name="{{ $bundle->name }}"
+                                data-name-sinhala="{{ $bundle->name_sinhala }}"
+                                data-price="{{ $bundle->price }}"
+                                data-image="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                data-type="bundle">
                             <i class="fas fa-shopping-cart mr-2"></i>
                             Add Bundle to Cart
                         </button>
@@ -168,4 +174,40 @@
         </section>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const quantityInput = document.getElementById('bundle-quantity-input');
+    const decreaseBtn = document.querySelector('.qty-btn-decrease');
+    const increaseBtn = document.querySelector('.qty-btn-increase');
+    const addToCartBtn = document.querySelector('.add-to-cart');
+    
+    if (quantityInput && decreaseBtn && increaseBtn) {
+        decreaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+        
+        increaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+        });
+    }
+    
+    // Override add to cart to include quantity
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const quantity = parseInt(quantityInput.value);
+            
+            // Add multiple items based on quantity
+            for (let i = 0; i < quantity; i++) {
+                window.cart.addToCart(this);
+            }
+        });
+    }
+});
+</script>
 @endsection

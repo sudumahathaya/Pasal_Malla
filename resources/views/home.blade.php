@@ -163,7 +163,13 @@
                         <a href="{{ route('products.show', $product) }}" class="flex-1 btn-primary text-white py-3 rounded-xl font-semibold text-center text-sm hover:shadow-lg transition-all">
                             View Details
                         </a>
-                        <button class="bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-700 px-4 py-3 rounded-xl transition-all hover:scale-105 hover:shadow-md">
+                        <button class="add-to-cart bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-700 px-4 py-3 rounded-xl transition-all hover:scale-105 hover:shadow-md"
+                                data-id="{{ $product->id }}"
+                                data-name="{{ $product->name }}"
+                                data-name-sinhala="{{ $product->name_sinhala }}"
+                                data-price="{{ $product->getCurrentPrice() }}"
+                                data-image="{{ $product->getImageUrl() }}"
+                                data-type="product">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                     </div>
