@@ -161,6 +161,7 @@
                     <div class="flex-1 max-w-lg mx-8">
                         <form action="{{ route('products.index') }}" method="GET" class="relative">
                             <input type="text" name="search" placeholder="Search for school supplies..."
+                                   value="{{ request('search') }}"
                                    class="w-full px-4 py-3 pl-12 pr-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                             <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                             <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
