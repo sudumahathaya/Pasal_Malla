@@ -54,7 +54,7 @@ class ProductController extends Controller
             'grades' => 'nullable|array',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         $data = $request->all();
@@ -100,7 +100,7 @@ class ProductController extends Controller
             'grades' => 'nullable|array',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
         $data = $request->all();

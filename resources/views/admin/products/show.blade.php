@@ -42,7 +42,7 @@
                     <h4 class="text-lg font-semibold text-gray-900">Product Image</h4>
                 </div>
                 <div class="p-6">
-                    <img src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}" 
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" 
                          class="w-full max-w-md h-64 object-cover rounded-lg border border-gray-200">
                 </div>
             </div>

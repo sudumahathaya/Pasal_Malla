@@ -63,7 +63,7 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-12 w-12">
-                                <img src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}" 
+                                <img src="{{ $product->image ? asset('storage/' . $product->image) : $product->getImageUrl() }}" alt="{{ $product->name }}" 
                                      class="h-12 w-12 rounded-lg object-cover border border-gray-200">
                             </div>
                             <div class="ml-4">
