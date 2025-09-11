@@ -40,21 +40,6 @@
                             </select>
                         </div>
 
-                        <!-- Grade Level -->
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
-                            <select name="grade" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">All Grades</option>
-                                <option value="Grade 1" {{ request('grade') == 'Grade 1' ? 'selected' : '' }}>Grade 1</option>
-                                <option value="Grade 2" {{ request('grade') == 'Grade 2' ? 'selected' : '' }}>Grade 2</option>
-                                <option value="Grade 3" {{ request('grade') == 'Grade 3' ? 'selected' : '' }}>Grade 3</option>
-                                <option value="Grade 4" {{ request('grade') == 'Grade 4' ? 'selected' : '' }}>Grade 4</option>
-                                <option value="Grade 5" {{ request('grade') == 'Grade 5' ? 'selected' : '' }}>Grade 5</option>
-                                <option value="Grade 6-9" {{ request('grade') == 'Grade 6-9' ? 'selected' : '' }}>Grade 6-9</option>
-                                <option value="O/L" {{ request('grade') == 'O/L' ? 'selected' : '' }}>O/L</option>
-                                <option value="A/L" {{ request('grade') == 'A/L' ? 'selected' : '' }}>A/L</option>
-                            </select>
-                        </div>
 
                         <!-- Sort -->
                         <div class="mb-6">
