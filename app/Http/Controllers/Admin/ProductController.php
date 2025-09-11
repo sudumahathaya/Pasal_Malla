@@ -67,6 +67,7 @@ class ProductController extends Controller
             $imagePath = $image->storeAs('products', $imageName, 'public');
             $data['image'] = $imagePath;
         }
+        
         Product::create($data);
 
         return redirect()->route('admin.products.index')
