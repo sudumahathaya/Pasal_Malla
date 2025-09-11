@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form action="{{ route('admin.products.store') }}" method="POST" class="p-6">
+    <form action="{{ route('admin.products.store') }}" method="POST" class="p-6" enctype="multipart/form-data">
         @csrf
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -93,6 +93,23 @@
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Image -->
+            <div>
+                <h4 class="text-md font-semibold text-gray-800 mb-4">Product Image</h4>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Upload Image</label>
+                        <input type="file" name="image" accept="image/*"
+                               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('image') border-red-500 @enderror">
+                        @error('image')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                        <p class="text-sm text-gray-500 mt-1">Supported formats: JPEG, PNG, JPG, GIF. Max size: 2MB</p>
                     </div>
                 </div>
             </div>
