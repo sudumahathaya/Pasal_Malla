@@ -386,7 +386,7 @@ class Cart {
         message += "Thank you for choosing PasalMalla! 🙏";
 
         // WhatsApp number (replace with your actual number)
-        const whatsappNumber = "94771234567"; // Format: country code + number without +
+        const whatsappNumber = "94771869132"; // Format: country code + number without +
         
         // Create WhatsApp URL
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
