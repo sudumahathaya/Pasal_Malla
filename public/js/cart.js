@@ -396,8 +396,8 @@ class Cart {
         
         // Hide modal and show confirmation
         this.hideCustomerDetailsModal();
-        this.clearCart();
         this.showOrderSentMessage();
+        this.clearCart();
     }
 
     sendToWhatsApp() {
@@ -452,8 +452,8 @@ class Cart {
         window.open(whatsappURL, '_blank');
         
         // Show confirmation and clear cart
-        this.showOrderSentMessage();
         this.clearCart();
+        this.showOrderSentMessage();
     }
 
     showAddedToCartMessage(productName) {
