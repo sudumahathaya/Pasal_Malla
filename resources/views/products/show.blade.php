@@ -23,7 +23,7 @@
             <!-- Product Images -->
             <div>
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    <img src="{{ $product->getImageUrl() }}"
                          alt="{{ $product->name }}" class="w-full h-96 object-cover">
                 </div>
             </div>

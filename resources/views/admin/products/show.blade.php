@@ -35,6 +35,19 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Main Product Info -->
         <div class="lg:col-span-2 space-y-6">
+            <!-- Product Image -->
+            @if($product->image)
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+                <div class="p-6 border-b border-gray-200">
+                    <h4 class="text-lg font-semibold text-gray-900">Product Image</h4>
+                </div>
+                <div class="p-6">
+                    <img src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}" 
+                         class="w-full max-w-md h-64 object-cover rounded-lg border border-gray-200">
+                </div>
+            </div>
+            @endif
+            
             <!-- Basic Information -->
             <div class="bg-white rounded-xl shadow-sm border border-gray-200">
                 <div class="p-6 border-b border-gray-200">

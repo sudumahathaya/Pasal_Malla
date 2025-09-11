@@ -129,17 +129,7 @@
             @foreach($featuredProducts as $product)
             <div class="card-hover bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 group">
                 <div class="relative">
-                    @php
-                        $imageUrl = match($product->category->slug) {
-                            'books-notebooks' => 'https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400',
-                            'stationery' => 'https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=400',
-                            'school-bags' => 'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=400',
-                            'lunch-water-bottles' => 'https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=400',
-                            'art-craft' => 'https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400',
-                            default => 'https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400'
-                        };
-                    @endphp
-                    <img src="{{ $imageUrl }}"
+                    <img src="{{ $product->getImageUrl() }}"
                          alt="{{ $product->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                     @if($product->hasDiscount())
                     <div class="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-2 rounded-full text-sm font-bold shadow-lg animate-pulse">
