@@ -73,6 +73,9 @@ class Cart {
         this.saveCart();
         this.updateCartDisplay();
         this.showAddedToCartMessage(productData.name);
+        
+        // Add visual feedback to button
+        this.showButtonFeedback(button);
     }
 
     updateQuantity(id, change) {
@@ -92,6 +95,7 @@ class Cart {
         this.items = this.items.filter(item => item.id !== id);
         this.saveCart();
         this.updateCartDisplay();
+        this.showRemovedFromCartMessage();
     }
 
     saveCart() {
@@ -105,6 +109,14 @@ class Cart {
             const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+            
+            // Add animation to cart icon
+            if (totalItems > 0) {
+                cartCount.parentElement.classList.add('animate-bounce');
+                setTimeout(() => {
+                    cartCount.parentElement.classList.remove('animate-bounce');
+                }, 1000);
+            }
         }
 
         // Update cart page if we're on it
@@ -143,10 +155,10 @@ class Cart {
             subtotal += itemTotal;
 
             cartHTML += `
-                <div class="p-6 ${item.type === 'bundle' ? 'bg-blue-50' : ''}">
+                <div class="p-6 ${item.type === 'bundle' ? 'bg-blue-50' : ''} border-b border-gray-100">
                     <div class="flex items-center space-x-4">
                         <img src="${item.image || '/images/default-product.jpg'}" 
-                             alt="${item.name}" class="w-20 h-20 object-cover rounded-lg">
+                             alt="${item.name}" class="w-20 h-20 object-cover rounded-lg border border-gray-200">
                         <div class="flex-1">
                             ${item.type === 'bundle' ? `
                                 <div class="flex items-center mb-1">
@@ -247,7 +259,7 @@ class Cart {
 
     sendToWhatsApp() {
         if (this.items.length === 0) {
-            alert('Your cart is empty!');
+            this.showErrorMessage('Your cart is empty!');
             return;
         }
 
@@ -298,11 +310,19 @@ class Cart {
     showAddedToCartMessage(productName) {
         // Create and show a toast notification
         const toast = document.createElement('div');
-        toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+        toast.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300 max-w-sm';
         toast.innerHTML = `
             <div class="flex items-center">
-                <i class="fas fa-check-circle mr-2"></i>
-                <span>${productName} added to cart!</span>
+                <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-check text-white"></i>
+                </div>
+                <div>
+                    <p class="font-semibold">Added to Cart!</p>
+                    <p class="text-sm opacity-90">${productName}</p>
+                </div>
+                <button class="ml-4 text-white hover:text-gray-200" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
         `;
         
@@ -313,13 +333,90 @@ class Cart {
             toast.classList.remove('translate-x-full');
         }, 100);
         
-        // Remove after 3 seconds
+        // Remove after 4 seconds
         setTimeout(() => {
-            toast.classList.add('translate-x-full');
-            setTimeout(() => {
-                document.body.removeChild(toast);
-            }, 300);
+            if (toast.parentElement) {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (toast.parentElement) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }
+        }, 4000);
+    }
+
+    showRemovedFromCartMessage() {
+        const toast = document.createElement('div');
+        toast.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-trash mr-3"></i>
+                <span>Item removed from cart</span>
+            </div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.classList.remove('translate-x-full');
+        }, 100);
+        
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (toast.parentElement) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }
         }, 3000);
+    }
+
+    showErrorMessage(message) {
+        const toast = document.createElement('div');
+        toast.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+        toast.innerHTML = `
+            <div class="flex items-center">
+                <i class="fas fa-exclamation-triangle mr-3"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.classList.remove('translate-x-full');
+        }, 100);
+        
+        setTimeout(() => {
+            if (toast.parentElement) {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (toast.parentElement) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }
+        }, 3000);
+    }
+
+    showButtonFeedback(button) {
+        const originalText = button.innerHTML;
+        const originalClass = button.className;
+        
+        // Change button appearance temporarily
+        button.innerHTML = '<i class="fas fa-check mr-2"></i>Added!';
+        button.className = button.className.replace('btn-primary', 'bg-green-500 hover:bg-green-600');
+        button.disabled = true;
+        
+        // Reset after 1.5 seconds
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.className = originalClass;
+            button.disabled = false;
+        }, 1500);
     }
 
     showOrderSentMessage() {
@@ -345,8 +442,6 @@ class Cart {
         // Close modal functionality
         modal.querySelector('.close-modal').addEventListener('click', () => {
             document.body.removeChild(modal);
-            // Optionally clear cart after successful order
-            // this.clearCart();
         });
         
         modal.addEventListener('click', (e) => {
@@ -360,6 +455,14 @@ class Cart {
         this.items = [];
         this.saveCart();
         this.updateCartDisplay();
+    }
+
+    getCartCount() {
+        return this.items.reduce((sum, item) => sum + item.quantity, 0);
+    }
+
+    getCartTotal() {
+        return this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     }
 }
 

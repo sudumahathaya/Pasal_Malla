@@ -174,7 +174,7 @@
                     <div class="flex items-center space-x-4">
                         <a href="{{ route('cart.index') }}" class="relative p-3 text-gray-600 hover:text-orange-600 transition-colors">
                             <i class="fas fa-shopping-cart text-xl"></i>
-                            <span class="cart-count absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" style="display: none;">0</span>
+                            <span class="cart-count absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold" style="display: none;">0</span>
                         </a>
                         <a href="{{ route('bundles.index') }}" class="btn-secondary text-white px-6 py-3 rounded-xl font-semibold">
                             Special Packs
@@ -299,6 +299,51 @@
 
     <!-- Cart JavaScript -->
     <script src="{{ asset('js/cart.js') }}"></script>
+    
+    <!-- Custom Styles for Notifications -->
+    <style>
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0,-8px,0);
+            }
+            70% {
+                transform: translate3d(0,-4px,0);
+            }
+            90% {
+                transform: translate3d(0,-2px,0);
+            }
+        }
+    </style>
+    
     @stack('scripts')
 </body>
 </html>
