@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - PasalMalla</title>
+    <title>Admin Register - PasalMalla</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,12 +19,25 @@
                 <i class="fas fa-school text-white text-2xl"></i>
             </div>
             <h1 class="text-2xl font-bold text-gray-800">PasalMalla Admin</h1>
-            <p class="text-gray-600">Sign in to your admin account</p>
+            <p class="text-gray-600">Create your admin account</p>
         </div>
         
-        <!-- Login Form -->
-        <form method="POST" action="{{ route('admin.login') }}">
+        <!-- Register Form -->
+        <form method="POST" action="{{ route('admin.register') }}">
             @csrf
+            
+            <!-- Name -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <div class="relative">
+                    <input type="text" name="name" value="{{ old('name') }}" required
+                           class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('name') border-red-500 @enderror">
+                    <i class="fas fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
+                @error('name')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
             
             <!-- Email -->
             <div class="mb-6">
@@ -52,31 +65,33 @@
                 @enderror
             </div>
             
-            <!-- Remember Me -->
-            <div class="flex items-center justify-between mb-6">
-                <label class="flex items-center">
-                    <input type="checkbox" name="remember" class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
+            <!-- Confirm Password -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                <div class="relative">
+                    <input type="password" name="password_confirmation" required
+                           class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <i class="fas fa-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                </div>
             </div>
             
             <!-- Submit Button -->
             <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                <i class="fas fa-sign-in-alt mr-2"></i>
-                Sign In
+                <i class="fas fa-user-plus mr-2"></i>
+                Create Account
             </button>
         </form>
         
-        <!-- Register Link -->
+        <!-- Login Link -->
         <div class="text-center mt-6">
-            <p class="text-gray-600">Don't have an account?</p>
-            <a href="{{ route('admin.register') }}" class="text-blue-600 hover:text-blue-800 font-medium">
-                Create admin account
+            <p class="text-gray-600">Already have an account?</p>
+            <a href="{{ route('admin.login') }}" class="text-blue-600 hover:text-blue-800 font-medium">
+                Sign in here
             </a>
         </div>
         
         <!-- Back to Site -->
-        <div class="text-center mt-6">
+        <div class="text-center mt-4">
             <a href="{{ route('home') }}" class="text-blue-600 hover:text-blue-800 text-sm">
                 <i class="fas fa-arrow-left mr-1"></i>
                 Back to Website

@@ -6,12 +6,41 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function showLoginForm()
     {
         return view('admin.auth.login');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('admin.auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:admins,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $admin = Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'admin',
+            'is_active' => true,
+        ]);
+
+        Auth::guard('admin')->login($admin);
+        $request->session()->regenerate();
+        
+        return redirect()->route('admin.dashboard')
+            ->with('success', 'Registration successful! Welcome to PasalMalla Admin.');
     }
 
     public function login(Request $request)

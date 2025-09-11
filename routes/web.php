@@ -28,11 +28,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Auth Routes
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AdminAuthController::class, 'login']);
+    Route::get('/register', [AdminAuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AdminAuthController::class, 'register']);
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     
     // Protected Admin Routes
     Route::middleware(['admin.auth'])->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard-stats', [AdminDashboardController::class, 'getStats'])->name('dashboard.stats');
         Route::resource('products', AdminProductController::class);
     });
 });

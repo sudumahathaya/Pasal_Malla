@@ -11,8 +11,8 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm font-medium text-gray-600">Total Products</p>
-                <p class="text-3xl font-bold text-gray-900">{{ $stats['total_products'] }}</p>
-                <p class="text-sm text-green-600">{{ $stats['active_products'] }} active</p>
+                <p class="text-3xl font-bold text-gray-900" data-stat="total_products">{{ $stats['total_products'] }}</p>
+                <p class="text-sm text-green-600"><span data-stat="active_products">{{ $stats['active_products'] }}</span> active</p>
             </div>
             <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <i class="fas fa-box text-blue-600 text-xl"></i>
@@ -24,8 +24,8 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm font-medium text-gray-600">Total Orders</p>
-                <p class="text-3xl font-bold text-gray-900">{{ $stats['total_orders'] }}</p>
-                <p class="text-sm text-orange-600">{{ $stats['pending_orders'] }} pending</p>
+                <p class="text-3xl font-bold text-gray-900" data-stat="total_orders">{{ $stats['total_orders'] }}</p>
+                <p class="text-sm text-orange-600"><span data-stat="pending_orders">{{ $stats['pending_orders'] }}</span> pending</p>
             </div>
             <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <i class="fas fa-shopping-cart text-green-600 text-xl"></i>
@@ -37,7 +37,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm font-medium text-gray-600">Categories</p>
-                <p class="text-3xl font-bold text-gray-900">{{ $stats['total_categories'] }}</p>
+                <p class="text-3xl font-bold text-gray-900" data-stat="total_categories">{{ $stats['total_categories'] }}</p>
                 <p class="text-sm text-gray-500">Active categories</p>
             </div>
             <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -50,7 +50,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-sm font-medium text-gray-600">Bundle Packs</p>
-                <p class="text-3xl font-bold text-gray-900">{{ $stats['total_bundles'] }}</p>
+                <p class="text-3xl font-bold text-gray-900" data-stat="total_bundles">{{ $stats['total_bundles'] }}</p>
                 <p class="text-sm text-gray-500">Special offers</p>
             </div>
             <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
@@ -107,7 +107,7 @@
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-semibold text-gray-900">Low Stock Alert</h3>
                 <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
-                    {{ $stats['low_stock_products'] }} items
+                    <span data-stat="low_stock_products">{{ $stats['low_stock_products'] }}</span> items
                 </span>
             </div>
         </div>
