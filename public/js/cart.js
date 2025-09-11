@@ -82,11 +82,7 @@ class Cart {
         };
 
         const existingItem = this.items.find(item => item.id === productData.id && item.type === productData.type);
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
@@ -99,11 +95,7 @@ class Cart {
         this.saveCart();
         this.updateCartDisplay();
         this.showAddedToCartMessage(productData.name);
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         // Add visual feedback to button
         this.showButtonFeedback(button);
     }
@@ -139,11 +131,7 @@ class Cart {
             const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
             cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             // Add animation to cart icon
             if (totalItems > 0) {
                 cartCount.parentElement.classList.add('animate-bounce');
@@ -162,11 +150,7 @@ class Cart {
     renderCartPage() {
         const cartContainer = document.querySelector('#cart-items');
         const cartSummary = document.querySelector('#cart-summary');
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         if (!cartContainer) return;
 
         if (this.items.length === 0) {
@@ -195,11 +179,7 @@ class Cart {
             cartHTML += `
                 <div class="p-6 ${item.type === 'bundle' ? 'bg-blue-50' : ''} border-b border-gray-100">
                     <div class="flex items-center space-x-4">
-<<<<<<< HEAD
                         <img src="${item.image || '/images/default-product.jpg'}"
-=======
-                        <img src="${item.image || '/images/default-product.jpg'}"
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                              alt="${item.name}" class="w-20 h-20 object-cover rounded-lg border border-gray-200">
                         <div class="flex-1">
                             ${item.type === 'bundle' ? `
@@ -242,11 +222,7 @@ class Cart {
             cartSummary.innerHTML = `
                 <div class="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
                     <h2 class="text-xl font-bold text-gray-800 mb-6">Order Summary</h2>
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-3 mb-6">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Items (${this.items.reduce((sum, item) => sum + item.quantity, 0)}):</span>
@@ -363,11 +339,7 @@ class Cart {
     sendToWhatsAppWithDetails(customerDetails) {
         // Generate order message with customer details
         let message = "🛒 *New Order from PasalMalla*\n\n";
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         // Customer Information
         message += "👤 *Customer Details:*\n";
         message += "━━━━━━━━━━━━━━━━━━━━\n";
@@ -382,11 +354,7 @@ class Cart {
             message += `📋 *Notes:* ${customerDetails.notes}\n`;
         }
         message += "\n";
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         // Order Details
         message += "📋 *Order Details:*\n";
         message += "━━━━━━━━━━━━━━━━━━━━\n\n";
@@ -395,11 +363,7 @@ class Cart {
         this.items.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             message += `${index + 1}. ${item.type === 'bundle' ? '🎁 ' : ''}*${item.name}*\n`;
             if (item.nameSinhala) {
                 message += `   ${item.nameSinhala}\n`;
@@ -410,43 +374,19 @@ class Cart {
         message += "━━━━━━━━━━━━━━━━━━━━\n";
         message += `💵 *Total Amount: Rs. ${subtotal.toFixed(2)}*\n`;
         message += "🚚 *Delivery: FREE*\n\n";
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         message += "📞 *Next Steps:*\n";
         message += "• We'll call you to confirm this order\n";
         message += "• Verify delivery address and timing\n";
         message += "• Pay cash when you receive your items\n\n";
-<<<<<<< HEAD
 
         message += "⏰ *Delivery Time: 2-5 working days*\n";
         message += "🌍 *Available island-wide*\n\n";
 
-=======
-
-        message += "⏰ *Delivery Time: 2-5 working days*\n";
-        message += "🌍 *Available island-wide*\n\n";
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         message += "Thank you for choosing PasalMalla! 🙏";
 
         // WhatsApp number (replace with your actual number)
         const whatsappNumber = "94771869132"; // Format: country code + number without +
-<<<<<<< HEAD
-
-        // Create WhatsApp URL
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-        // Open WhatsApp
-        window.open(whatsappURL, '_blank');
-
-        // Hide modal and show confirmation
-        this.hideCustomerDetailsModal();
-        this.clearCart();
-        this.showOrderSentMessage();
-=======
 
         // Create WhatsApp URL
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -458,7 +398,6 @@ class Cart {
         this.hideCustomerDetailsModal();
         this.showOrderSentMessage();
         this.clearCart();
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     }
 
     sendToWhatsApp() {
@@ -481,11 +420,7 @@ class Cart {
         this.items.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             message += `${index + 1}. ${item.type === 'bundle' ? '🎁 ' : ''}*${item.name}*\n`;
             if (item.nameSinhala) {
                 message += `   ${item.nameSinhala}\n`;
@@ -496,42 +431,19 @@ class Cart {
         message += "━━━━━━━━━━━━━━━━━━━━\n";
         message += `💵 *Total Amount: Rs. ${subtotal.toFixed(2)}*\n`;
         message += "🚚 *Delivery: FREE*\n\n";
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         message += "📞 *Next Steps:*\n";
         message += "• Please provide your delivery details\n";
         message += "• We'll call you to confirm this order\n";
         message += "• Pay cash when you receive your items\n\n";
-<<<<<<< HEAD
 
         message += "⏰ *Delivery Time: 2-5 working days*\n";
         message += "🌍 *Available island-wide*\n\n";
 
-=======
-
-        message += "⏰ *Delivery Time: 2-5 working days*\n";
-        message += "🌍 *Available island-wide*\n\n";
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         message += "Thank you for choosing PasalMalla! 🙏";
 
         // WhatsApp number (replace with your actual number)
         const whatsappNumber = "94771234567"; // Format: country code + number without +
-<<<<<<< HEAD
-
-        // Create WhatsApp URL
-        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-        // Open WhatsApp
-        window.open(whatsappURL, '_blank');
-
-        // Show confirmation and clear cart
-        this.showOrderSentMessage();
-        this.clearCart();
-=======
 
         // Create WhatsApp URL
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -542,7 +454,6 @@ class Cart {
         // Show confirmation and clear cart
         this.clearCart();
         this.showOrderSentMessage();
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     }
 
     showAddedToCartMessage(productName) {
@@ -563,24 +474,14 @@ class Cart {
                 </button>
             </div>
         `;
-<<<<<<< HEAD
 
         document.body.appendChild(toast);
 
-=======
-
-        document.body.appendChild(toast);
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         // Animate in
         setTimeout(() => {
             toast.classList.remove('translate-x-full');
         }, 100);
-<<<<<<< HEAD
 
-=======
-
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         // Remove after 4 seconds
         setTimeout(() => {
             if (toast.parentElement) {
@@ -603,15 +504,6 @@ class Cart {
                 <span>Item removed from cart</span>
             </div>
         `;
-
-
-        document.body.appendChild(toast);
-
-        setTimeout(() => {
-            toast.classList.remove('translate-x-full');
-        }, 100);
-
-
 
         document.body.appendChild(toast);
 
@@ -640,13 +532,6 @@ class Cart {
                 <span>${message}</span>
             </div>
         `;
-
-        document.body.appendChild(toast);
-
-        setTimeout(() => {
-            toast.classList.remove('translate-x-full');
-        }, 100);
-
 
         document.body.appendChild(toast);
 
@@ -701,12 +586,7 @@ class Cart {
             </div>
         `;
 
-
         document.body.appendChild(modal);
-
-
-        document.body.appendChild(modal);
-
 
         // Close modal functionality
         modal.querySelector('.close-modal').addEventListener('click', () => {
@@ -738,8 +618,4 @@ class Cart {
 // Initialize cart when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.cart = new Cart();
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
