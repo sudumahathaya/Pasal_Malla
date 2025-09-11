@@ -39,17 +39,44 @@
     <!-- Custom Styles -->
     <style>
         .hero-gradient {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
+            position: relative;
+        }
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
         }
         .card-hover {
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+            z-index: 1;
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255,255,255,0.1);
+        }
+        .card-hover:hover::before {
+            left: 100%;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
@@ -57,14 +84,29 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
         .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
-            background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 15px 30px -5px rgba(249, 115, 22, 0.5);
+            background: linear-gradient(135deg, #ea580c 0%, #dc2626 50%, #b91c1c 100%);
+        }
+        .btn-primary:hover::before {
+            left: 100%;
         }
         .btn-secondary {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
             color: white;
             border: none;
             transition: all 0.3s ease;
@@ -73,12 +115,27 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
         .btn-secondary:hover {
-            transform: translateY(-1px);
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transform: translateY(-2px) scale(1.02);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
             color: white;
-            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.5);
+        }
+        .btn-secondary:hover::before {
+            left: 100%;
         }
         .btn-white {
             background: white;
@@ -90,12 +147,27 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-white::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+            transition: left 0.5s;
         }
         .btn-white:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.02);
             background: #f97316;
             color: white;
-            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+            box-shadow: 0 15px 30px -5px rgba(249, 115, 22, 0.5);
+        }
+        .btn-white:hover::before {
+            left: 100%;
         }
         .btn-glass {
             background: rgba(255, 255, 255, 0.1);
@@ -108,12 +180,71 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
         .btn-glass:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.02);
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+        .btn-glass:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(249, 115, 22, 0.6); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        /* Improved header styling */
+        .header-glass {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Enhanced cart icon */
+        .cart-icon-wrapper {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-icon-wrapper:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 
