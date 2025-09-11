@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->decimal('sale_price', 10, 2)->nullable();
             $table->string('sku')->unique();
             $table->integer('stock_quantity')->default(0);
-            $table->json('images')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->json('grades')->nullable(); // For grade-specific items
             $table->boolean('is_featured')->default(false);

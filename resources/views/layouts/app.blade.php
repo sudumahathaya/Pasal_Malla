@@ -39,7 +39,7 @@
     <!-- Custom Styles -->
     <style>
         .hero-gradient {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
         }
         .card-hover {
             transition: all 0.3s ease;
@@ -49,20 +49,71 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
         .btn-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+            background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%);
         }
         .btn-secondary {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            border: none;
             transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
         }
         .btn-secondary:hover {
             transform: translateY(-1px);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
             box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.4);
+        }
+        .btn-white {
+            background: white;
+            color: #f97316;
+            border: 2px solid #f97316;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .btn-white:hover {
+            transform: translateY(-1px);
+            background: #f97316;
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+        }
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .btn-glass:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
     </style>
 
@@ -80,9 +131,9 @@
                         Free Delivery Island Wide | Cash on Delivery Available
                     </div>
                     <div class="flex items-center space-x-4">
-                        <a href="tel:+94771234567" class="text-gray-600 hover:text-primary-600">
+                        <a href="tel:+94771869132" class="text-gray-600 hover:text-primary-600">
                             <i class="fas fa-phone mr-1"></i>
-                            077 123 4567
+                            077 186 9132
                         </a>
                         <a href="mailto:info@pasalmalla.lk" class="text-gray-600 hover:text-primary-600">
                             <i class="fas fa-envelope mr-1"></i>
@@ -97,7 +148,7 @@
                 <div class="flex items-center justify-between">
                     <!-- Logo -->
                     <a href="{{ route('home') }}" class="flex items-center space-x-3">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center">
                             <i class="fas fa-school text-white text-xl"></i>
                         </div>
                         <div>
@@ -106,24 +157,34 @@
                         </div>
                     </a>
 
-                    <!-- Search Bar -->
-                    <div class="flex-1 max-w-lg mx-8">
-                        <form action="{{ route('products.index') }}" method="GET" class="relative">
-                            <input type="text" name="search" placeholder="Search for school supplies..."
-                                   class="w-full px-4 py-3 pl-12 pr-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                            <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
-                                Search
-                            </button>
-                        </form>
-                    </div>
+                    <!-- Inline Navigation (moved up from below) -->
+                    <nav class="flex-1 mx-8 hidden lg:flex items-center justify-center space-x-8">
+                        <a href="{{ route('home') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                            <i class="fas fa-home mr-2"></i>Home
+                        </a>
+                        <a href="{{ route('products.index') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                            <i class="fas fa-shopping-bag mr-2"></i>All Products
+                        </a>
+                        <a href="{{ route('bundles.index') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                            <i class="fas fa-gift mr-2"></i>Special Bundles
+                        </a>
+                        <a href="{{ route('about') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                            <i class="fas fa-info-circle mr-2"></i>About Us
+                        </a>
+                        <a href="{{ route('delivery') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                            <i class="fas fa-truck mr-2"></i>Delivery Info
+                        </a>
+                        <a href="{{ route('contact') }}" class="text-gray-700 hover:text-orange-600 font-medium transition-colors">
+                            <i class="fas fa-phone mr-2"></i>Contact
+                        </a>
+                    </nav>
 
                     <!-- Cart & Actions -->
                     <div class="flex items-center space-x-4">
-                        <button class="relative p-3 text-gray-600 hover:text-primary-600 transition-colors">
+                        <a href="{{ route('cart.index') }}" class="relative p-3 text-gray-600 hover:text-orange-600 transition-colors">
                             <i class="fas fa-shopping-cart text-xl"></i>
-                            <span class="absolute -top-1 -right-1 bg-secondary-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-                        </button>
+                            <span class="cart-count absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold" style="display: none;">0</span>
+                        </a>
                         <a href="{{ route('bundles.index') }}" class="btn-secondary text-white px-6 py-3 rounded-xl font-semibold">
                             Special Packs
                         </a>
@@ -131,29 +192,7 @@
                 </div>
             </div>
 
-            <!-- Navigation -->
-            <nav class="border-t border-gray-100 py-4">
-                <div class="flex items-center justify-center space-x-8">
-                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-                        <i class="fas fa-home mr-2"></i>Home
-                    </a>
-                    <a href="{{ route('products.index') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-                        <i class="fas fa-shopping-bag mr-2"></i>All Products
-                    </a>
-                    <a href="{{ route('bundles.index') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-                        <i class="fas fa-gift mr-2"></i>Special Bundles
-                    </a>
-                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-                        <i class="fas fa-info-circle mr-2"></i>About Us
-                    </a>
-                    <a href="{{ route('delivery') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-                        <i class="fas fa-truck mr-2"></i>Delivery Info
-                    </a>
-                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-                        <i class="fas fa-phone mr-2"></i>Contact
-                    </a>
-                </div>
-            </nav>
+            <!-- Navigation removed; now inline above -->
         </div>
     </header>
 
@@ -169,7 +208,7 @@
                 <!-- Company Info -->
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center">
                             <i class="fas fa-school text-white"></i>
                         </div>
                         <h3 class="text-xl font-bold">PasalMalla</h3>
@@ -220,15 +259,15 @@
                     <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
                     <div class="space-y-3">
                         <div class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-primary-400"></i>
-                            <span class="text-gray-300">077 123 4567</span>
+                            <i class="fas fa-phone mr-3 text-orange-400"></i>
+                            <span class="text-gray-300">077 186 9132</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-envelope mr-3 text-primary-400"></i>
+                            <i class="fas fa-envelope mr-3 text-orange-400"></i>
                             <span class="text-gray-300">info@pasalmalla.lk</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-map-marker-alt mr-3 text-primary-400 mt-1"></i>
+                            <i class="fas fa-map-marker-alt mr-3 text-orange-400 mt-1"></i>
                             <span class="text-gray-300">123 Main Street<br>Colombo 07, Sri Lanka</span>
                         </div>
                     </div>
@@ -244,6 +283,53 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cart JavaScript -->
+    <script src="{{ asset('js/cart.js') }}"></script>
+
+    <!-- Custom Styles for Notifications -->
+    <style>
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0,-8px,0);
+            }
+            70% {
+                transform: translate3d(0,-4px,0);
+            }
+            90% {
+                transform: translate3d(0,-2px,0);
+            }
+        }
+    </style>
 
     @stack('scripts')
 </body>

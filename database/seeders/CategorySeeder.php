@@ -43,14 +43,6 @@ class CategorySeeder extends Seeder
                 'sort_order' => 4,
             ],
             [
-                'name' => 'Uniforms & Shoes',
-                'name_sinhala' => 'නිල ඇඳුම් සහ සපත්තු',
-                'slug' => 'uniforms-shoes',
-                'description' => 'School uniforms, shoes and accessories',
-                'icon' => '👕',
-                'sort_order' => 5,
-            ],
-            [
                 'name' => 'Art & Craft',
                 'name_sinhala' => 'කලා සහ ශිල්ප',
                 'slug' => 'art-craft',

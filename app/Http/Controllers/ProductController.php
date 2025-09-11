@@ -20,11 +20,6 @@ class ProductController extends Controller
             }
         }
 
-        // Filter by grade
-        if ($request->has('grade') && $request->grade) {
-            $query->whereJsonContains('grades', $request->grade);
-        }
-
         // Search
         if ($request->has('search') && $request->search) {
             $search = $request->search;

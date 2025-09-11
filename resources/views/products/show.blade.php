@@ -23,7 +23,7 @@
             <!-- Product Images -->
             <div>
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <img src="https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=800"
+                    <img src="{{ $product->getImageUrl() }}"
                          alt="{{ $product->name }}" class="w-full h-96 object-cover">
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <!-- Product Info -->
             <div>
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="text-sm text-primary-600 font-medium mb-2">{{ $product->category->name }}</div>
+                    <div class="text-sm text-orange-600 font-medium mb-2">{{ $product->category->name }}</div>
                     <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ $product->name }}</h1>
                     @if($product->name_sinhala)
                     <p class="text-xl text-gray-600 mb-6">{{ $product->name_sinhala }}</p>
@@ -40,7 +40,7 @@
                     <!-- Price -->
                     <div class="mb-6">
                         <div class="flex items-center space-x-4">
-                            <span class="text-3xl font-bold text-primary-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
+                            <span class="text-3xl font-bold text-orange-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
                             @if($product->hasDiscount())
                             <span class="text-xl text-gray-500 line-through">Rs. {{ number_format($product->price, 2) }}</span>
                             <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
@@ -67,18 +67,6 @@
                         @endif
                     </div>
 
-                    <!-- Grades -->
-                    @if($product->grades)
-                    <div class="mb-6">
-                        <h3 class="text-sm font-medium text-gray-700 mb-2">Suitable for:</h3>
-                        <div class="flex flex-wrap gap-2">
-                            @foreach($product->grades as $grade)
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">{{ $grade }}</span>
-                            @endforeach
-                        </div>
-                    </div>
-                    @endif
-
                     <!-- Description -->
                     @if($product->description)
                     <div class="mb-8">
@@ -93,17 +81,23 @@
                     <!-- Add to Cart -->
                     <div class="flex gap-4">
                         <div class="flex items-center border border-gray-200 rounded-lg">
-                            <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                            <button class="qty-btn-decrease px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <input type="number" value="1" min="1" max="{{ $product->stock_quantity }}"
-                                   class="w-16 text-center border-0 focus:outline-none">
-                            <button class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                            <input type="number" value="1" min="1" max="{{ $product->stock_quantity }}" id="quantity-input"
+                                   class="w-16 text-center border-0 focus:outline-none" readonly>
+                            <button class="qty-btn-increase px-4 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <button class="flex-1 btn-primary text-white py-3 rounded-lg font-semibold"
-                                {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}>
+                        <button class="add-to-cart flex-1 btn-primary text-white py-3 rounded-lg font-semibold {{ $product->stock_quantity <= 0 ? 'opacity-50 cursor-not-allowed' : '' }}"
+                                {{ $product->stock_quantity <= 0 ? 'disabled' : '' }}
+                                data-id="{{ $product->id }}"
+                                data-name="{{ $product->name }}"
+                                data-name-sinhala="{{ $product->name_sinhala }}"
+                                data-price="{{ $product->getCurrentPrice() }}"
+                                data-image="{{ $product->getImageUrl() }}"
+                                data-type="product">
                             <i class="fas fa-shopping-cart mr-2"></i>
                             {{ $product->stock_quantity > 0 ? 'Add to Cart' : 'Out of Stock' }}
                         </button>
@@ -145,10 +139,10 @@
                     <div class="p-6">
                         <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $relatedProduct->name }}</h3>
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-xl font-bold text-primary-600">Rs. {{ number_format($relatedProduct->getCurrentPrice(), 2) }}</span>
+                            <span class="text-xl font-bold text-orange-600">Rs. {{ number_format($relatedProduct->getCurrentPrice(), 2) }}</span>
                         </div>
-                        <a href="{{ route('products.show', $relatedProduct) }}"
-                           class="w-full btn-primary text-white py-2 rounded-lg font-semibold text-center block text-sm">
+                        <a href="{{ route('products.show', $relatedProduct) }}" class="w-full btn-primary text-white py-2 rounded-lg font-semibold text-center block text-sm">
+                            <i class="fas fa-eye mr-1"></i>
                             View Details
                         </a>
                     </div>
@@ -159,4 +153,43 @@
         @endif
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const quantityInput = document.getElementById('quantity-input');
+    const decreaseBtn = document.querySelector('.qty-btn-decrease');
+    const increaseBtn = document.querySelector('.qty-btn-increase');
+    const addToCartBtn = document.querySelector('.add-to-cart');
+
+    if (quantityInput && decreaseBtn && increaseBtn) {
+        decreaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        increaseBtn.addEventListener('click', function() {
+            let currentValue = parseInt(quantityInput.value);
+            let maxValue = parseInt(quantityInput.max);
+            if (currentValue < maxValue) {
+                quantityInput.value = currentValue + 1;
+            }
+        });
+    }
+
+    // Override add to cart to include quantity
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const quantity = parseInt(quantityInput.value);
+
+            // Add multiple items based on quantity
+            for (let i = 0; i < quantity; i++) {
+                window.cart.addToCart(this);
+            }
+        });
+    }
+});
+</script>
 @endsection

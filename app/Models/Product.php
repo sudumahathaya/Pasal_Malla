@@ -19,7 +19,7 @@ class Product extends Model
         'sale_price',
         'sku',
         'stock_quantity',
-        'images',
+        'image',
         'category_id',
         'grades',
         'is_featured',
@@ -27,7 +27,6 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'images' => 'array',
         'grades' => 'array',
         'is_featured' => 'boolean',
         'is_active' => 'boolean',
@@ -67,5 +66,22 @@ class Product extends Model
         }
 
         return round((($this->price - $this->sale_price) / $this->price) * 100);
+    }
+
+    public function getImageUrl()
+    {
+        if ($this->image) {
+            return asset('storage/' . $this->image);
+        }
+
+        // Return default image based on category
+        return match ($this->category->slug) {
+            'books-notebooks' => 'https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'stationery' => 'https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'school-bags' => 'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'lunch-water-bottles' => 'https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=400',
+            'art-craft' => 'https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400',
+            default => 'https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400'
+        };
     }
 }
