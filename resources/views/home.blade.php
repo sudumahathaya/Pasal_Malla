@@ -126,24 +126,37 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             @foreach($featuredProducts as $product)
-            <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+            <div class="card-hover bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 group">
                 <div class="relative">
-                    <img src="https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400"
-                         alt="{{ $product->name }}" class="w-full h-48 object-cover">
+                    @php
+                        $imageUrl = match($product->category->slug) {
+                            'books-notebooks' => 'https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400',
+                            'stationery' => 'https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=400',
+                            'school-bags' => 'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=400',
+                            'lunch-water-bottles' => 'https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=400',
+                            'art-craft' => 'https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400',
+                            default => 'https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=400'
+                        };
+                    @endphp
+                    <img src="{{ $imageUrl }}"
+                         alt="{{ $product->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                     @if($product->hasDiscount())
-                    <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    <div class="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white px-3 py-2 rounded-full text-sm font-bold shadow-lg animate-pulse">
                         -{{ $product->getDiscountPercentage() }}%
                     </div>
                     @endif
                     @if($product->stock_quantity <= 5)
-                    <div class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    <div class="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-3 py-2 rounded-full text-sm font-bold shadow-lg">
                         Low Stock
                     </div>
                     @endif
+                    <div class="absolute bottom-4 left-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                        <i class="fas fa-star mr-1"></i>Featured
+                    </div>
                 </div>
                 <div class="p-6">
-                    <div class="text-sm text-orange-600 font-medium mb-2">{{ $product->category->name }}</div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">{{ $product->name }}</h3>
+                    <div class="text-sm text-orange-600 font-semibold bg-orange-50 px-3 py-1 rounded-full mb-3 inline-block">{{ $product->category->name }}</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600 transition-colors">{{ $product->name }}</h3>
                     @if($product->name_sinhala)
                     <p class="text-gray-600 mb-3">{{ $product->name_sinhala }}</p>
                     @endif
@@ -151,16 +164,15 @@
                         <div>
                             <span class="text-xl font-bold text-orange-600">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
                             @if($product->hasDiscount())
-                            <span class="text-sm text-gray-500 line-through ml-2">Rs. {{ number_format($product->price, 2) }}</span>
+                            <div class="text-sm text-gray-500 line-through">Rs. {{ number_format($product->price, 2) }}</div>
                             @endif
                         </div>
                     </div>
-                    <div class="flex gap-2">
-                        <a href="{{ route('products.show', $product) }}"
-                           class="flex-1 btn-primary text-white py-2 rounded-lg font-semibold text-center text-sm">
+                    <div class="flex gap-3">
+                        <a href="{{ route('products.show', $product) }}" class="flex-1 btn-primary text-white py-3 rounded-xl font-semibold text-center text-sm hover:shadow-lg transition-all">
                             View Details
                         </a>
-                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg transition-colors">
+                        <button class="bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-700 px-4 py-3 rounded-xl transition-all hover:scale-105 hover:shadow-md">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                     </div>
