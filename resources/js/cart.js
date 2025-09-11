@@ -44,7 +44,29 @@ class Cart {
         document.addEventListener('click', (e) => {
             if (e.target.matches('.send-whatsapp') || e.target.closest('.send-whatsapp')) {
                 e.preventDefault();
-                this.sendToWhatsApp();
+                this.showCustomerDetailsModal();
+            }
+        });
+
+        // Customer details modal events
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('#close-modal') || e.target.matches('#cancel-order')) {
+                this.hideCustomerDetailsModal();
+            }
+        });
+
+        // Customer details form submission
+        document.addEventListener('submit', (e) => {
+            if (e.target.matches('#customer-details-form')) {
+                e.preventDefault();
+                this.submitOrderWithDetails();
+            }
+        });
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('#customer-details-modal')) {
+                this.hideCustomerDetailsModal();
             }
         });
     }
@@ -220,7 +242,7 @@ class Cart {
 
                     <button class="send-whatsapp w-full btn-primary text-white py-4 rounded-xl font-bold text-lg mb-4">
                         <i class="fab fa-whatsapp mr-2"></i>
-                        Send Order via WhatsApp
+                        Place Order via WhatsApp
                     </button>
 
                     <div class="bg-green-50 rounded-lg p-4">
@@ -255,6 +277,126 @@ class Cart {
                 </div>
             `;
         }
+    }
+
+    showCustomerDetailsModal() {
+        if (this.items.length === 0) {
+            this.showErrorMessage('Your cart is empty!');
+            return;
+        }
+
+        const modal = document.getElementById('customer-details-modal');
+        if (modal) {
+            modal.classList.remove('hidden');
+            // Focus on first input
+            setTimeout(() => {
+                document.getElementById('customer-name').focus();
+            }, 100);
+        }
+    }
+
+    hideCustomerDetailsModal() {
+        const modal = document.getElementById('customer-details-modal');
+        if (modal) {
+            modal.classList.add('hidden');
+            // Clear form
+            document.getElementById('customer-details-form').reset();
+        }
+    }
+
+    submitOrderWithDetails() {
+        // Get customer details
+        const customerName = document.getElementById('customer-name').value.trim();
+        const customerPhone = document.getElementById('customer-phone').value.trim();
+        const customerEmail = document.getElementById('customer-email').value.trim();
+        const customerAddress = document.getElementById('customer-address').value.trim();
+        const customerCity = document.getElementById('customer-city').value.trim();
+        const customerNotes = document.getElementById('customer-notes').value.trim();
+
+        // Validate required fields
+        if (!customerName || !customerPhone || !customerAddress || !customerCity) {
+            this.showErrorMessage('Please fill in all required fields!');
+            return;
+        }
+
+        // Validate phone number format
+        const phoneRegex = /^[0-9\s\-\+\(\)]+$/;
+        if (!phoneRegex.test(customerPhone)) {
+            this.showErrorMessage('Please enter a valid phone number!');
+            return;
+        }
+
+        this.sendToWhatsAppWithDetails({
+            name: customerName,
+            phone: customerPhone,
+            email: customerEmail,
+            address: customerAddress,
+            city: customerCity,
+            notes: customerNotes
+        });
+    }
+
+    sendToWhatsAppWithDetails(customerDetails) {
+        // Generate order message with customer details
+        let message = "🛒 *New Order from PasalMalla*\n\n";
+        
+        // Customer Information
+        message += "👤 *Customer Details:*\n";
+        message += "━━━━━━━━━━━━━━━━━━━━\n";
+        message += `📝 *Name:* ${customerDetails.name}\n`;
+        message += `📞 *Phone:* ${customerDetails.phone}\n`;
+        if (customerDetails.email) {
+            message += `📧 *Email:* ${customerDetails.email}\n`;
+        }
+        message += `🏠 *Address:* ${customerDetails.address}\n`;
+        message += `🏙️ *City:* ${customerDetails.city}\n`;
+        if (customerDetails.notes) {
+            message += `📋 *Notes:* ${customerDetails.notes}\n`;
+        }
+        message += "\n";
+        
+        // Order Details
+        message += "📋 *Order Details:*\n";
+        message += "━━━━━━━━━━━━━━━━━━━━\n\n";
+
+        let subtotal = 0;
+        this.items.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+            
+            message += `${index + 1}. ${item.type === 'bundle' ? '🎁 ' : ''}*${item.name}*\n`;
+            if (item.nameSinhala) {
+                message += `   ${item.nameSinhala}\n`;
+            }
+            message += `   💰 Rs. ${item.price.toFixed(2)} x ${item.quantity} = Rs. ${itemTotal.toFixed(2)}\n\n`;
+        });
+
+        message += "━━━━━━━━━━━━━━━━━━━━\n";
+        message += `💵 *Total Amount: Rs. ${subtotal.toFixed(2)}*\n`;
+        message += "🚚 *Delivery: FREE*\n\n";
+        
+        message += "📞 *Next Steps:*\n";
+        message += "• We'll call you to confirm this order\n";
+        message += "• Verify delivery address and timing\n";
+        message += "• Pay cash when you receive your items\n\n";
+        
+        message += "⏰ *Delivery Time: 2-5 working days*\n";
+        message += "🌍 *Available island-wide*\n\n";
+        
+        message += "Thank you for choosing PasalMalla! 🙏";
+
+        // WhatsApp number (replace with your actual number)
+        const whatsappNumber = "94771234567"; // Format: country code + number without +
+        
+        // Create WhatsApp URL
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        
+        // Open WhatsApp
+        window.open(whatsappURL, '_blank');
+        
+        // Hide modal and show confirmation
+        this.hideCustomerDetailsModal();
+        this.showOrderSentMessage();
     }
 
     sendToWhatsApp() {
