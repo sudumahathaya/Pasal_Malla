@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -53,11 +54,19 @@ class ProductController extends Controller
             'grades' => 'nullable|array',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
 
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('products', $imageName, 'public');
+            $data['image'] = $imagePath;
+        }
         Product::create($data);
 
         return redirect()->route('admin.products.index')
@@ -90,11 +99,24 @@ class ProductController extends Controller
             'grades' => 'nullable|array',
             'is_featured' => 'boolean',
             'is_active' => 'boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->name);
 
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($product->image && Storage::disk('public')->exists($product->image)) {
+                Storage::disk('public')->delete($product->image);
+            }
+            
+            $image = $request->file('image');
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('products', $imageName, 'public');
+            $data['image'] = $imagePath;
+        }
         $product->update($data);
 
         return redirect()->route('admin.products.index')
@@ -103,6 +125,11 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        // Delete product image if exists
+        if ($product->image && Storage::disk('public')->exists($product->image)) {
+            Storage::disk('public')->delete($product->image);
+        }
+        
         $product->delete();
         return redirect()->route('admin.products.index')
             ->with('success', 'Product deleted successfully!');
