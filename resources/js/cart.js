@@ -396,6 +396,7 @@ class Cart {
         
         // Hide modal and show confirmation
         this.hideCustomerDetailsModal();
+        this.clearCart();
         this.showOrderSentMessage();
     }
 
