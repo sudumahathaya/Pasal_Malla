@@ -28,18 +28,6 @@
                     Sri Lanka's most trusted online school supplies store.<br>
                     <span class="text-yellow-300 font-semibold">Free delivery island-wide</span> with cash on delivery!
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('products.index') }}" class="btn-secondary text-white px-10 py-5 rounded-2xl font-bold text-xl inline-flex items-center justify-center pulse-glow">
-                        <i class="fas fa-shopping-bag mr-3"></i>
-                        Shop Now
-                    </a>
-                    <a href="{{ route('bundles.index') }}" class="btn-glass px-10 py-5 rounded-2xl font-bold text-xl">
-                        <i class="fas fa-gift mr-3"></i>
-                        Special Packs
-                    </a>
-                </div>
-            </div>
-            <div class="hidden lg:block text-center">
                 <div class="relative">
                     <div class="w-96 h-96 mx-auto relative">
                         <div class="absolute inset-0 bg-white bg-opacity-10 rounded-full animate-pulse"></div>

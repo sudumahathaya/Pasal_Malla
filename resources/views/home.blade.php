@@ -6,8 +6,13 @@
 @section('content')
 <!-- Hero Section -->
 <section class="hero-gradient text-white py-24 lg:py-32 relative overflow-hidden min-h-[70vh] lg:min-h-[80vh]">
-    <!-- Banner image covering full hero area -->
-    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+             alt="School supplies background" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-600/90 via-orange-500/80 to-red-600/90"></div>
+    </div>
     <div class="absolute top-10 right-10 float-animation opacity-20">
         <i class="fas fa-graduation-cap text-6xl"></i>
     </div>
