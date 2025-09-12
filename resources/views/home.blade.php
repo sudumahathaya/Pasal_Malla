@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-gradient text-white py-16 lg:py-20 relative overflow-hidden min-h-[50vh] lg:min-h-[60vh]">
+<section class="hero-gradient text-white py-20 lg:py-32 relative overflow-hidden min-h-[80vh] lg:min-h-[90vh]">
     <!-- Background Image -->
     <div class="absolute inset-0">
         <img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1920" 
@@ -19,26 +19,26 @@
     <div class="absolute bottom-6 left-6 float-animation opacity-20" style="animation-delay: 1s;">
         <i class="fas fa-book text-4xl"></i>
     </div>
-    <div class="absolute top-1/3 right-1/4 float-animation opacity-20" style="animation-delay: 2s;">
+    <div class="absolute top-1/4 right-1/3 float-animation opacity-20" style="animation-delay: 2s;">
         <i class="fas fa-pencil-alt text-5xl"></i>
     </div>
-    <div class="container mx-auto px-4 relative z-10 min-h-[50vh] lg:min-h-[60vh] flex items-center">
+    <div class="container mx-auto px-4 relative z-10 min-h-[80vh] lg:min-h-[90vh] flex items-center">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center w-full">
             <div class="text-center lg:text-left">
-                <h1 class="text-4xl lg:text-6xl font-bold mb-4 leading-tight">
+                <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
                     <span class="block">PasalMalla</span>
-                    <span class="block text-2xl lg:text-3xl text-blue-100 font-normal">ලමයෙක් පාසලට ගන්න ඕන හම දේකම!</span>
+                    <span class="block text-3xl lg:text-4xl text-blue-100 font-normal">ලමයෙක් පාසලට ගන්න ඕන හම දේකම!</span>
                 </h1>
-                <p class="text-lg lg:text-xl mb-6 text-blue-100 leading-relaxed">
+                <p class="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed">
                     Sri Lanka's most trusted online school supplies store.<br>
                     <span class="text-yellow-300 font-semibold">Free delivery island-wide</span> with cash on delivery!
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('products.index') }}" class="btn-secondary text-white px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center justify-center pulse-glow">
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="{{ route('products.index') }}" class="btn-secondary text-white px-12 py-5 rounded-2xl font-bold text-xl inline-flex items-center justify-center pulse-glow">
                         <i class="fas fa-shopping-bag mr-3"></i>
                         Shop Now
                     </a>
-                    <a href="{{ route('bundles.index') }}" class="btn-glass px-8 py-4 rounded-2xl font-bold text-lg">
+                    <a href="{{ route('bundles.index') }}" class="btn-glass px-12 py-5 rounded-2xl font-bold text-xl">
                         <i class="fas fa-gift mr-3"></i>
                         Special Packs
                     </a>
@@ -46,14 +46,14 @@
             </div>
             <div class="hidden lg:block text-center">
                 <div class="relative">
-                    <div class="w-80 h-80 mx-auto relative">
+                    <div class="w-96 h-96 mx-auto relative">
                         <div class="absolute inset-0 bg-white bg-opacity-10 rounded-full animate-pulse"></div>
                         <div class="absolute inset-4 bg-white bg-opacity-20 rounded-full float-animation"></div>
                         <div class="absolute inset-8 bg-white bg-opacity-30 rounded-full float-animation" style="animation-delay: 0.5s;"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center">
-                                <i class="fas fa-school text-6xl mb-3 text-white"></i>
-                                <p class="text-xl font-bold">Quality Education<br>Supplies</p>
+                                <i class="fas fa-school text-8xl mb-4 text-white"></i>
+                                <p class="text-2xl font-bold">Quality Education<br>Supplies</p>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
 </section>
 
 <!-- Categories Section -->
-<section class="py-20 bg-gradient-to-br from-white to-gray-50">
+<section class="py-24 bg-gradient-to-br from-white to-gray-50 -mt-4">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="text-5xl font-bold mb-4">
