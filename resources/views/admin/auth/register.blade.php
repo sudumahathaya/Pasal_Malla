@@ -22,10 +22,10 @@
     <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
         <!-- Logo -->
         <div class="text-center mb-8">
-            <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-school text-white text-2xl"></i>
+            <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-school text-white text-3xl"></i>
             </div>
-            <h1 class="text-2xl font-bold text-gray-800">PasalMalla Admin</h1>
+            <h1 class="text-3xl font-bold text-gray-800">PasalMalla Admin</h1>
             <p class="text-gray-600">Create your admin account</p>
         </div>
 <<<<<<< HEAD

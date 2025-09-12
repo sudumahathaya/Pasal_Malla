@@ -338,11 +338,11 @@
         <div class="w-64 bg-white shadow-lg">
             <div class="p-6 border-b border-gray-200">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-school text-white"></i>
+                    <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-school text-white text-lg"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-800">PasalMalla</h1>
+                        <h1 class="text-2xl font-bold text-gray-800">PasalMalla</h1>
                         <p class="text-xs text-gray-500">Admin Panel</p>
                     </div>
                 </div>

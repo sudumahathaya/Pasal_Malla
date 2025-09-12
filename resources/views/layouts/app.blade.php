@@ -43,12 +43,12 @@
                 <div class="flex items-center justify-between">
                     <!-- Logo -->
                     <a href="{{ route('home') }}" class="flex items-center space-x-3">
-                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-school text-white text-xl"></i>
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-school text-white text-2xl"></i>
                         </div>
                         <div>
-                            <h1 class="text-2xl font-bold text-gray-800">PasalMalla</h1>
-                            <p class="text-xs text-gray-500">ලමයෙක් පාසලට ගන්න ඕන හම දේකම!</p>
+                            <h1 class="text-3xl font-bold text-gray-800">PasalMalla</h1>
+                            <p class="text-sm text-gray-500">ලමයෙක් පාසලට ගන්න ඕන හම දේකම!</p>
                         </div>
                     </a>
 
