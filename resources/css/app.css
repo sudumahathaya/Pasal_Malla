@@ -315,7 +315,7 @@ textarea:focus {
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     .hero-gradient {
-        min-height: 60vh !important;
+        min-height: 40vh !important;
         padding: 2rem 0 !important;
     }
 
