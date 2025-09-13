@@ -23,22 +23,14 @@
     <form action="{{ route('admin.products.update', $product) }}" method="POST" class="p-6" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Left Column -->
             <div class="space-y-6">
                 <!-- Basic Information -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Basic Information</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Product Name *</label>
@@ -88,28 +80,16 @@
                 <!-- Product Image -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Product Image</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         @if($product->image)
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Current Image</label>
-<<<<<<< HEAD
                             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                  class="w-32 h-32 object-cover rounded-lg border border-gray-200">
                         </div>
                         @endif
 
-=======
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" 
-                                 class="w-32 h-32 object-cover rounded-lg border border-gray-200">
-                        </div>
-                        @endif
-                        
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 {{ $product->image ? 'Replace Image' : 'Upload Image' }}
@@ -127,11 +107,7 @@
                 <!-- Description -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Description</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Description (English)</label>
@@ -159,11 +135,7 @@
                 <!-- Pricing -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Pricing & Inventory</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Regular Price (Rs.) *</label>
@@ -204,11 +176,7 @@
                         @endphp
                         @foreach($grades as $grade)
                         <label class="flex items-center">
-<<<<<<< HEAD
                             <input type="checkbox" name="grades[]" value="{{ $grade }}"
-=======
-                            <input type="checkbox" name="grades[]" value="{{ $grade }}" 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                                    {{ in_array($grade, $productGrades) ? 'checked' : '' }}
                                    class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             <span class="ml-2 text-sm text-gray-700">{{ $grade }}</span>
@@ -220,11 +188,6 @@
                 <!-- Settings -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Settings</h4>
-<<<<<<< HEAD
-
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <label class="flex items-center">
                             <input type="checkbox" name="is_featured" value="1" {{ old('is_featured', $product->is_featured) ? 'checked' : '' }}
@@ -253,8 +216,6 @@
         </div>
     </form>
 </div>
-<<<<<<< HEAD
+
 @endsection
-=======
-@endsection
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
+
