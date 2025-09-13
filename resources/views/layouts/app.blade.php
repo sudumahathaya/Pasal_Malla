@@ -40,7 +40,7 @@
 
 
                     <!-- Desktop Navigation - Hidden on mobile -->
-                    <nav class="hidden nav:flex flex-1">
+                    <nav class="hidden sm:flex flex-1">
                         <div class="flex items-center justify-center space-x-6 lg:space-x-8">
                             <a href="{{ route('home') }}"
                                 class="text-gray-700 hover:text-orange-600 font-medium transition-colors text-sm lg:text-base">
@@ -83,7 +83,7 @@
 
                         <!-- Mobile Menu Button - Visible only on small screens -->
                         <button id="mobile-menu-button"
-                            class="nav:hidden p-2 text-gray-600 hover:text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg hover:bg-orange-50"
+                            class="sm:hidden p-2 text-gray-600 hover:text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg hover:bg-orange-50"
                             aria-label="Toggle mobile menu" aria-expanded="false" type="button">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </button>
@@ -93,7 +93,7 @@
 
             <!-- Mobile Navigation Menu -->
             <div id="mobile-menu"
-                class="nav:hidden hidden border-t border-gray-200 bg-white shadow-lg transition-all duration-300 ease-in-out">
+                class="sm:hidden hidden border-t border-gray-200 bg-white shadow-lg transition-all duration-300 ease-in-out">
                 <nav class="px-3 sm:px-4 py-4 sm:py-6">
                     <div class="flex flex-col space-y-1">
                         <a href="{{ route('home') }}"
@@ -300,7 +300,7 @@
 
                 // Close mobile menu when window is resized to desktop size
                 window.addEventListener('resize', function() {
-                    if (window.innerWidth >= 820) { // nav breakpoint
+                    if (window.innerWidth >= 640) { // sm breakpoint
                         mobileMenu.classList.add('hidden');
                         const icon = mobileMenuButton.querySelector('i');
                         icon.className = 'fas fa-bars text-lg';

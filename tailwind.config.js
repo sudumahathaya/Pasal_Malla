@@ -11,7 +11,6 @@ export default {
     extend: {
       screens: {
         'xs': '475px',
-        'nav': '821px',
       },
       colors: {
         primary: {
