@@ -40,8 +40,8 @@
 
 
                     <!-- Desktop Navigation - Hidden on mobile -->
-                    <nav class="hidden lg:flex flex-1">
-                        <div class="flex items-center justify-center space-x-6 lg:space-x-8">
+                    <nav class="hidden lg:flex flex-1 justify-center">
+                        <div class="flex items-center space-x-6 lg:space-x-8">
                             <a href="{{ route('home') }}"
                                 class="text-gray-700 hover:text-orange-600 font-medium transition-colors text-sm lg:text-base">
                                 <i class="fas fa-home mr-1 lg:mr-2"></i>Home
