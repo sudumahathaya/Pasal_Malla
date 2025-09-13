@@ -7,41 +7,43 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 relative overflow-hidden min-h-[70vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-[90vh] xl:min-h-[95vh]">
+    <section class="hero-gradient text-white py-20 sm:py-24 md:py-28 lg:py-32 xl:py-36 relative overflow-hidden min-h-[80vh] sm:min-h-[90vh] md:min-h-[95vh] lg:min-h-[100vh] xl:min-h-[105vh]">
         <!-- Background Image -->
         <div class="absolute inset-0">
             <img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1920"
                 alt="School supplies background" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-orange-600/90 via-orange-500/80 to-red-600/90"></div>
         </div>
-        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[70vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-[90vh] xl:min-h-[95vh] flex items-center">
+        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[80vh] sm:min-h-[90vh] md:min-h-[95vh] lg:min-h-[100vh] xl:min-h-[105vh] flex items-center">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 items-center w-full">
                 <div class="text-center lg:text-left">
                     <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 lg:mb-10 leading-tight">
                         <span class="block">PasalMalla</span>
-                        <span class="block text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-blue-100 font-normal mt-3 sm:mt-4">ලමයෙක් පාසලට ගන්න ඕන හම
-                            දේකම!</span>
+                        <span class="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-blue-100 font-normal mt-3 sm:mt-4">
+                            <span id="typewriter-text"></span>
+                            <span class="animate-pulse">|</span>
+                        </span>
                     </h1>
                     <p class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-blue-100 leading-relaxed px-2 sm:px-0">
                         Sri Lanka's most trusted online school supplies store.<br class="hidden sm:block">
                         <span class="text-yellow-300 font-semibold">Free delivery island-wide</span> with cash on delivery!
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-2 sm:px-0">
+                    <div class="flex flex-col sm:flex-row gap-8 sm:gap-10 md:gap-12 lg:gap-14 px-2 sm:px-0">
                         <a href="{{ route('products.index') }}"
-                            class="btn-secondary text-white px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 py-4 sm:py-5 lg:py-6 xl:py-7 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg md:text-xl lg:text-2xl inline-flex items-center justify-center pulse-glow">
-                            <i class="fas fa-shopping-bag mr-2 sm:mr-3"></i>
+                            class="btn-secondary text-white px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 py-4 sm:py-5 md:py-6 lg:py-7 rounded-lg sm:rounded-xl font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl inline-flex items-center justify-center pulse-glow">
+                            <i class="fas fa-shopping-bag mr-2 sm:mr-3 md:mr-4"></i>
                             Shop Now
                         </a>
-                        <a href="{{ route('bundles.index') }}" class="btn-glass px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 py-4 sm:py-5 lg:py-6 xl:py-7 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg md:text-xl lg:text-2xl">
-                            <i class="fas fa-gift mr-2 sm:mr-3"></i>
+                        <a href="{{ route('bundles.index') }}" class="btn-glass px-8 sm:px-10 md:px-12 lg:px-14 xl:px-16 py-4 sm:py-5 md:py-6 lg:py-7 rounded-lg sm:rounded-xl font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl">
+                            <i class="fas fa-gift mr-2 sm:mr-3 md:mr-4"></i>
                             Special Packs
                         </a>
                     </div>
                 </div>
                 <div class="hidden lg:block text-center">
                     <div class="relative">
-                        <div class="w-48 h-48 xl:w-56 xl:h-56 2xl:w-64 2xl:h-64 mx-auto relative -mt-8 xl:-mt-12 2xl:-mt-16">
-                            <div class="absolute inset-4 rounded-full float-animation" style="animation-delay: 0.5s;">
+                        <div class="w-96 h-96 xl:w-[28rem] xl:h-[28rem] 2xl:w-[32rem] 2xl:h-[32rem] mx-auto relative">
+                            <div class="absolute inset-12  rounded-full float-animation" style="animation-delay: 0.5s;">
                                 <img src="image/PasalMalla.png" alt="logo" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -302,4 +304,23 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriterText = document.getElementById('typewriter-text');
+            const text = 'ළමයෙක්ට පාසලට ඕන හැම දේම එකම තැනකින්!';
+            let index = 0;
+
+            function typeWriter() {
+                if (index < text.length) {
+                    typewriterText.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 100); // Adjust speed here (100ms per character)
+                }
+            }
+
+            // Start typewriter effect after a short delay
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
 @endsection
