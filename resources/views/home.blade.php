@@ -7,32 +7,32 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-4 sm:py-6 md:py-8 lg:py-10 relative overflow-hidden min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] lg:min-h-[55vh]">
+    <section class="hero-gradient text-white py-6 sm:py-8 md:py-12 lg:py-16 relative overflow-hidden min-h-[45vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[65vh]">
         <!-- Background Image -->
         <div class="absolute inset-0">
             <img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1920"
                 alt="School supplies background" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-orange-600/90 via-orange-500/80 to-red-600/90"></div>
         </div>
-        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] lg:min-h-[55vh] flex items-center">
+        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[45vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[65vh] flex items-center">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 items-center w-full">
                 <div class="text-center lg:text-left">
-                    <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight">
                         <span class="block">PasalMalla</span>
-                        <span class="block text-xs sm:text-sm md:text-base lg:text-xl text-blue-100 font-normal mt-1">ලමයෙක් පාසලට ගන්න ඕන හම
+                        <span class="block text-sm sm:text-base md:text-lg lg:text-2xl text-blue-100 font-normal mt-2">ලමයෙක් පාසලට ගන්න ඕන හම
                             දේකම!</span>
                     </h1>
-                    <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-3 sm:mb-4 md:mb-6 text-blue-100 leading-relaxed px-2 sm:px-0">
+                    <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-6 md:mb-8 text-blue-100 leading-relaxed px-2 sm:px-0">
                         Sri Lanka's most trusted online school supplies store.<br class="hidden sm:block">
                         <span class="text-yellow-300 font-semibold">Free delivery island-wide</span> with cash on delivery!
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 px-2 sm:px-0">
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 px-2 sm:px-0">
                         <a href="{{ route('products.index') }}"
-                            class="btn-secondary text-white px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl font-bold text-xs sm:text-sm md:text-base inline-flex items-center justify-center pulse-glow">
+                            class="btn-secondary text-white px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base md:text-lg inline-flex items-center justify-center pulse-glow">
                             <i class="fas fa-shopping-bag mr-2 sm:mr-3"></i>
                             Shop Now
                         </a>
-                        <a href="{{ route('bundles.index') }}" class="btn-glass px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 lg:py-4 rounded-lg sm:rounded-xl font-bold text-xs sm:text-sm md:text-base">
+                        <a href="{{ route('bundles.index') }}" class="btn-glass px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base md:text-lg">
                             <i class="fas fa-gift mr-2 sm:mr-3"></i>
                             Special Packs
                         </a>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="hidden lg:block text-center">
                     <div class="relative">
-                        <div class="w-48 h-48 mx-auto relative">
+                        <div class="w-56 h-56 xl:w-64 xl:h-64 mx-auto relative">
                             <div class="absolute inset-8  rounded-full float-animation" style="animation-delay: 0.5s;">
                                 <img src="image/PasalMalla.png" alt="logo" class="w-full h-full object-cover">
                             </div>
