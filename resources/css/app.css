@@ -197,8 +197,28 @@ textarea:focus {
 /* Header glass effect */
 .header-glass {
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Ensure navigation is visible */
+.header-glass nav {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Navigation link improvements */
+.header-glass nav a {
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.header-glass nav a:hover {
+    background-color: rgba(249, 115, 22, 0.1);
+    transform: translateY(-1px);
 }
 
 /* Cart icon wrapper */
