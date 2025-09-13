@@ -16,22 +16,22 @@
         </div>
 
         <!-- Filters -->
-        <div class="bg-white rounded-3xl p-8 shadow-xl mb-12 border border-gray-100">
-            <form method="GET" action="{{ route('bundles.index') }}" class="flex flex-wrap gap-4 items-end">
-                <div class="flex-1 min-w-64">
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl mb-8 sm:mb-12 border border-gray-100">
+            <form method="GET" action="{{ route('bundles.index') }}" class="flex flex-col sm:flex-row gap-4 items-end">
+                <div class="flex-1 min-w-0">
                     <label class="block text-sm font-medium text-gray-700 mb-2">Search Bundles</label>
                     <input type="text" name="search" value="{{ request('search') }}"
                            placeholder="Search bundle packs..."
-                           class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                           class="w-full px-4 py-3 border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Grade Level</label>
-                <button type="submit" class="btn-primary text-white px-8 py-3 rounded-xl font-bold">
+                <button type="submit" class="btn-primary text-white px-6 sm:px-8 py-3 rounded-lg sm:rounded-xl font-bold w-full sm:w-auto">
                     <i class="fas fa-filter mr-2"></i>
                     Filter
                 </button>
                 @if(request()->hasAny(['search']))
-                <a href="{{ route('bundles.index') }}" class="bg-gray-100 text-gray-700 px-8 py-3 rounded-xl font-bold hover:bg-gray-200 transition-colors inline-flex items-center">
+                <a href="{{ route('bundles.index') }}" class="bg-gray-100 text-gray-700 px-6 sm:px-8 py-3 rounded-lg sm:rounded-xl font-bold hover:bg-gray-200 transition-colors inline-flex items-center justify-center w-full sm:w-auto">
                     <i class="fas fa-times mr-2"></i>
                     Clear
                 </a>
@@ -40,40 +40,40 @@
         </div>
 
         @if($bundles->count() > 0)
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             @foreach($bundles as $bundle)
-            <div class="card-hover bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+            <div class="card-hover bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-gray-100">
                 <div class="relative">
                     <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400"
-                         alt="{{ $bundle->name }}" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                         alt="{{ $bundle->name }}" class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-gradient-to-r from-red-500 to-red-600 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg animate-pulse">
                         Save {{ $bundle->getSavingsPercentage() }}%
                     </div>
                     @if($bundle->grade_level)
-                    <div class="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                    <div class="absolute top-2 sm:top-4 left-2 sm:left-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg">
                         {{ $bundle->grade_level }}
                     </div>
                     @endif
-                    <div class="absolute bottom-4 left-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                    <div class="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg">
                         <i class="fas fa-gift mr-1"></i>Bundle
                     </div>
                 </div>
-                <div class="p-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors">{{ $bundle->name }}</h3>
-                    <p class="text-gray-600 mb-3">{{ $bundle->name_sinhala }}</p>
-                    <p class="text-sm text-gray-500 mb-6">{{ Str::limit($bundle->description, 80) }}</p>
-                    <div class="flex items-center justify-between mb-4">
+                <div class="p-4 sm:p-6 lg:p-8">
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3 group-hover:text-orange-600 transition-colors">{{ $bundle->name }}</h3>
+                    <p class="text-sm sm:text-base text-gray-600 mb-2 sm:mb-3">{{ $bundle->name_sinhala }}</p>
+                    <p class="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6">{{ Str::limit($bundle->description, 60) }}</p>
+                    <div class="flex items-center justify-between mb-3 sm:mb-4">
                         <div>
-                            <span class="text-3xl font-bold text-orange-600">Rs. {{ number_format($bundle->price, 2) }}</span>
-                            <div class="text-sm text-gray-500 line-through">Rs. {{ number_format($bundle->original_price, 2) }}</div>
+                            <span class="text-xl sm:text-2xl lg:text-3xl font-bold text-orange-600">Rs. {{ number_format($bundle->price, 2) }}</span>
+                            <div class="text-xs sm:text-sm text-gray-500 line-through">Rs. {{ number_format($bundle->original_price, 2) }}</div>
                         </div>
                     </div>
                     <div class="flex gap-2">
-                        <a href="{{ route('bundles.show', $bundle) }}" class="flex-1 btn-primary text-white py-4 rounded-2xl font-bold text-center">
+                        <a href="{{ route('bundles.show', $bundle) }}" class="flex-1 btn-primary text-white py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-center text-sm sm:text-base">
                             <i class="fas fa-eye mr-2"></i>
                             View Bundle
                         </a>
-                        <button class="add-to-cart bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-700 px-5 py-4 rounded-2xl transition-all hover:scale-110 hover:shadow-lg"
+                        <button class="add-to-cart bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-700 px-4 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all hover:scale-110 hover:shadow-lg"
                                 data-id="{{ $bundle->id }}"
                                 data-name="{{ $bundle->name }}"
                                 data-name-sinhala="{{ $bundle->name_sinhala }}"
@@ -94,10 +94,10 @@
         </div>
         @else
         <div class="text-center py-12">
-            <div class="text-8xl mb-8 float-animation">📦</div>
-            <h3 class="text-3xl font-bold text-gray-800 mb-6">No bundles found</h3>
-            <p class="text-xl text-gray-600 mb-8">Try adjusting your search or filters</p>
-            <a href="{{ route('bundles.index') }}" class="btn-primary text-white px-12 py-5 rounded-2xl font-bold text-xl">
+            <div class="text-6xl sm:text-8xl mb-6 sm:mb-8 float-animation">📦</div>
+            <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">No bundles found</h3>
+            <p class="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">Try adjusting your search or filters</p>
+            <a href="{{ route('bundles.index') }}" class="btn-primary text-white px-6 sm:px-8 lg:px-12 py-4 lg:py-5 rounded-xl sm:rounded-2xl font-bold text-lg lg:text-xl">
                 View All Bundles
             </a>
         </div>
@@ -105,31 +105,31 @@
 
         <!-- Why Choose Bundles Section -->
         <section class="mt-16">
-            <div class="bg-gradient-to-br from-orange-50 via-orange-100 to-red-50 rounded-3xl p-12">
-                <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">
+            <div class="bg-gradient-to-br from-orange-50 via-orange-100 to-red-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-8 sm:mb-12 text-center">
                     <span class="gradient-text">Why Choose Our Bundle Packs?</span>
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                     <div class="text-center group">
                         <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <i class="fas fa-piggy-bank text-white text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Save Money</h3>
-                        <p class="text-gray-600 text-lg">Up to 30% savings compared to buying items separately</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Save Money</h3>
+                        <p class="text-gray-600 text-base sm:text-lg">Up to 30% savings compared to buying items separately</p>
                     </div>
                     <div class="text-center group">
                         <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <i class="fas fa-check-double text-white text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Complete Sets</h3>
-                        <p class="text-gray-600 text-lg">Everything your child needs in one convenient package</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Complete Sets</h3>
+                        <p class="text-gray-600 text-base sm:text-lg">Everything your child needs in one convenient package</p>
                     </div>
                     <div class="text-center group">
                         <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <i class="fas fa-shipping-fast text-white text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Free Delivery</h3>
-                        <p class="text-gray-600 text-lg">Free island-wide delivery with cash on delivery option</p>
+                        <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-3 sm:mb-4">Free Delivery</h3>
+                        <p class="text-gray-600 text-base sm:text-lg">Free island-wide delivery with cash on delivery option</p>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,5 @@
     </div>
 </div>
 
-@endsection
-=======
 @endsection
 

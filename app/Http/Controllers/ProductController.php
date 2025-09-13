@@ -46,7 +46,7 @@ class ProductController extends Controller
                 $query->orderBy('name', 'asc');
         }
 
-        $products = $query->paginate(12);
+        $products = $query->paginate(10);
         $categories = Category::where('is_active', true)->orderBy('sort_order')->get();
 
         return view('products.index', compact('products', 'categories'));

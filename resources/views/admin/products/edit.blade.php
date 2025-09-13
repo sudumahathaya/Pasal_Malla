@@ -82,13 +82,12 @@
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Product Image</h4>
 
                     <div class="space-y-4">
-                        @if($product->image)
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Current Image</label>
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                                 class="w-32 h-32 object-cover rounded-lg border border-gray-200">
+                            <img src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}"
+                                 class="w-32 h-32 object-cover rounded-lg border border-gray-200"
+                                 onerror="this.src='https://via.placeholder.com/128x128?text=No+Image'">
                         </div>
-                        @endif
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">

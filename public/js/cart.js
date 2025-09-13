@@ -155,11 +155,11 @@ class Cart {
 
         if (this.items.length === 0) {
             cartContainer.innerHTML = `
-                <div class="text-center py-12">
-                    <div class="text-8xl mb-6">🛒</div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Your cart is empty</h3>
-                    <p class="text-gray-600 mb-6">Add some items to get started</p>
-                    <a href="/products" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                <div class="text-center py-8 sm:py-12 px-4">
+                    <div class="text-6xl sm:text-8xl mb-4 sm:mb-6">🛒</div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-4">Your cart is empty</h3>
+                    <p class="text-gray-600 mb-4 sm:mb-6">Add some items to get started</p>
+                    <a href="/products" class="btn-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg">
                         <i class="fas fa-shopping-bag mr-2"></i>
                         Continue Shopping
                     </a>
@@ -177,34 +177,34 @@ class Cart {
             subtotal += itemTotal;
 
             cartHTML += `
-                <div class="p-6 ${item.type === 'bundle' ? 'bg-blue-50' : ''} border-b border-gray-100">
-                    <div class="flex items-center space-x-4">
+                <div class="p-4 sm:p-6 ${item.type === 'bundle' ? 'bg-blue-50' : ''} border-b border-gray-100">
+                    <div class="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
                         <img src="${item.image || '/images/default-product.jpg'}"
-                             alt="${item.name}" class="w-20 h-20 object-cover rounded-lg border border-gray-200">
+                             alt="${item.name}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg border border-gray-200 mx-auto sm:mx-0">
                         <div class="flex-1">
                             ${item.type === 'bundle' ? `
-                                <div class="flex items-center mb-1">
+                                <div class="flex items-center justify-center sm:justify-start mb-1">
                                     <i class="fas fa-gift text-blue-600 mr-2"></i>
                                     <span class="text-sm font-medium text-blue-600">BUNDLE PACK</span>
                                 </div>
                             ` : ''}
-                            <h3 class="text-lg font-bold text-gray-800">${item.name}</h3>
-                            ${item.nameSinhala ? `<p class="text-gray-600">${item.nameSinhala}</p>` : ''}
-                            <div class="flex items-center mt-2">
-                                <span class="text-lg font-bold text-orange-600">Rs. ${item.price.toFixed(2)}</span>
+                            <h3 class="text-base sm:text-lg font-bold text-gray-800 text-center sm:text-left">${item.name}</h3>
+                            ${item.nameSinhala ? `<p class="text-sm sm:text-base text-gray-600 text-center sm:text-left">${item.nameSinhala}</p>` : ''}
+                            <div class="flex items-center justify-center sm:justify-start mt-2">
+                                <span class="text-base sm:text-lg font-bold text-orange-600">Rs. ${item.price.toFixed(2)}</span>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-3">
+                        <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3">
                             <div class="flex items-center border border-gray-200 rounded-lg">
-                                <button class="qty-decrease px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors" data-id="${item.id}">
+                                <button class="qty-decrease px-3 py-2 sm:py-3 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors" data-id="${item.id}">
                                     <i class="fas fa-minus"></i>
                                 </button>
-                                <input type="number" value="${item.quantity}" min="1" class="w-16 text-center border-0 focus:outline-none" readonly>
-                                <button class="qty-increase px-3 py-2 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors" data-id="${item.id}">
+                                <input type="number" value="${item.quantity}" min="1" class="w-12 sm:w-16 text-center border-0 focus:outline-none text-sm sm:text-base" readonly>
+                                <button class="qty-increase px-3 py-2 sm:py-3 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors" data-id="${item.id}">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
-                            <span class="text-lg font-bold text-gray-800 w-20 text-right">Rs. ${itemTotal.toFixed(2)}</span>
+                            <span class="text-sm sm:text-lg font-bold text-gray-800 w-16 sm:w-20 text-center sm:text-right">Rs. ${itemTotal.toFixed(2)}</span>
                             <button class="remove-item text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors" data-id="${item.id}">
                                 <i class="fas fa-trash"></i>
                             </button>
@@ -220,33 +220,33 @@ class Cart {
         if (cartSummary) {
             cartSummary.style.display = 'block';
             cartSummary.innerHTML = `
-                <div class="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
-                    <h2 class="text-xl font-bold text-gray-800 mb-6">Order Summary</h2>
+                <div class="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg lg:sticky lg:top-24">
+                    <h2 class="text-lg sm:text-xl font-bold text-gray-800 mb-4 sm:mb-6">Order Summary</h2>
 
                     <div class="space-y-3 mb-6">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Items (${this.items.reduce((sum, item) => sum + item.quantity, 0)}):</span>
-                            <span class="font-medium">Rs. ${subtotal.toFixed(2)}</span>
+                            <span class="text-sm sm:text-base text-gray-600">Items (${this.items.reduce((sum, item) => sum + item.quantity, 0)}):</span>
+                            <span class="text-sm sm:text-base font-medium">Rs. ${subtotal.toFixed(2)}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Delivery:</span>
-                            <span class="font-medium text-green-600">Free</span>
+                            <span class="text-sm sm:text-base text-gray-600">Delivery:</span>
+                            <span class="text-sm sm:text-base font-medium text-green-600">Free</span>
                         </div>
                         <div class="border-t border-gray-200 pt-3">
-                            <div class="flex justify-between text-xl font-bold">
+                            <div class="flex justify-between text-lg sm:text-xl font-bold">
                                 <span>Total:</span>
                                 <span class="text-orange-600">Rs. ${subtotal.toFixed(2)}</span>
                             </div>
                         </div>
                     </div>
 
-                    <button class="send-whatsapp w-full btn-primary text-white py-4 rounded-xl font-bold text-lg mb-4">
+                    <button class="send-whatsapp w-full btn-primary text-white py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg mb-4">
                         <i class="fab fa-whatsapp mr-2"></i>
                         Place Order via WhatsApp
                     </button>
 
-                    <div class="bg-green-50 rounded-lg p-4">
-                        <h3 class="font-bold text-gray-800 mb-3">How it works:</h3>
+                    <div class="bg-green-50 rounded-lg p-3 sm:p-4">
+                        <h3 class="text-sm sm:text-base font-bold text-gray-800 mb-2 sm:mb-3">How it works:</h3>
                         <div class="space-y-2 text-sm text-gray-700">
                             <div class="flex items-center">
                                 <i class="fas fa-check text-green-600 mr-2"></i>
@@ -267,10 +267,10 @@ class Cart {
                         </div>
                     </div>
 
-                    <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <div class="mt-4 p-3 sm:p-4 bg-blue-50 rounded-lg">
                         <div class="flex items-center mb-2">
                             <i class="fab fa-whatsapp text-green-600 mr-2"></i>
-                            <span class="font-medium text-gray-800">WhatsApp: 077 123 4567</span>
+                            <span class="text-sm sm:text-base font-medium text-gray-800">WhatsApp: 077 186 9132</span>
                         </div>
                         <p class="text-sm text-gray-600">Available 8:00 AM - 8:00 PM</p>
                     </div>
@@ -573,13 +573,13 @@ class Cart {
         const modal = document.createElement('div');
         modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
         modal.innerHTML = `
-            <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center">
-                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fab fa-whatsapp text-white text-2xl"></i>
+            <div class="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 max-w-md mx-4 text-center">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fab fa-whatsapp text-white text-xl sm:text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Order Sent Successfully!</h3>
-                <p class="text-gray-600 mb-6">Your order has been sent to our WhatsApp. We'll contact you shortly to confirm the details and arrange delivery.</p>
-                <button class="close-modal btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Order Sent Successfully!</h3>
+                <p class="text-sm sm:text-base text-gray-600 mb-6">Your order has been sent to our WhatsApp. We'll contact you shortly to confirm the details and arrange delivery.</p>
+                <button class="close-modal btn-primary text-white px-6 py-3 rounded-lg font-semibold text-sm sm:text-base">
                     <i class="fas fa-check mr-2"></i>
                     Got it!
                 </button>

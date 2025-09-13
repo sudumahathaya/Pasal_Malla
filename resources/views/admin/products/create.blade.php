@@ -122,7 +122,7 @@
 
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Bundle Price (Rs.) *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Price (Rs.) *</label>
                             <input type="number" name="price" value="{{ old('price') }}" step="0.01" min="0" required
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('price') border-red-500 @enderror">
                             @error('price')
@@ -131,13 +131,13 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Original Price (Rs.) *</label>
-                            <input type="number" name="original_price" value="{{ old('original_price') }}" step="0.01" min="0" required
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('original_price') border-red-500 @enderror">
-                            @error('original_price')
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Sale Price (Rs.)</label>
+                            <input type="number" name="sale_price" value="{{ old('sale_price') }}" step="0.01" min="0"
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('sale_price') border-red-500 @enderror">
+                            @error('sale_price')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
-                            <p class="text-sm text-gray-500 mt-1">Price if items were bought separately</p>
+                            <p class="text-sm text-gray-500 mt-1">Optional discounted price</p>
                         </div>
 
                         <div>
@@ -159,7 +159,7 @@
                         <label class="flex items-center">
                             <input type="checkbox" name="is_featured" value="1" {{ old('is_featured') ? 'checked' : '' }}
                                    class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                            <span class="ml-2 text-sm text-gray-700">Featured Bundle</span>
+                            <span class="ml-2 text-sm text-gray-700">Featured Product</span>
                         </label>
 
                         <label class="flex items-center">
@@ -174,11 +174,11 @@
 
         <!-- Submit Buttons -->
         <div class="flex items-center justify-end space-x-4 mt-8 pt-6 border-t border-gray-200">
-            <a href="{{ route('admin.bundles.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors">
+            <a href="{{ route('admin.products.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors">
                 Cancel
             </a>
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors">
-                <i class="fas fa-save mr-2"></i>Create Bundle
+                <i class="fas fa-save mr-2"></i>Create Product
             </button>
         </div>
     </form>

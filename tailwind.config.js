@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',
+      },
       colors: {
         primary: {
           50: '#eff6ff',
@@ -24,6 +27,11 @@ export default {
       },
       fontFamily: {
         'rounded': ['ui-rounded', 'system-ui', 'sans-serif']
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
       }
     }
   },

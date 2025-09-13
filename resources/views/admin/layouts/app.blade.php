@@ -44,16 +44,16 @@
     </style>
 </head>
 <body class="bg-gray-100">
-    <div class="flex h-screen">
+    <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <div class="w-64 bg-white shadow-lg">
-            <div class="p-6 border-b border-gray-200">
+        <div class="hidden lg:block w-64 bg-white shadow-lg">
+            <div class="p-4 lg:p-6 border-b border-gray-200">
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-school text-white text-lg"></i>
+                        <i class="fas fa-shopping-bag text-white text-lg"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold text-gray-800">PasalMalla</h1>
+                        <h1 class="text-xl lg:text-2xl font-bold text-gray-800">PasalMalla</h1>
                         <p class="text-xs text-gray-500">Admin Panel</p>
                     </div>
                 </div>
@@ -103,13 +103,18 @@
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-hidden lg:ml-0">
             <!-- Top Header -->
             <header class="bg-white shadow-sm border-b border-gray-200">
-                <div class="flex items-center justify-between px-6 py-4">
+                <div class="flex items-center justify-between px-4 lg:px-6 py-4">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-sidebar-btn" class="lg:hidden p-2 text-gray-600 hover:text-gray-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+
                     <div>
-                        <h2 class="text-2xl font-bold text-gray-800">@yield('page-title', 'Dashboard')</h2>
-                        <p class="text-gray-600">@yield('page-description', 'Welcome to PasalMalla Admin Panel')</p>
+                        <h2 class="text-xl lg:text-2xl font-bold text-gray-800">@yield('page-title', 'Dashboard')</h2>
+                        <p class="text-sm lg:text-base text-gray-600 hidden sm:block">@yield('page-description', 'Welcome to PasalMalla Admin Panel')</p>
                     </div>
 
                     <div class="flex items-center space-x-4">
@@ -122,14 +127,14 @@
                         <!-- Admin Profile Dropdown -->
                         <div class="relative">
                             <button class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100">
-                                <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center">
+                                <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-user text-white text-sm"></i>
                                 </div>
-                                <div class="text-left">
+                                <div class="text-left hidden sm:block">
                                     <p class="text-sm font-medium text-gray-800">{{ Auth::guard('admin')->user()->name }}</p>
                                     <p class="text-xs text-gray-500">{{ Auth::guard('admin')->user()->role }}</p>
                                 </div>
-                                <i class="fas fa-chevron-down text-gray-400"></i>
+                                <i class="fas fa-chevron-down text-gray-400 hidden sm:block"></i>
                             </button>
 
                             <!-- Dropdown Menu (hidden by default) -->
@@ -150,15 +155,15 @@
             </header>
 
             <!-- Page Content -->
-            <main class="flex-1 overflow-y-auto p-6">
+            <main class="flex-1 overflow-y-auto p-4 lg:p-6">
                 @if(session('success'))
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 lg:mb-6">
                     {{ session('success') }}
                 </div>
                 @endif
 
                 @if(session('error'))
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 lg:mb-6">
                     {{ session('error') }}
                 </div>
                 @endif
@@ -167,5 +172,86 @@
             </main>
         </div>
     </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div id="mobile-sidebar-overlay" class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
+        <div class="w-64 bg-white h-full shadow-lg">
+            <div class="p-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-shopping-bag text-white text-sm"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-lg font-bold text-gray-800">PasalMalla</h1>
+                            <p class="text-xs text-gray-500">Admin Panel</p>
+                        </div>
+                    </div>
+                    <button id="close-mobile-sidebar" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="mt-4">
+                <a href="{{ route('admin.dashboard') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    <i class="fas fa-tachometer-alt mr-3"></i>
+                    Dashboard
+                </a>
+                <a href="{{ route('admin.products.index') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
+                    <i class="fas fa-box mr-3"></i>
+                    Products
+                </a>
+                <a href="{{ route('admin.bundles.index') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.bundles.*') ? 'active' : '' }}">
+                    <i class="fas fa-gift mr-3"></i>
+                    Bundles
+                </a>
+                <a href="{{ route('admin.categories.index') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+                    <i class="fas fa-tags mr-3"></i>
+                    Categories
+                </a>
+                <a href="{{ route('admin.orders.index') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
+                    <i class="fas fa-shopping-cart mr-3"></i>
+                    Orders
+                </a>
+                <a href="{{ route('admin.customers.index') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.customers.*') ? 'active' : '' }}">
+                    <i class="fas fa-users mr-3"></i>
+                    Customers
+                </a>
+                <a href="{{ route('admin.reports.index') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
+                    <i class="fas fa-chart-bar mr-3"></i>
+                    Reports
+                </a>
+                <a href="{{ route('admin.settings.index') }}" class="sidebar-link flex items-center px-4 py-3 text-gray-700 {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+                    <i class="fas fa-cog mr-3"></i>
+                    Settings
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileBtn = document.getElementById('mobile-sidebar-btn');
+            const overlay = document.getElementById('mobile-sidebar-overlay');
+            const closeBtn = document.getElementById('close-mobile-sidebar');
+
+            if (mobileBtn && overlay) {
+                mobileBtn.addEventListener('click', function() {
+                    overlay.classList.remove('hidden');
+                });
+
+                closeBtn.addEventListener('click', function() {
+                    overlay.classList.add('hidden');
+                });
+
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay) {
+                        overlay.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
