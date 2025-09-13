@@ -17,22 +17,14 @@
 
     <form action="{{ route('admin.products.store') }}" method="POST" class="p-6" enctype="multipart/form-data">
         @csrf
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Left Column -->
             <div class="space-y-6">
                 <!-- Basic Information -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Basic Information</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Product Name *</label>
@@ -82,11 +74,7 @@
                 <!-- Description -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Description</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Description (English)</label>
@@ -109,40 +97,32 @@
                 </div>
             </div>
 
-            <!-- Product Image -->
-            <div>
-                <h4 class="text-md font-semibold text-gray-800 mb-4">Product Image</h4>
-<<<<<<< HEAD
-
-=======
-                
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Upload Image</label>
-                        <input type="file" name="image" accept="image/*"
-                               class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('image') border-red-500 @enderror">
-                        @error('image')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                        <p class="text-sm text-gray-500 mt-1">Supported formats: JPEG, PNG, JPG, GIF, WebP. Max size: 5MB</p>
-                    </div>
-                </div>
-            </div>
-
             <!-- Right Column -->
             <div class="space-y-6">
+                <!-- Product Image -->
+                <div>
+                    <h4 class="text-md font-semibold text-gray-800 mb-4">Product Image</h4>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Upload Image</label>
+                            <input type="file" name="image" accept="image/*"
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('image') border-red-500 @enderror">
+                            @error('image')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                            <p class="text-sm text-gray-500 mt-1">Supported formats: JPEG, PNG, JPG, GIF, WebP. Max size: 5MB</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Pricing -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Pricing & Inventory</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Regular Price (Rs.) *</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Bundle Price (Rs.) *</label>
                             <input type="number" name="price" value="{{ old('price') }}" step="0.01" min="0" required
                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('price') border-red-500 @enderror">
                             @error('price')
@@ -151,12 +131,13 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Sale Price (Rs.)</label>
-                            <input type="number" name="sale_price" value="{{ old('sale_price') }}" step="0.01" min="0"
-                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('sale_price') border-red-500 @enderror">
-                            @error('sale_price')
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Original Price (Rs.) *</label>
+                            <input type="number" name="original_price" value="{{ old('original_price') }}" step="0.01" min="0" required
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 @error('original_price') border-red-500 @enderror">
+                            @error('original_price')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
+                            <p class="text-sm text-gray-500 mt-1">Price if items were bought separately</p>
                         </div>
 
                         <div>
@@ -170,41 +151,15 @@
                     </div>
                 </div>
 
-                <!-- Grades -->
-                <div>
-                    <h4 class="text-md font-semibold text-gray-800 mb-4">Grade Levels</h4>
-                    <div class="grid grid-cols-2 gap-2">
-                        @php
-                        $grades = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9', 'O/L', 'A/L'];
-                        @endphp
-                        @foreach($grades as $grade)
-                        <label class="flex items-center">
-<<<<<<< HEAD
-                            <input type="checkbox" name="grades[]" value="{{ $grade }}"
-=======
-                            <input type="checkbox" name="grades[]" value="{{ $grade }}" 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
-                                   {{ in_array($grade, old('grades', [])) ? 'checked' : '' }}
-                                   class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                            <span class="ml-2 text-sm text-gray-700">{{ $grade }}</span>
-                        </label>
-                        @endforeach
-                    </div>
-                </div>
-
                 <!-- Settings -->
                 <div>
                     <h4 class="text-md font-semibold text-gray-800 mb-4">Settings</h4>
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                     <div class="space-y-4">
                         <label class="flex items-center">
                             <input type="checkbox" name="is_featured" value="1" {{ old('is_featured') ? 'checked' : '' }}
                                    class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                            <span class="ml-2 text-sm text-gray-700">Featured Product</span>
+                            <span class="ml-2 text-sm text-gray-700">Featured Bundle</span>
                         </label>
 
                         <label class="flex items-center">
@@ -219,17 +174,13 @@
 
         <!-- Submit Buttons -->
         <div class="flex items-center justify-end space-x-4 mt-8 pt-6 border-t border-gray-200">
-            <a href="{{ route('admin.products.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors">
+            <a href="{{ route('admin.bundles.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition-colors">
                 Cancel
             </a>
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors">
-                <i class="fas fa-save mr-2"></i>Create Product
+                <i class="fas fa-save mr-2"></i>Create Bundle
             </button>
         </div>
     </form>
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

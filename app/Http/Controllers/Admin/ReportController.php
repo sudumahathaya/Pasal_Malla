@@ -54,7 +54,6 @@ class ReportController extends Controller
             DB::raw('SUM(total) as total_sales'),
             DB::raw('COUNT(*) as total_orders')
         )
-<<<<<<< HEAD
             ->whereYear('created_at', now()->year)
             ->groupBy(DB::raw('MONTH(created_at)'))
             ->orderBy('month')
@@ -63,16 +62,6 @@ class ReportController extends Controller
         return view('admin.reports.index', compact(
             'salesStats',
             'orderStats',
-=======
-        ->whereYear('created_at', now()->year)
-        ->groupBy(DB::raw('MONTH(created_at)'))
-        ->orderBy('month')
-        ->get();
-
-        return view('admin.reports.index', compact(
-            'salesStats',
-            'orderStats', 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             'productStats',
             'topProducts',
             'monthlySales'
@@ -135,7 +124,6 @@ class ReportController extends Controller
             DB::raw('AVG(total) as average_order_value'),
             DB::raw('MAX(created_at) as last_order_date')
         ])
-<<<<<<< HEAD
             ->groupBy('customer_email', 'customer_name', 'customer_phone', 'city')
             ->orderBy('total_spent', 'desc')
             ->paginate(20);
@@ -143,12 +131,3 @@ class ReportController extends Controller
         return view('admin.reports.customers', compact('customerStats'));
     }
 }
-=======
-        ->groupBy('customer_email', 'customer_name', 'customer_phone', 'city')
-        ->orderBy('total_spent', 'desc')
-        ->paginate(20);
-
-        return view('admin.reports.customers', compact('customerStats'));
-    }
-}
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

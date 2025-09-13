@@ -90,11 +90,7 @@ class CategoryController extends Controller
             if ($category->image && Storage::disk('public')->exists($category->image)) {
                 Storage::disk('public')->delete($category->image);
             }
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             $image = $request->file('image');
             $imageName = time() . '_' . Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('categories', $imageName, 'public');
@@ -117,17 +113,9 @@ class CategoryController extends Controller
         if ($category->image && Storage::disk('public')->exists($category->image)) {
             Storage::disk('public')->delete($category->image);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         $category->delete();
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category deleted successfully!');
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

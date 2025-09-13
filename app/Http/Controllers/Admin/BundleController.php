@@ -25,7 +25,12 @@ class BundleController extends Controller
 
         $bundles = $query->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('admin.bundles.index', compact('bundles'));
+        $totalSavings = Bundle::all()->sum(function (Bundle $bundle) {
+            $savings = ($bundle->original_price ?? 0) - ($bundle->price ?? 0);
+            return $savings > 0 ? $savings : 0;
+        });
+
+        return view('admin.bundles.index', compact('bundles', 'totalSavings'));
     }
 
     public function create()
@@ -99,11 +104,7 @@ class BundleController extends Controller
             if ($bundle->image && Storage::disk('public')->exists($bundle->image)) {
                 Storage::disk('public')->delete($bundle->image);
             }
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
             $image = $request->file('image');
             $imageName = time() . '_' . Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('bundles', $imageName, 'public');
@@ -121,17 +122,9 @@ class BundleController extends Controller
         if ($bundle->image && Storage::disk('public')->exists($bundle->image)) {
             Storage::disk('public')->delete($bundle->image);
         }
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         $bundle->delete();
         return redirect()->route('admin.bundles.index')
             ->with('success', 'Bundle deleted successfully!');
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

@@ -18,11 +18,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -34,11 +30,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -50,11 +42,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -72,13 +60,8 @@
 <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-gray-200">
     <form method="GET" action="{{ route('admin.customers.index') }}" class="flex gap-4">
         <div class="flex-1">
-<<<<<<< HEAD
             <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="Search customers..."
-=======
-            <input type="text" name="search" value="{{ request('search') }}" 
-                   placeholder="Search customers..." 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
@@ -163,19 +146,11 @@
             </tbody>
         </table>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     @if($customers->hasPages())
     <div class="px-6 py-4 border-t border-gray-200">
         {{ $customers->appends(request()->query())->links() }}
     </div>
     @endif
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

@@ -18,11 +18,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -34,11 +30,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -50,11 +42,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -66,11 +54,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -88,13 +72,8 @@
 <div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-gray-200">
     <form method="GET" action="{{ route('admin.orders.index') }}" class="flex flex-wrap gap-4">
         <div class="flex-1 min-w-64">
-<<<<<<< HEAD
             <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="Search orders, customers..."
-=======
-            <input type="text" name="search" value="{{ request('search') }}" 
-                   placeholder="Search orders, customers..." 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
         <div>
@@ -165,11 +144,7 @@
                         <div class="text-sm font-bold text-gray-900">Rs. {{ number_format($order->total, 2) }}</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
-=======
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($order->status == 'pending') bg-yellow-100 text-yellow-800
                             @elseif($order->status == 'confirmed') bg-blue-100 text-blue-800
                             @elseif($order->status == 'processing') bg-purple-100 text-purple-800
@@ -181,11 +156,7 @@
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
-=======
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($order->payment_status == 'pending') bg-yellow-100 text-yellow-800
                             @elseif($order->payment_status == 'paid') bg-green-100 text-green-800
                             @elseif($order->payment_status == 'failed') bg-red-100 text-red-800
@@ -216,19 +187,11 @@
             </tbody>
         </table>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     @if($orders->hasPages())
     <div class="px-6 py-4 border-t border-gray-200">
         {{ $orders->appends(request()->query())->links() }}
     </div>
     @endif
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858

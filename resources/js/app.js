@@ -88,13 +88,8 @@ class RealTimeUpdater {
 
         // Listen for delete actions
         document.addEventListener('click', (e) => {
-<<<<<<< HEAD
             if (e.target.matches('button[type="submit"]') &&
                 e.target.closest('form[method="POST"]') &&
-=======
-            if (e.target.matches('button[type="submit"]') && 
-                e.target.closest('form[method="POST"]') && 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                 e.target.closest('form').action.includes('products')) {
                 setTimeout(() => {
                     this.updateDashboardStats();

@@ -18,11 +18,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -34,11 +30,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -50,11 +42,7 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
             <div>
@@ -74,13 +62,8 @@
         <div class="flex-1">
             <form method="GET" action="{{ route('admin.categories.index') }}" class="flex gap-4">
                 <div class="flex-1">
-<<<<<<< HEAD
                     <input type="text" name="search" value="{{ request('search') }}"
                            placeholder="Search categories..."
-=======
-                    <input type="text" name="search" value="{{ request('search') }}" 
-                           placeholder="Search categories..." 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
@@ -141,11 +124,7 @@
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-<<<<<<< HEAD
                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
-=======
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                             @if($category->is_active) bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
                             {{ $category->is_active ? 'Active' : 'Inactive' }}
                         </span>
@@ -158,11 +137,7 @@
                             <a href="{{ route('admin.categories.edit', $category) }}" class="text-green-600 hover:text-green-900">
                                 <i class="fas fa-edit"></i>
                             </a>
-<<<<<<< HEAD
                             <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" class="inline"
-=======
-                            <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" class="inline" 
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
                                   onsubmit="return confirm('Are you sure you want to delete this category?')">
                                 @csrf
                                 @method('DELETE')
@@ -187,19 +162,11 @@
             </tbody>
         </table>
     </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     @if($categories->hasPages())
     <div class="px-6 py-4 border-t border-gray-200">
         {{ $categories->appends(request()->query())->links() }}
     </div>
     @endif
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
