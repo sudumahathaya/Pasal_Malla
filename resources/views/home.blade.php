@@ -7,14 +7,14 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-4 sm:py-6 md:py-8 lg:py-10 relative overflow-hidden min-h-[30vh] sm:min-h-[35vh] md:min-h-[40vh] lg:min-h-[45vh]">
+    <section class="hero-gradient text-white py-4 sm:py-6 md:py-8 lg:py-10 relative overflow-hidden min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] lg:min-h-[55vh]">
         <!-- Background Image -->
         <div class="absolute inset-0">
             <img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1920"
                 alt="School supplies background" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-orange-600/90 via-orange-500/80 to-red-600/90"></div>
         </div>
-        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[30vh] sm:min-h-[35vh] md:min-h-[40vh] lg:min-h-[45vh] flex items-center">
+        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] lg:min-h-[55vh] flex items-center">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 items-center w-full">
                 <div class="text-center lg:text-left">
                     <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4 leading-tight">
