@@ -7,14 +7,14 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 relative overflow-hidden min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] xl:min-h-[90vh]">
+    <section class="hero-gradient text-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 relative overflow-hidden min-h-[70vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-[90vh] xl:min-h-[95vh]">
         <!-- Background Image -->
         <div class="absolute inset-0">
             <img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=1920"
                 alt="School supplies background" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-orange-600/90 via-orange-500/80 to-red-600/90"></div>
         </div>
-        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[60vh] sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] xl:min-h-[90vh] flex items-center">
+        <div class="container mx-auto px-3 sm:px-4 relative z-10 min-h-[70vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-[90vh] xl:min-h-[95vh] flex items-center">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 items-center w-full">
                 <div class="text-center lg:text-left">
                     <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 lg:mb-10 leading-tight">
@@ -40,11 +40,10 @@
                 </div>
                 <div class="hidden lg:block text-center">
                     <div class="relative">
-                        <div class="w-64 h-64 xl:w-80 xl:h-80 2xl:w-96 2xl:h-96 mx-auto relative">
-                            <div class="absolute inset-8  rounded-full float-animation" style="animation-delay: 0.5s;">
+                        <div class="w-48 h-48 xl:w-56 xl:h-56 2xl:w-64 2xl:h-64 mx-auto relative -mt-8 xl:-mt-12 2xl:-mt-16">
+                            <div class="absolute inset-4 rounded-full float-animation" style="animation-delay: 0.5s;">
                                 <img src="image/PasalMalla.png" alt="logo" class="w-full h-full object-cover">
                             </div>
-
                         </div>
                     </div>
                 </div>
