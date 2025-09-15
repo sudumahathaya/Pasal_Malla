@@ -121,7 +121,7 @@
                                 @endif
                                 <div class="flex-1">
                                     <h4 class="font-semibold text-gray-800">{{ $product->name }}</h4>
-                                    <p class="text-sm text-gray-600">SKU: {{ $product->sku }}</p>
+                                    <p class="text-sm text-gray-600">Product ID: {{ $product->product_id }}</p>
                                     <div class="flex items-center justify-between mt-2">
                                         <span class="text-orange-600 font-bold">Rs. {{ number_format($product->getCurrentPrice(), 2) }}</span>
                                         <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full

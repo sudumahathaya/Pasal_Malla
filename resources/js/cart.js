@@ -18,13 +18,24 @@ class Cart {
                 const button = e.target.matches('.add-to-cart') ? e.target : e.target.closest('.add-to-cart');
 
                 // Check if we're on a product detail page with quantity input
-                const quantityInput = document.getElementById('quantity-input') || document.getElementById('bundle-quantity-input');
+                let quantityInput = null;
+
+                // Check for bundle quantity input first, then product quantity input
+                if (button.dataset.type === 'bundle') {
+                    quantityInput = document.getElementById('bundle-quantity-input');
+                } else {
+                    quantityInput = document.getElementById('quantity-input');
+                }
+
                 if (quantityInput) {
                     const quantity = parseInt(quantityInput.value) || 1;
                     this.addToCartWithQuantity(button, quantity);
                 } else {
                     this.addToCart(button);
                 }
+
+                // Prevent any further event propagation
+                return false;
             }
         });
 

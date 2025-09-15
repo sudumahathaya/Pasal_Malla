@@ -87,7 +87,7 @@
                                 data-name="{{ $bundle->name }}"
                                 data-name-sinhala="{{ $bundle->name_sinhala }}"
                                 data-price="{{ $bundle->price }}"
-                                data-image="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                data-image="{{ $bundle->getImageUrl() }}"
                                 data-type="bundle">
                             <i class="fas fa-shopping-cart mr-2"></i>
                             Add Bundle to Cart
@@ -101,6 +101,9 @@
         @if($bundle->products->count() > 0)
         <section class="mb-16">
             <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">What's Included in This Bundle</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @foreach($bundle->products as $product)
                     <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                         <div class="flex items-start space-x-4">
                             <img src="https://images.pexels.com/photos/159751/book-address-book-learning-learn-159751.jpeg?auto=compress&cs=tinysrgb&w=100"
@@ -196,17 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Override add to cart to include quantity
-    if (addToCartBtn) {
-        addToCartBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const quantity = parseInt(quantityInput.value);
-
-
-            e.stopPropagation();
-            // The cart.js will handle the quantity automatically
-        });
-    }
+    // The cart.js will automatically handle the quantity from the input field
+    // No need to override the click event as cart.js already checks for quantity inputs
 });
 </script>
 @endsection

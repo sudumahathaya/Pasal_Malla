@@ -18,7 +18,7 @@ class Product extends Model
         'description_sinhala',
         'price',
         'sale_price',
-        'sku',
+        'product_id',
         'stock_quantity',
         'image',
         'category_id',

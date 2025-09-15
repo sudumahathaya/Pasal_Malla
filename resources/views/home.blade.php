@@ -150,6 +150,16 @@
                                 <i class="fas fa-eye mr-1 sm:mr-2"></i>
                                 View Bundle
                             </a>
+                            <button class="add-to-cart w-full mt-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-2.5 sm:py-3 md:py-4 rounded-xl sm:rounded-2xl font-bold transition-all hover:scale-105 hover:shadow-lg text-xs sm:text-sm md:text-base lg:text-lg"
+                                    data-id="{{ $bundle->id }}"
+                                    data-name="{{ $bundle->name }}"
+                                    data-name-sinhala="{{ $bundle->name_sinhala }}"
+                                    data-price="{{ $bundle->price }}"
+                                    data-image="{{ $bundle->getImageUrl() }}"
+                                    data-type="bundle">
+                                <i class="fas fa-shopping-cart mr-1 sm:mr-2"></i>
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 @endforeach

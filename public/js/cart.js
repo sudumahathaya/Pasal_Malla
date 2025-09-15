@@ -14,8 +14,28 @@ class Cart {
         document.addEventListener('click', (e) => {
             if (e.target.matches('.add-to-cart') || e.target.closest('.add-to-cart')) {
                 e.preventDefault();
+                e.stopPropagation();
                 const button = e.target.matches('.add-to-cart') ? e.target : e.target.closest('.add-to-cart');
-                this.addToCart(button);
+
+                // Check if we're on a product detail page with quantity input
+                let quantityInput = null;
+
+                // Check for bundle quantity input first, then product quantity input
+                if (button.dataset.type === 'bundle') {
+                    quantityInput = document.getElementById('bundle-quantity-input');
+                } else {
+                    quantityInput = document.getElementById('quantity-input');
+                }
+
+                if (quantityInput) {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    this.addToCartWithQuantity(button, quantity);
+                } else {
+                    this.addToCart(button);
+                }
+
+                // Prevent any further event propagation
+                return false;
             }
         });
 
@@ -642,12 +662,11 @@ class Cart {
     }
 
     getCartTotal() {
-            e.stopPropagation();
-
-            // Prevent the default add to cart behavior
-            return false;
+        return this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     }
 }
+
+// Initialize cart when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.cart = new Cart();
 });

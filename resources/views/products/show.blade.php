@@ -107,8 +107,8 @@
                     <div class="mt-8 pt-8 border-t border-gray-200">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 text-sm">
                             <div>
-                                <span class="text-gray-500">SKU:</span>
-                                <span class="font-medium">{{ $product->sku }}</span>
+                                <span class="text-gray-500">Product ID:</span>
+                                <span class="font-medium">{{ $product->product_id }}</span>
                             </div>
                             <div>
                                 <span class="text-gray-500">Category:</span>

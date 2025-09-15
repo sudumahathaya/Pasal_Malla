@@ -328,12 +328,28 @@
             <div class="flex flex-wrap gap-2">
                 @if(request('search'))
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-            </div>
-        </div>
-        @endif
-    </div>
-</div>
-@endsection
+                    Search: "{{ request('search') }}"
+                    <a href="{{ request()->fullUrlWithQuery(['search' => null]) }}" class="ml-1 text-orange-600 hover:text-orange-800">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </span>
+                @endif
+                @if(request('category'))
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    Category: {{ $categories->where('slug', request('category'))->first()->name ?? request('category') }}
+                    <a href="{{ request()->fullUrlWithQuery(['category' => null]) }}" class="ml-1 text-blue-600 hover:text-blue-800">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </span>
+                @endif
+                @if(request('min_price') || request('max_price'))
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Price: Rs. {{ request('min_price', '0') }} - Rs. {{ request('max_price', '∞') }}
+                    <a href="{{ request()->fullUrlWithQuery(['min_price' => null, 'max_price' => null]) }}" class="ml-1 text-green-600 hover:text-green-800">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </span>
+                @endif
             </div>
         </div>
         @endif

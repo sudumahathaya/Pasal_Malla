@@ -68,19 +68,20 @@
                             <div class="text-xs sm:text-sm text-gray-500 line-through">Rs. {{ number_format($bundle->original_price, 2) }}</div>
                         </div>
                     </div>
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 sm:gap-3">
                         <a href="{{ route('bundles.show', $bundle) }}" class="flex-1 btn-primary text-white py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-center text-sm sm:text-base">
                             <i class="fas fa-eye mr-2"></i>
                             View Bundle
                         </a>
-                        <button class="add-to-cart bg-gradient-to-r from-orange-100 to-orange-200 hover:from-orange-200 hover:to-orange-300 text-orange-700 px-4 sm:px-5 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all hover:scale-110 hover:shadow-lg"
+                        <button class="add-to-cart bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl transition-all hover:scale-105 hover:shadow-lg font-semibold"
                                 data-id="{{ $bundle->id }}"
                                 data-name="{{ $bundle->name }}"
                                 data-name-sinhala="{{ $bundle->name_sinhala }}"
                                 data-price="{{ $bundle->price }}"
-                                data-image="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=400"
+                                data-image="{{ $bundle->getImageUrl() }}"
                                 data-type="bundle">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-shopping-cart mr-1 sm:mr-2"></i>
+                            <span class="hidden sm:inline">Add to Cart</span>
                         </button>
                     </div>
                 </div>

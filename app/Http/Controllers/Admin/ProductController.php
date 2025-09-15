@@ -19,7 +19,7 @@ class ProductController extends Controller
             $search = $request->search;
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                    ->orWhere('sku', 'like', "%{$search}%");
+                    ->orWhere('product_id', 'like', "%{$search}%");
             });
         }
 
@@ -48,7 +48,7 @@ class ProductController extends Controller
             'description_sinhala' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0',
-            'sku' => 'required|string|unique:products,sku',
+            'product_id' => 'required|string|unique:products,product_id',
             'stock_quantity' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
             'is_featured' => 'boolean',
@@ -93,7 +93,7 @@ class ProductController extends Controller
             'description_sinhala' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0',
-            'sku' => 'required|string|unique:products,sku,' . $product->id,
+            'product_id' => 'required|string|unique:products,product_id,' . $product->id,
             'stock_quantity' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
             'is_featured' => 'boolean',

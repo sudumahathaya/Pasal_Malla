@@ -7,6 +7,11 @@
     <title>@yield('title', 'PasalMalla - ලමයෙක් පාසලට ගන්න ඕන හම දේකම!')</title>
     <meta name="description" content="@yield('description', 'Sri Lanka\'s best online school supplies store. Books, stationery, bags, uniforms and more!')">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.svg') }}">
+
     <!-- Tailwind CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
