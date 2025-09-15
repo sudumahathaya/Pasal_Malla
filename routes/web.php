@@ -32,13 +32,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/register', [AdminAuthController::class, 'register']);
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     
-    // Temporary public dashboard route for testing
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-    
     // Protected Admin Routes
     Route::middleware(['admin.auth'])->group(function () {
-        // Temporarily commented out for testing
-        // Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
         Route::get('/dashboard-stats', [AdminDashboardController::class, 'getStats'])->name('dashboard.stats');
         Route::resource('products', AdminProductController::class);
         Route::resource('bundles', App\Http\Controllers\Admin\BundleController::class);

@@ -42,6 +42,11 @@ class Bundle extends Model
             ->withTimestamps();
     }
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

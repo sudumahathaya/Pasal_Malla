@@ -1,172 +1,124 @@
 @extends('admin.layouts.app')
 
 @section('title', 'Categories')
-@section('page-title', 'Category Management')
-@section('page-description', 'Organize your products with categories')
+@section('page-title', 'Categories')
+@section('page-description', 'Manage product categories')
 
 @section('content')
-<!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Total Categories</p>
-                <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Category::count() }}</p>
-            </div>
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-tags text-purple-600 text-xl"></i>
-            </div>
-        </div>
+<!-- Header Actions -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-900">Categories</h2>
+        <p class="text-gray-600">Manage your product categories</p>
     </div>
-    
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Active Categories</p>
-                <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Category::where('is_active', true)->count() }}</p>
-            </div>
-            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-check-circle text-green-600 text-xl"></i>
-            </div>
-        </div>
-    </div>
-    
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Total Products</p>
-                <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Product::count() }}</p>
-            </div>
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-box text-blue-600 text-xl"></i>
-            </div>
-        </div>
-    </div>
-    
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Empty Categories</p>
-                <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Category::doesntHave('products')->count() }}</p>
-            </div>
-            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-exclamation-triangle text-orange-600 text-xl"></i>
-            </div>
-        </div>
+    <div class="mt-4 sm:mt-0">
+        <a href="{{ route('admin.categories.create') }}" 
+           class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
+            <i class="fas fa-plus mr-2"></i>
+            Add Category
+        </a>
     </div>
 </div>
 
-<!-- Filters and Actions -->
-<div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-gray-200">
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<!-- Search -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+    <form method="GET" class="flex gap-4">
         <div class="flex-1">
-            <form method="GET" action="{{ route('admin.categories.index') }}" class="flex gap-4">
-                <div class="flex-1">
-                    <input type="text" name="search" value="{{ request('search') }}"
-                           placeholder="Search categories..."
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
-                    <i class="fas fa-search mr-2"></i>Filter
-                </button>
-                @if(request()->has('search'))
-                <a href="{{ route('admin.categories.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg transition-colors">
-                    <i class="fas fa-times mr-2"></i>Clear
-                </a>
-                @endif
-            </form>
+            <input type="text" name="search" value="{{ request('search') }}" 
+                   placeholder="Search categories..."
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <div>
-            <a href="{{ route('admin.categories.create') }}" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors inline-flex items-center">
-                <i class="fas fa-plus mr-2"></i>Add Category
+        <button type="submit" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+            <i class="fas fa-search mr-2"></i>
+            Search
+        </button>
+    </form>
+</div>
+
+<!-- Categories Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @forelse($categories as $category)
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+        <!-- Category Image -->
+        <div class="h-48 bg-gray-200 flex items-center justify-center">
+            @if($category->image)
+                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" 
+                     class="w-full h-full object-cover">
+            @else
+                <div class="text-center">
+                    <i class="fas fa-tags text-6xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-500">{{ $category->name }}</p>
+                </div>
+            @endif
+        </div>
+        
+        <!-- Category Info -->
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-lg font-semibold text-gray-900">{{ $category->name }}</h3>
+                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+                    {{ $category->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                    {{ $category->is_active ? 'Active' : 'Inactive' }}
+                </span>
+            </div>
+            
+            @if($category->name_sinhala)
+                <p class="text-sm text-gray-600 mb-2">{{ $category->name_sinhala }}</p>
+            @endif
+            
+            @if($category->description)
+                <p class="text-sm text-gray-500 mb-4 line-clamp-2">{{ $category->description }}</p>
+            @endif
+            
+            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                <span>{{ $category->products_count }} products</span>
+                <span>Sort: {{ $category->sort_order }}</span>
+            </div>
+            
+            <!-- Actions -->
+            <div class="flex space-x-2">
+                <a href="{{ route('admin.categories.show', $category) }}" 
+                   class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-center text-sm font-medium transition-colors">
+                    <i class="fas fa-eye mr-1"></i>
+                    View
+                </a>
+                <a href="{{ route('admin.categories.edit', $category) }}" 
+                   class="flex-1 bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-2 rounded-lg text-center text-sm font-medium transition-colors">
+                    <i class="fas fa-edit mr-1"></i>
+                    Edit
+                </a>
+                <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" 
+                      class="flex-1" onsubmit="return confirm('Are you sure you want to delete this category?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="w-full bg-red-100 hover:bg-red-200 text-red-700 px-3 py-2 rounded-lg text-center text-sm font-medium transition-colors">
+                        <i class="fas fa-trash mr-1"></i>
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    @empty
+    <div class="col-span-full">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+            <i class="fas fa-tags text-6xl text-gray-400 mb-4"></i>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No categories found</h3>
+            <p class="text-gray-500 mb-6">Get started by creating your first category.</p>
+            <a href="{{ route('admin.categories.create') }}" 
+               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
+                <i class="fas fa-plus mr-2"></i>
+                Add Category
             </a>
         </div>
     </div>
+    @endforelse
 </div>
 
-<!-- Categories Table -->
-<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-    <div class="overflow-x-auto">
-        <table class="w-full">
-            <thead class="bg-gray-50 border-b border-gray-200">
-                <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Products</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sort Order</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                @forelse($categories as $category)
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 h-12 w-12">
-                                <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xl">
-                                    {{ $category->icon ?? '📚' }}
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">{{ $category->name }}</div>
-                                <div class="text-sm text-gray-500">{{ $category->name_sinhala }}</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                            <span class="font-medium">{{ $category->products_count }}</span> products
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
-                            {{ $category->sort_order }}
-                        </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
-                            @if($category->is_active) bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
-                            {{ $category->is_active ? 'Active' : 'Inactive' }}
-                        </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <div class="flex space-x-2">
-                            <a href="{{ route('admin.categories.show', $category) }}" class="text-blue-600 hover:text-blue-900">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <a href="{{ route('admin.categories.edit', $category) }}" class="text-green-600 hover:text-green-900">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" class="inline"
-                                  onsubmit="return confirm('Are you sure you want to delete this category?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5" class="px-6 py-12 text-center">
-                        <div class="text-gray-500">
-                            <i class="fas fa-tags text-4xl mb-4"></i>
-                            <p class="text-lg">No categories found</p>
-                            <p class="text-sm">Create your first category to organize products</p>
-                        </div>
-                    </td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-    
-    @if($categories->hasPages())
-    <div class="px-6 py-4 border-t border-gray-200">
-        {{ $categories->appends(request()->query())->links() }}
-    </div>
-    @endif
+<!-- Pagination -->
+@if($categories->hasPages())
+<div class="mt-6">
+    {{ $categories->links() }}
 </div>
+@endif
 @endsection

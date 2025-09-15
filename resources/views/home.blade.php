@@ -67,7 +67,7 @@
                 <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">
                     <span class="gradient-text">Shop by Category</span>
                 </h2>
-
+                <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-medium">අයිතම වර්ග කරා යන්න</p>
                 <div
                     class="w-12 sm:w-16 md:w-20 lg:w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mt-2 sm:mt-3 md:mt-4 rounded-full">
                 </div>
@@ -261,6 +261,8 @@
                 <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">
                     <span class="gradient-text">Why Choose PasalMalla?</span>
                 </h2>
+                <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-medium px-2 sm:px-0">අම්මලා හදුවේ
+                    අම්මලා සමරන්න ❤️</p>
                 <div
                     class="w-12 sm:w-16 md:w-20 lg:w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mt-2 sm:mt-3 md:mt-4 rounded-full">
                 </div>

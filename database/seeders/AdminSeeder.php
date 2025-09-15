@@ -8,21 +8,24 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        Admin::firstOrCreate(['email' => 'admin@pasalmalla.lk'], [
-            'name' => 'Super Admin',
+        Admin::create([
+            'name' => 'Admin User',
             'email' => 'admin@pasalmalla.lk',
-            'password' => Hash::make('admin123'),
-            'role' => 'super_admin',
+            'password' => Hash::make('password123'),
+            'role' => 'admin',
             'is_active' => true,
         ]);
 
-        Admin::firstOrCreate(['email' => 'manager@pasalmalla.lk'], [
-            'name' => 'Admin User',
-            'email' => 'manager@pasalmalla.lk',
-            'password' => Hash::make('manager123'),
-            'role' => 'admin',
+        Admin::create([
+            'name' => 'Super Admin',
+            'email' => 'superadmin@pasalmalla.lk',
+            'password' => Hash::make('admin123'),
+            'role' => 'super_admin',
             'is_active' => true,
         ]);
     }

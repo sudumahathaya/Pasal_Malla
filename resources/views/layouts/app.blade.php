@@ -4,13 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'PasalMalla')</title>
+    <title>@yield('title', 'PasalMalla - ලමයෙක් පාසලට ගන්න ඕන හම දේකම!')</title>
     <meta name="description" content="@yield('description', 'Sri Lanka\'s best online school supplies store. Books, stationery, bags, uniforms and more!')">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-    <link rel="apple-touch-icon" href="{{ asset('favicon.svg') }}">
 
     <!-- Tailwind CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -32,10 +27,11 @@
                     <a href="{{ route('home') }}" class="flex items-center space-x-2 sm:space-x-3">
                         <div
                             class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg sm:rounded-xl flex items-center justify-center">
-                            <i class="fas fa-school text-white text-lg sm:text-xl md:text-2xl"></i>
+                            <i class="fa-solid fa-bag-shopping text-white text-lg sm:text-xl md:text-2xl"></i>
                         </div>
                         <div class="hidden sm:block">
-                            <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">PasalMalla</h1>
+                            <h1 class="text-xl sm:text-2xl md:text-4xl font-bold text-gray-800">Pasal Malla</h1>
+
                         </div>
                         <div class="block sm:hidden">
                             <h1 class="text-lg font-bold text-gray-800">PasalMalla</h1>
@@ -213,15 +209,21 @@
                 <div>
                     <h4 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Categories</h4>
                     <ul class="space-y-2">
-                        @if(isset($categories) && $categories->count() > 0)
-                            @foreach($categories->take(5) as $category)
-                                <li><a href="{{ route('products.index', ['category' => $category->slug]) }}"
-                                        class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">{{ $category->name }}</a></li>
-                            @endforeach
-                        @else
-                            <li><a href="{{ route('products.index') }}"
-                                    class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">All Products</a></li>
-                        @endif
+                        <li><a href="{{ route('products.index', ['category' => 'books-notebooks']) }}"
+                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Books &
+                                Notebooks</a></li>
+                        <li><a href="{{ route('products.index', ['category' => 'stationery']) }}"
+                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Stationery</a>
+                        </li>
+                        <li><a href="{{ route('products.index', ['category' => 'school-bags']) }}"
+                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">School
+                                Bags</a></li>
+                        <li><a href="{{ route('products.index', ['category' => 'lunch-water-bottles']) }}"
+                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Lunch &
+                                Water Bottles</a></li>
+                        <li><a href="{{ route('products.index', ['category' => 'art-craft']) }}"
+                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Art &
+                                Craft</a></li>
                     </ul>
                 </div>
 

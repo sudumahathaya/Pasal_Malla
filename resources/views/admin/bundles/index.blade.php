@@ -1,192 +1,131 @@
 @extends('admin.layouts.app')
 
 @section('title', 'Bundles')
-@section('page-title', 'Bundle Management')
-@section('page-description', 'Manage your product bundles and special offers')
+@section('page-title', 'Bundles')
+@section('page-description', 'Manage product bundles and special offers')
 
 @section('content')
-<!-- Stats Cards -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Total Bundles</p>
-                <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Bundle::count() }}</p>
-            </div>
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-gift text-purple-600 text-xl"></i>
-            </div>
-        </div>
+<!-- Header Actions -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-900">Bundles</h2>
+        <p class="text-gray-600">Manage your product bundles and special offers</p>
     </div>
- 
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Active Bundles</p>
-                <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Bundle::where('is_active', true)->count() }}</p>
-            </div>
-            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-check-circle text-green-600 text-xl"></i>
-            </div>
-        </div>
-    </div>
- 
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Featured Bundles</p>
-                <p class="text-3xl font-bold text-gray-900">{{ \App\Models\Bundle::where('is_featured', true)->count() }}</p>
-            </div>
-            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-star text-yellow-600 text-xl"></i>
-            </div>
-        </div>
-    </div>
- 
-    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="text-sm font-medium text-gray-600">Total Savings</p>
-                <p class="text-3xl font-bold text-gray-900">Rs. {{ number_format($totalSavings, 2) }}</p>
-            </div>
-            <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <i class="fas fa-piggy-bank text-red-600 text-xl"></i>
-            </div>
-        </div>
+    <div class="mt-4 sm:mt-0">
+        <a href="{{ route('admin.bundles.create') }}" 
+           class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
+            <i class="fas fa-plus mr-2"></i>
+            Add Bundle
+        </a>
     </div>
 </div>
 
-<!-- Filters and Actions -->
-<div class="bg-white rounded-xl shadow-sm p-6 mb-6 border border-gray-200">
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<!-- Search -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+    <form method="GET" class="flex gap-4">
         <div class="flex-1">
-            <form method="GET" action="{{ route('admin.bundles.index') }}" class="flex gap-4">
-                <div class="flex-1">
-                    <input type="text" name="search" value="{{ request('search') }}"
-                           placeholder="Search bundles..."
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition-colors">
-                    <i class="fas fa-search mr-2"></i>Filter
-                </button>
-                @if(request()->has('search'))
-                <a href="{{ route('admin.bundles.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg transition-colors">
-                    <i class="fas fa-times mr-2"></i>Clear
-                </a>
-                @endif
-            </form>
+            <input type="text" name="search" value="{{ request('search') }}" 
+                   placeholder="Search bundles..."
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
-        <div>
-            <a href="{{ route('admin.bundles.create') }}" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors inline-flex items-center">
-                <i class="fas fa-plus mr-2"></i>Add Bundle
+        <button type="submit" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+            <i class="fas fa-search mr-2"></i>
+            Search
+        </button>
+    </form>
+</div>
+
+<!-- Bundles Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    @forelse($bundles as $bundle)
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+        <!-- Bundle Image -->
+        <div class="h-48 bg-gray-200 flex items-center justify-center">
+            @if($bundle->image)
+                <img src="{{ asset('storage/' . $bundle->image) }}" alt="{{ $bundle->name }}" 
+                     class="w-full h-full object-cover">
+            @else
+                <div class="text-center">
+                    <i class="fas fa-gift text-6xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-500">{{ $bundle->name }}</p>
+                </div>
+            @endif
+        </div>
+        
+        <!-- Bundle Info -->
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-lg font-semibold text-gray-900">{{ $bundle->name }}</h3>
+                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
+                    {{ $bundle->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                    {{ $bundle->is_active ? 'Active' : 'Inactive' }}
+                </span>
+            </div>
+            
+            @if($bundle->name_sinhala)
+                <p class="text-sm text-gray-600 mb-2">{{ $bundle->name_sinhala }}</p>
+            @endif
+            
+            @if($bundle->description)
+                <p class="text-sm text-gray-500 mb-4 line-clamp-2">{{ $bundle->description }}</p>
+            @endif
+            
+            <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                <span class="font-semibold text-lg text-green-600">Rs. {{ number_format($bundle->price, 2) }}</span>
+                <span>{{ $bundle->products->count() }} products</span>
+            </div>
+            
+            @if($bundle->sale_price)
+            <div class="flex items-center justify-between text-sm mb-4">
+                <span class="text-gray-500">Regular Price:</span>
+                <span class="text-gray-400 line-through">Rs. {{ number_format($bundle->sale_price, 2) }}</span>
+            </div>
+            @endif
+            
+            <!-- Actions -->
+            <div class="flex space-x-2">
+                <a href="{{ route('admin.bundles.show', $bundle) }}" 
+                   class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-center text-sm font-medium transition-colors">
+                    <i class="fas fa-eye mr-1"></i>
+                    View
+                </a>
+                <a href="{{ route('admin.bundles.edit', $bundle) }}" 
+                   class="flex-1 bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-2 rounded-lg text-center text-sm font-medium transition-colors">
+                    <i class="fas fa-edit mr-1"></i>
+                    Edit
+                </a>
+                <form method="POST" action="{{ route('admin.bundles.destroy', $bundle) }}" 
+                      class="flex-1" onsubmit="return confirm('Are you sure you want to delete this bundle?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="w-full bg-red-100 hover:bg-red-200 text-red-700 px-3 py-2 rounded-lg text-center text-sm font-medium transition-colors">
+                        <i class="fas fa-trash mr-1"></i>
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    @empty
+    <div class="col-span-full">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+            <i class="fas fa-gift text-6xl text-gray-400 mb-4"></i>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No bundles found</h3>
+            <p class="text-gray-500 mb-6">Create special product bundles to offer great deals to your customers.</p>
+            <a href="{{ route('admin.bundles.create') }}" 
+               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
+                <i class="fas fa-plus mr-2"></i>
+                Add Bundle
             </a>
         </div>
     </div>
+    @endforelse
 </div>
 
-<!-- Bundles Table -->
-<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-    <div class="overflow-x-auto">
-        <table class="w-full">
-            <thead class="bg-gray-50 border-b border-gray-200">
-                <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bundle</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade Level</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pricing</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Savings</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                @forelse($bundles as $bundle)
-                <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 h-12 w-12">
-                                <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=100"
-                                     alt="{{ $bundle->name }}" class="h-12 w-12 rounded-lg object-cover border border-gray-200">
-                            </div>
-                            <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">{{ $bundle->name }}</div>
-                                <div class="text-sm text-gray-500">{{ $bundle->name_sinhala }}</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        @if($bundle->grade_level)
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                            {{ $bundle->grade_level }}
-                        </span>
-                        @else
-                        <span class="text-gray-400">-</span>
-                        @endif
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">
-                            <div class="font-bold text-green-600">Rs. {{ number_format($bundle->price, 2) }}</div>
-                            <div class="text-xs text-gray-500 line-through">Rs. {{ number_format($bundle->original_price, 2) }}</div>
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-red-600">
-                            {{ $bundle->getSavingsPercentage() }}% OFF
-                        </div>
-                        <div class="text-xs text-gray-500">
-                            Save Rs. {{ number_format($bundle->getSavingsAmount(), 2) }}
-                        </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full
-                            @if($bundle->is_active) bg-green-100 text-green-800 @else bg-red-100 text-red-800 @endif">
-                            {{ $bundle->is_active ? 'Active' : 'Inactive' }}
-                        </span>
-                        @if($bundle->is_featured)
-                        <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800 ml-1">
-                            Featured
-                        </span>
-                        @endif
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <div class="flex space-x-2">
-                            <a href="{{ route('admin.bundles.show', $bundle) }}" class="text-blue-600 hover:text-blue-900">
-                                <i class="fas fa-eye"></i>
-                            </a>
-                            <a href="{{ route('admin.bundles.edit', $bundle) }}" class="text-green-600 hover:text-green-900">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <form method="POST" action="{{ route('admin.bundles.destroy', $bundle) }}" class="inline"
-                                  onsubmit="return confirm('Are you sure you want to delete this bundle?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="6" class="px-6 py-12 text-center">
-                        <div class="text-gray-500">
-                            <i class="fas fa-gift text-4xl mb-4"></i>
-                            <p class="text-lg">No bundles found</p>
-                            <p class="text-sm">Create your first bundle to get started</p>
-                        </div>
-                    </td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-
-    @if($bundles->hasPages())
-    <div class="px-6 py-4 border-t border-gray-200">
-        {{ $bundles->appends(request()->query())->links() }}
-    </div>
-    @endif
+<!-- Pagination -->
+@if($bundles->hasPages())
+<div class="mt-6">
+    {{ $bundles->links() }}
 </div>
-
+@endif
 @endsection
-

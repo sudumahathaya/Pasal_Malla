@@ -38,57 +38,14 @@
                         <!-- Categories -->
                         <div class="mb-8">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-                            <select name="category" onchange="this.form.submit()" class="w-full px-4 py-3 border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
+                            <select name="category" class="w-full px-4 py-3 border border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                                 <option value="">All Categories</option>
                                 @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ request('category') == $category->id || request('category') == $category->slug ? 'selected' : '' }}>
+                                <option value="{{ $category->slug }}" {{ request('category') == $category->slug ? 'selected' : '' }}>
                                     {{ $category->name }}
                                 </option>
                                 @endforeach
                             </select>
-                        </div>
-
-                        <!-- Price Range -->
-                        <div class="mb-8">
-                            <label class="block text-sm font-medium text-gray-700 mb-4">Price Range</label>
-                            <div class="space-y-3">
-                                <div class="flex items-center">
-                                    <input type="radio" name="price_range" value="" id="price_all"
-                                           {{ !request('price_range') ? 'checked' : '' }}
-                                           class="mr-3 text-orange-500 focus:ring-orange-500">
-                                    <label for="price_all" class="text-sm text-gray-700">All Prices</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="radio" name="price_range" value="0-100" id="price_0_100"
-                                           {{ request('price_range') == '0-100' ? 'checked' : '' }}
-                                           class="mr-3 text-orange-500 focus:ring-orange-500">
-                                    <label for="price_0_100" class="text-sm text-gray-700">Under Rs. 100</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="radio" name="price_range" value="100-500" id="price_100_500"
-                                           {{ request('price_range') == '100-500' ? 'checked' : '' }}
-                                           class="mr-3 text-orange-500 focus:ring-orange-500">
-                                    <label for="price_100_500" class="text-sm text-gray-700">Rs. 100 - 500</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="radio" name="price_range" value="500-1000" id="price_500_1000"
-                                           {{ request('price_range') == '500-1000' ? 'checked' : '' }}
-                                           class="mr-3 text-orange-500 focus:ring-orange-500">
-                                    <label for="price_500_1000" class="text-sm text-gray-700">Rs. 500 - 1,000</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="radio" name="price_range" value="1000-2000" id="price_1000_2000"
-                                           {{ request('price_range') == '1000-2000' ? 'checked' : '' }}
-                                           class="mr-3 text-orange-500 focus:ring-orange-500">
-                                    <label for="price_1000_2000" class="text-sm text-gray-700">Rs. 1,000 - 2,000</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="radio" name="price_range" value="2000+" id="price_2000_plus"
-                                           {{ request('price_range') == '2000+' ? 'checked' : '' }}
-                                           class="mr-3 text-orange-500 focus:ring-orange-500">
-                                    <label for="price_2000_plus" class="text-sm text-gray-700">Above Rs. 2,000</label>
-                                </div>
-                            </div>
                         </div>
 
 
@@ -100,8 +57,6 @@
                                 <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Price: Low to High</option>
                                 <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Price: High to Low</option>
                                 <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest First</option>
-                                <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Most Popular</option>
-                                <option value="discount" {{ request('sort') == 'discount' ? 'selected' : '' }}>Highest Discount</option>
                             </select>
                         </div>
 
@@ -110,75 +65,23 @@
                             Apply Filters
                         </button>
 
-                        @if(request()->hasAny(['search', 'category', 'sort', 'price_range']))
+                        @if(request()->hasAny(['search', 'category', 'grade', 'sort']))
                         <a href="{{ route('products.index') }}" class="w-full bg-gray-100 text-gray-700 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-center block hover:bg-gray-200 transition-colors flex items-center justify-center">
                             <i class="fas fa-times mr-2"></i>
                             Clear Filters
                         </a>
                         @endif
                     </form>
-
-                    <!-- Active Filters Display -->
-                    @if(request()->hasAny(['search', 'category', 'price_range']))
-                    <div class="mt-6 pt-6 border-t border-gray-200">
-                        <h4 class="text-sm font-medium text-gray-700 mb-3">Active Filters:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            @if(request('search'))
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                                Search: "{{ request('search') }}"
-                                <a href="{{ request()->fullUrlWithQuery(['search' => null]) }}" class="ml-2 text-orange-600 hover:text-orange-800">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </span>
-                            @endif
-                            @if(request('category'))
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                Category: {{ $currentCategory ? $currentCategory->name : 'Unknown' }}
-                                <a href="{{ request()->fullUrlWithQuery(['category' => null]) }}" class="ml-2 text-blue-600 hover:text-blue-800">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </span>
-                            @endif
-                            @if(request('price_range'))
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                Price: {{ request('price_range') == '2000+' ? 'Above Rs. 2,000' : 'Rs. ' . str_replace('-', ' - ', request('price_range')) }}
-                                <a href="{{ request()->fullUrlWithQuery(['price_range' => null]) }}" class="ml-2 text-green-600 hover:text-green-800">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                    @endif
                 </div>
             </div>
 
             <!-- Products Grid -->
             <div class="lg:col-span-3 order-1 lg:order-2">
                 <!-- Results Info -->
-                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-2">
                     <p class="text-gray-600">
-                        @if($currentCategory)
-                        Showing products in <span class="font-semibold text-orange-600">{{ $currentCategory->name }}</span> -
-                        @endif
                         Showing {{ $products->firstItem() ?? 0 }}-{{ $products->lastItem() ?? 0 }} of {{ $products->total() }} products
-                        @if(request()->hasAny(['search', 'category', 'price_range']))
-                        <span class="text-orange-600 font-medium">(filtered)</span>
-                        @endif
                     </p>
-
-                    <!-- Quick Sort (Mobile Friendly) -->
-                    <div class="sm:hidden">
-                        <select onchange="updateSort(this.value)"
-                                class="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm">
-                            <option value="name" {{ request('sort') == 'name' ? 'selected' : '' }}>Name A-Z</option>
-                            <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Price: Low to High</option>
-                            <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Price: High to Low</option>
-                            <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Newest First</option>
-                            <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Most Popular</option>
-                            <option value="discount" {{ request('sort') == 'discount' ? 'selected' : '' }}>Highest Discount</option>
-                        </select>
-                    </div>
                 </div>
 
                 @if($products->count() > 0)
@@ -265,54 +168,4 @@
         </div>
     </div>
 </div>
-
-<script>
-function updateSort(sortValue) {
-    const url = new URL(window.location);
-    url.searchParams.set('sort', sortValue);
-    window.location.href = url.toString();
-}
-
-function updateUrlParameter(url, param, paramVal) {
-    const urlObj = new URL(url);
-    if (paramVal) {
-        urlObj.searchParams.set(param, paramVal);
-    } else {
-        urlObj.searchParams.delete(param);
-    }
-    return urlObj.toString();
-}
-
-// Auto-submit form when filters change
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form[action*="products"]');
-    const inputs = form.querySelectorAll('input[type="radio"], input[type="checkbox"], select[name="category"]');
-
-    inputs.forEach(input => {
-        input.addEventListener('change', function() {
-            // Add a small delay to allow multiple quick changes
-            clearTimeout(window.filterTimeout);
-            window.filterTimeout = setTimeout(() => {
-                // For category dropdown, submit immediately
-                if (this.name === 'category') {
-                    form.submit();
-                } else {
-                    form.submit();
-                }
-            }, 300);
-        });
-    });
-
-    // Handle search input with debounce
-    const searchInput = form.querySelector('input[name="search"]');
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            clearTimeout(window.searchTimeout);
-            window.searchTimeout = setTimeout(() => {
-                form.submit();
-            }, 1000); // 1 second delay for search
-        });
-    }
-});
-</script>
 @endsection

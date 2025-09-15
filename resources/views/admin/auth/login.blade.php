@@ -27,6 +27,21 @@
             <p class="text-gray-600">Sign in to your admin account</p>
         </div>
 
+        <!-- Flash Messages -->
+        @if(session('error'))
+            <div class="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg flex items-center">
+                <i class="fas fa-exclamation-circle mr-2"></i>
+                {{ session('error') }}
+            </div>
+        @endif
+
+        @if(session('success'))
+            <div class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg flex items-center">
+                <i class="fas fa-check-circle mr-2"></i>
+                {{ session('success') }}
+            </div>
+        @endif
+
         <!-- Login Form -->
         <form method="POST" action="{{ route('admin.login') }}">
             @csrf
@@ -86,6 +101,15 @@
                 <i class="fas fa-arrow-left mr-1"></i>
                 Back to Website
             </a>
+        </div>
+
+        <!-- Demo Credentials -->
+        <div class="mt-8 p-4 bg-gray-50 rounded-lg">
+            <h3 class="text-sm font-medium text-gray-700 mb-2">Demo Credentials:</h3>
+            <div class="text-xs text-gray-600 space-y-1">
+                <p><strong>Admin:</strong> admin@pasalmalla.lk / password123</p>
+                <p><strong>Super Admin:</strong> superadmin@pasalmalla.lk / admin123</p>
+            </div>
         </div>
     </div>
 </body>
