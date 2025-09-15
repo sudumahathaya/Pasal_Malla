@@ -14,12 +14,12 @@
                 <p class="text-gray-600">Product details and information</p>
             </div>
             <div class="flex space-x-3">
-                <a href="{{ route('admin.products.edit', $product) }}" 
+                <a href="{{ route('admin.products.edit', $product) }}"
                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
                     <i class="fas fa-edit mr-2"></i>
                     Edit Product
                 </a>
-                <a href="{{ route('admin.products.index') }}" 
+                <a href="{{ route('admin.products.index') }}"
                    class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
                     <i class="fas fa-arrow-left mr-2"></i>
                     Back to Products
@@ -35,7 +35,7 @@
                 <!-- Product Image -->
                 <div class="mb-6">
                     @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" 
+                        <img src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}"
                              class="w-full h-64 object-cover rounded-lg">
                     @else
                         <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
@@ -49,17 +49,17 @@
                     <div>
                         <h3 class="text-lg font-semibold text-gray-900">Basic Information</h3>
                     </div>
-                    
+
                     <div>
                         <label class="text-sm font-medium text-gray-500">SKU</label>
                         <p class="text-sm text-gray-900">{{ $product->sku }}</p>
                     </div>
-                    
+
                     <div>
                         <label class="text-sm font-medium text-gray-500">Category</label>
                         <p class="text-sm text-gray-900">{{ $product->category->name }}</p>
                     </div>
-                    
+
                     <div>
                         <label class="text-sm font-medium text-gray-500">Status</label>
                         <div class="flex items-center space-x-2">
@@ -74,12 +74,12 @@
                             @endif
                         </div>
                     </div>
-                    
+
                     <div>
                         <label class="text-sm font-medium text-gray-500">Created</label>
                         <p class="text-sm text-gray-900">{{ $product->created_at->format('M d, Y H:i') }}</p>
                     </div>
-                    
+
                     <div>
                         <label class="text-sm font-medium text-gray-500">Last Updated</label>
                         <p class="text-sm text-gray-900">{{ $product->updated_at->format('M d, Y H:i') }}</p>
@@ -142,14 +142,14 @@
                             <p class="text-sm text-gray-900 mt-1">{{ $product->description }}</p>
                         </div>
                         @endif
-                        
+
                         @if($product->description_sinhala)
                         <div>
                             <label class="text-sm font-medium text-gray-500">Sinhala Description</label>
                             <p class="text-sm text-gray-900 mt-1">{{ $product->description_sinhala }}</p>
                         </div>
                         @endif
-                        
+
                         @if($product->name_sinhala)
                         <div>
                             <label class="text-sm font-medium text-gray-500">Sinhala Name</label>

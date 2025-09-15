@@ -64,7 +64,7 @@
                             </a>
                             <a href="{{ route('contact') }}"
                                 class="text-gray-700 hover:text-orange-600 font-medium transition-colors text-sm lg:text-base">
-                                <i class="fas fa-phone mr-1 lg:mr-2"></i>Contact
+                                <i class="fas fa-mug-hot mr-1 lg:mr-2"></i>Contact
                             </a>
                         </div>
                     </nav>
@@ -123,7 +123,7 @@
                         </a>
                         <a href="{{ route('contact') }}"
                             class="flex items-center text-gray-700 hover:text-orange-600 hover:bg-orange-50 font-medium transition-all duration-200 py-3 px-3 rounded-lg">
-                            <i class="fas fa-phone mr-3 w-5 text-center"></i>
+                            <i class="fas fa-mug-hot mr-3 w-5 text-center"></i>
                             <span class="text-sm sm:text-base">Contact</span>
                         </a>
                     </div>

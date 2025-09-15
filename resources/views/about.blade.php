@@ -193,8 +193,8 @@
                         <i class="fas fa-shopping-bag mr-3"></i>
                         Start Shopping
                     </a>
-                    <a href="{{ route('contact') }}" class="btn-glass px-8 py-4 rounded-xl font-semibold text-lg border-white">
-                        <i class="fas fa-phone mr-3"></i>
+                    <a href="{{ route('contact') }}" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                        <i class="fas fa-mug-hot mr-3"></i>
                         Contact Us
                     </a>
                 </div>

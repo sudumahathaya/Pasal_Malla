@@ -3,6 +3,12 @@
 @section('title', 'Contact Us - PasalMalla')
 @section('description', 'Get in touch with PasalMalla. We\'re here to help with your school supply needs. Call, email, or visit us.')
 
+@push('styles')
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.svg') }}">
+@endpush
+
 @section('content')
 <div class="bg-gray-50 py-8">
     <div class="container mx-auto px-4">

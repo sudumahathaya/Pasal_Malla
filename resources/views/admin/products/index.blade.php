@@ -12,7 +12,7 @@
         <p class="text-gray-600">Manage your product inventory</p>
     </div>
     <div class="mt-4 sm:mt-0">
-        <a href="{{ route('admin.products.create') }}" 
+        <a href="{{ route('admin.products.create') }}"
            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
             <i class="fas fa-plus mr-2"></i>
             Add Product
@@ -25,7 +25,7 @@
     <form method="GET" class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
-            <input type="text" name="search" value="{{ request('search') }}" 
+            <input type="text" name="search" value="{{ request('search') }}"
                    placeholder="Search by name or SKU..."
                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
@@ -69,13 +69,7 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-12 w-12">
-                                @if($product->image)
-                                    <img class="h-12 w-12 rounded-lg object-cover" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                                @else
-                                    <div class="h-12 w-12 rounded-lg bg-gray-200 flex items-center justify-center">
-                                        <i class="fas fa-box text-gray-400"></i>
-                                    </div>
-                                @endif
+                                <img class="h-12 w-12 rounded-lg object-cover" src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}">
                             </div>
                             <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-900">{{ $product->name }}</div>
@@ -111,15 +105,15 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div class="flex space-x-2">
-                            <a href="{{ route('admin.products.show', $product) }}" 
+                            <a href="{{ route('admin.products.show', $product) }}"
                                class="text-blue-600 hover:text-blue-900" title="View">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a href="{{ route('admin.products.edit', $product) }}" 
+                            <a href="{{ route('admin.products.edit', $product) }}"
                                class="text-indigo-600 hover:text-indigo-900" title="Edit">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form method="POST" action="{{ route('admin.products.destroy', $product) }}" 
+                            <form method="POST" action="{{ route('admin.products.destroy', $product) }}"
                                   class="inline" onsubmit="return confirm('Are you sure you want to delete this product?')">
                                 @csrf
                                 @method('DELETE')
@@ -144,7 +138,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <!-- Pagination -->
     @if($products->hasPages())
     <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">

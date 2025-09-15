@@ -115,7 +115,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Current Image</label>
                         <div class="mt-1">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="h-32 w-32 object-cover rounded-lg">
+                            <img src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}" class="h-32 w-32 object-cover rounded-lg">
                         </div>
                     </div>
                     @endif

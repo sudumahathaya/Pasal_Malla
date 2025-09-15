@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -76,7 +77,21 @@ class Product extends Model
     public function getImageUrl()
     {
         if ($this->image) {
-            return asset('storage/' . $this->image);
+            // If already an absolute URL or data URI, return as-is
+            if (preg_match('/^(?:https?:)?\/\//i', $this->image) || str_starts_with($this->image, 'data:')) {
+                return $this->image;
+            }
+
+            // Prefer Storage URL when file exists on public disk
+            if (Storage::disk('public')->exists($this->image)) {
+                return Storage::url($this->image);
+            }
+
+            // If file exists under public/ return asset path
+            $publicRelativePath = ltrim($this->image, '/');
+            if (file_exists(public_path($publicRelativePath))) {
+                return asset($publicRelativePath);
+            }
         }
 
         // Return default image based on category

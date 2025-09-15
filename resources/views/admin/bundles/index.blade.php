@@ -41,15 +41,8 @@
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
         <!-- Bundle Image -->
         <div class="h-48 bg-gray-200 flex items-center justify-center">
-            @if($bundle->image)
-                <img src="{{ asset('storage/' . $bundle->image) }}" alt="{{ $bundle->name }}" 
-                     class="w-full h-full object-cover">
-            @else
-                <div class="text-center">
-                    <i class="fas fa-gift text-6xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-500">{{ $bundle->name }}</p>
-                </div>
-            @endif
+            <img src="{{ $bundle->getImageUrl() }}" alt="{{ $bundle->name }}" 
+                 class="w-full h-full object-cover">
         </div>
         
         <!-- Bundle Info -->

@@ -61,13 +61,13 @@
 
     <!-- Categories Section -->
     <section
-        class="mt-16 sm:mt-20 md:mt-24 lg:mt-28 py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-br from-white to-gray-50">
+        class="mt-4 sm:mt-6 md:mt-8 lg:mt-10 py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-br from-white to-gray-50">
         <div class="container mx-auto px-3 sm:px-4">
             <div class="text-center mb-6 sm:mb-8 md:mb-12">
                 <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">
                     <span class="gradient-text">Shop by Category</span>
                 </h2>
-                <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-medium">අයිතම වර්ග කරා යන්න</p>
+
                 <div
                     class="w-12 sm:w-16 md:w-20 lg:w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mt-2 sm:mt-3 md:mt-4 rounded-full">
                 </div>
@@ -261,8 +261,7 @@
                 <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 md:mb-4">
                     <span class="gradient-text">Why Choose PasalMalla?</span>
                 </h2>
-                <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-medium px-2 sm:px-0">අම්මලා හදුවේ
-                    අම්මලා සමරන්න ❤️</p>
+
                 <div
                     class="w-12 sm:w-16 md:w-20 lg:w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mt-2 sm:mt-3 md:mt-4 rounded-full">
                 </div>
@@ -335,7 +334,7 @@
                 </a>
                 <a href="{{ route('contact') }}"
                     class="btn-glass px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base md:text-lg lg:text-xl border-white">
-                    <i class="fas fa-phone mr-2 sm:mr-3"></i>
+                    <i class="fas fa-mug-hot mr-2 sm:mr-3"></i>
                     Contact Us
                 </a>
             </div>

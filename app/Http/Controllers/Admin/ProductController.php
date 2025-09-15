@@ -117,6 +117,9 @@ class ProductController extends Controller
             $imageName = time() . '_' . Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('products', $imageName, 'public');
             $data['image'] = $imagePath;
+        } else {
+            // Ensure we don't overwrite existing image with null/empty value
+            unset($data['image']);
         }
         $product->update($data);
 

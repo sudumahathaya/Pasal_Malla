@@ -41,15 +41,8 @@
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
         <!-- Category Image -->
         <div class="h-48 bg-gray-200 flex items-center justify-center">
-            @if($category->image)
-                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" 
-                     class="w-full h-full object-cover">
-            @else
-                <div class="text-center">
-                    <i class="fas fa-tags text-6xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-500">{{ $category->name }}</p>
-                </div>
-            @endif
+            <img src="{{ $category->getImageUrl() }}" alt="{{ $category->name }}" 
+                 class="w-full h-full object-cover">
         </div>
         
         <!-- Category Info -->

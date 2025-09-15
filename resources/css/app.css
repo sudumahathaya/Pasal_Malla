@@ -1,5 +1,15 @@
 @import 'tailwindcss';
 
+/* Force visibility utility to bypass aggressive cosmetic filters */
+.keep-visible,
+.keep-visible *,
+.keep-visible:before,
+.keep-visible:after {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /* Mobile-first responsive design */
 @media (max-width: 640px) {
     .container {

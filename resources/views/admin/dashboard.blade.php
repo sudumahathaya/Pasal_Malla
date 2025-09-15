@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Total Orders -->
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Total Products -->
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Low Stock Alert -->
     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
         <div class="flex items-center justify-between">
@@ -76,7 +76,7 @@
             <canvas id="salesChart" width="400" height="200"></canvas>
         </div>
     </div>
-    
+
     <!-- Order Status Distribution -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-200">
         <div class="p-6 border-b border-gray-200">
@@ -145,7 +145,7 @@
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                     <div class="flex items-center space-x-3">
                         @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-10 h-10 rounded-lg object-cover">
+                            <img src="{{ $product->getImageUrl() }}" alt="{{ $product->name }}" class="w-10 h-10 rounded-lg object-cover">
                         @else
                             <div class="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-box text-gray-400"></i>
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Monthly Sales Chart
     const salesCtx = document.getElementById('salesChart').getContext('2d');
     const salesData = @json($monthly_sales);
-    
+
     new Chart(salesCtx, {
         type: 'line',
         data: {
@@ -271,11 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
+
     // Order Status Chart
     const statusCtx = document.getElementById('orderStatusChart').getContext('2d');
     const statusData = @json($order_status);
-    
+
     new Chart(statusCtx, {
         type: 'doughnut',
         data: {
@@ -310,11 +310,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
-
-
-
-
-
-
-
-

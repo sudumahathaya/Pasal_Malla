@@ -26,6 +26,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 500,
                 'category_id' => $categories['books-notebooks']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/exercise-book.jpg', // This will fallback to getImageUrl() method
                 'is_featured' => true,
             ],
             [
@@ -38,6 +39,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 300,
                 'category_id' => $categories['books-notebooks']->id,
                 'grades' => ['Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/graph-book.jpg',
                 'is_featured' => true,
             ],
             [
@@ -50,6 +52,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 250,
                 'category_id' => $categories['books-notebooks']->id,
                 'grades' => ['Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/composition-book.jpg',
             ],
             [
                 'name' => 'Drawing Book - A4',
@@ -62,6 +65,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 180,
                 'category_id' => $categories['books-notebooks']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/drawing-book.jpg',
                 'is_featured' => true,
             ],
 
@@ -77,6 +81,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 1000,
                 'category_id' => $categories['stationery']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/blue-pen.jpg',
                 'is_featured' => true,
             ],
             [
@@ -90,6 +95,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 200,
                 'category_id' => $categories['stationery']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/pencil-set.jpg',
                 'is_featured' => true,
             ],
             [
@@ -102,6 +108,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 800,
                 'category_id' => $categories['stationery']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/eraser.jpg',
             ],
             [
                 'name' => '30cm Ruler',
@@ -113,6 +120,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 400,
                 'category_id' => $categories['stationery']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/ruler.jpg',
             ],
             [
                 'name' => 'Red Ballpoint Pen',
@@ -124,6 +132,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 600,
                 'category_id' => $categories['stationery']->id,
                 'grades' => ['Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/red-pen.jpg',
             ],
             [
                 'name' => 'Geometry Set',
@@ -136,6 +145,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 120,
                 'category_id' => $categories['stationery']->id,
                 'grades' => ['Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/geometry-set.jpg',
                 'is_featured' => true,
             ],
             [
@@ -148,6 +158,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 350,
                 'category_id' => $categories['stationery']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/sharpener.jpg',
             ],
 
             // School Bags
@@ -162,6 +173,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 50,
                 'category_id' => $categories['school-bags']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/backpack-blue.jpg',
                 'is_featured' => true,
             ],
             [
@@ -174,6 +186,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 30,
                 'category_id' => $categories['school-bags']->id,
                 'grades' => ['Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/backpack-black.jpg',
                 'is_featured' => true,
             ],
             [
@@ -187,6 +200,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 40,
                 'category_id' => $categories['school-bags']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/backpack-pink.jpg',
                 'is_featured' => true,
             ],
             [
@@ -200,6 +214,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 25,
                 'category_id' => $categories['school-bags']->id,
                 'grades' => ['Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/trolley-bag.jpg',
                 'is_featured' => true,
             ],
 
@@ -215,6 +230,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 100,
                 'category_id' => $categories['lunch-water-bottles']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/lunch-box.jpg',
                 'is_featured' => true,
             ],
             [
@@ -227,6 +243,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 150,
                 'category_id' => $categories['lunch-water-bottles']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/water-bottle.jpg',
             ],
             [
                 'name' => 'Insulated Lunch Bag',
@@ -239,6 +256,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 80,
                 'category_id' => $categories['lunch-water-bottles']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/lunch-bag.jpg',
                 'is_featured' => true,
             ],
             [
@@ -251,6 +269,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 90,
                 'category_id' => $categories['lunch-water-bottles']->id,
                 'grades' => ['Grade 6-9', 'O/L', 'A/L'],
+                'image' => 'products/sports-bottle.jpg',
             ],
 
             // Art & Craft
@@ -265,6 +284,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 80,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/color-pencils.jpg',
                 'is_featured' => true,
             ],
             [
@@ -277,6 +297,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 60,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/watercolor.jpg',
             ],
             [
                 'name' => 'Crayons Set - 16 Colors',
@@ -289,6 +310,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 120,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3'],
+                'image' => 'products/crayons.jpg',
                 'is_featured' => true,
             ],
             [
@@ -301,6 +323,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 90,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/markers.jpg',
             ],
             [
                 'name' => 'Art Brush Set',
@@ -312,6 +335,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 70,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/brushes.jpg',
             ],
             [
                 'name' => 'Glue Stick - 40g',
@@ -323,6 +347,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 200,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/glue-stick.jpg',
             ],
             [
                 'name' => 'Safety Scissors',
@@ -334,6 +359,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 150,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5'],
+                'image' => 'products/scissors.jpg',
             ],
             [
                 'name' => 'Colored Paper Pack - A4',
@@ -345,6 +371,7 @@ class ProductSeeder extends Seeder
                 'stock_quantity' => 100,
                 'category_id' => $categories['art-craft']->id,
                 'grades' => ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6-9'],
+                'image' => 'products/colored-paper.jpg',
             ],
         ];
 
