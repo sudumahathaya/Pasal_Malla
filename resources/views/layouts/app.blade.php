@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'PasalMalla - ලමයෙක් පාසලට ගන්න ඕන හම දේකම!')</title>
+    <title>@yield('title', 'PasalMalla')</title>
     <meta name="description" content="@yield('description', 'Sri Lanka\'s best online school supplies store. Books, stationery, bags, uniforms and more!')">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.svg') }}">
 
     <!-- Tailwind CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -31,7 +36,6 @@
                         </div>
                         <div class="hidden sm:block">
                             <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">PasalMalla</h1>
-                            <p class="text-xs sm:text-sm text-gray-500">ලමයෙක් පාසලට ගන්න ඕන හම දේකම!</p>
                         </div>
                         <div class="block sm:hidden">
                             <h1 class="text-lg font-bold text-gray-800">PasalMalla</h1>
@@ -40,8 +44,8 @@
 
 
                     <!-- Desktop Navigation - Hidden on mobile -->
-                    <nav class="hidden sm:flex flex-1">
-                        <div class="flex items-center justify-center space-x-6 lg:space-x-8">
+                    <nav class="hidden lg:flex flex-1 justify-center">
+                        <div class="flex items-center space-x-6 lg:space-x-8">
                             <a href="{{ route('home') }}"
                                 class="text-gray-700 hover:text-orange-600 font-medium transition-colors text-sm lg:text-base">
                                 <i class="fas fa-home mr-1 lg:mr-2"></i>Home
@@ -83,7 +87,7 @@
 
                         <!-- Mobile Menu Button - Visible only on small screens -->
                         <button id="mobile-menu-button"
-                            class="sm:hidden p-2 text-gray-600 hover:text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg hover:bg-orange-50"
+                            class="lg:hidden p-2 text-gray-600 hover:text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 rounded-lg hover:bg-orange-50"
                             aria-label="Toggle mobile menu" aria-expanded="false" type="button">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </button>
@@ -93,7 +97,7 @@
 
             <!-- Mobile Navigation Menu -->
             <div id="mobile-menu"
-                class="sm:hidden hidden border-t border-gray-200 bg-white shadow-lg transition-all duration-300 ease-in-out">
+                class="lg:hidden hidden border-t border-gray-200 bg-white shadow-lg transition-all duration-300 ease-in-out">
                 <nav class="px-3 sm:px-4 py-4 sm:py-6">
                     <div class="flex flex-col space-y-1">
                         <a href="{{ route('home') }}"
@@ -209,21 +213,15 @@
                 <div>
                     <h4 class="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Categories</h4>
                     <ul class="space-y-2">
-                        <li><a href="{{ route('products.index', ['category' => 'books-notebooks']) }}"
-                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Books &
-                                Notebooks</a></li>
-                        <li><a href="{{ route('products.index', ['category' => 'stationery']) }}"
-                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Stationery</a>
-                        </li>
-                        <li><a href="{{ route('products.index', ['category' => 'school-bags']) }}"
-                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">School
-                                Bags</a></li>
-                        <li><a href="{{ route('products.index', ['category' => 'lunch-water-bottles']) }}"
-                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Lunch &
-                                Water Bottles</a></li>
-                        <li><a href="{{ route('products.index', ['category' => 'art-craft']) }}"
-                                class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">Art &
-                                Craft</a></li>
+                        @if(isset($categories) && $categories->count() > 0)
+                            @foreach($categories->take(5) as $category)
+                                <li><a href="{{ route('products.index', ['category' => $category->slug]) }}"
+                                        class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">{{ $category->name }}</a></li>
+                            @endforeach
+                        @else
+                            <li><a href="{{ route('products.index') }}"
+                                    class="text-gray-300 hover:text-white transition-colors text-sm sm:text-base">All Products</a></li>
+                        @endif
                     </ul>
                 </div>
 
@@ -300,10 +298,10 @@
 
                 // Close mobile menu when window is resized to desktop size
                 window.addEventListener('resize', function() {
-                    if (window.innerWidth >= 640) { // sm breakpoint
+                    if (window.innerWidth >= 1024) { // lg breakpoint
                         mobileMenu.classList.add('hidden');
                         const icon = mobileMenuButton.querySelector('i');
-                        icon.className = 'fas fa-bars text-lg';
+                        icon.className = 'fas fa-bars text-xl';
                         mobileMenuButton.setAttribute('aria-expanded', 'false');
                     }
                 });

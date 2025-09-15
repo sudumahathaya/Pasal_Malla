@@ -27,6 +27,9 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
-        return view('home', compact('categories', 'featuredProducts', 'featuredBundles'));
+        // Get all categories for footer links
+        $allCategories = Category::where('is_active', true)->orderBy('sort_order')->get();
+
+        return view('home', compact('categories', 'featuredProducts', 'featuredBundles', 'allCategories'));
     }
 }

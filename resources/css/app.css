@@ -197,8 +197,28 @@ textarea:focus {
 /* Header glass effect */
 .header-glass {
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Ensure navigation is visible */
+.header-glass nav {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Navigation link improvements */
+.header-glass nav a {
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.header-glass nav a:hover {
+    background-color: rgba(249, 115, 22, 0.1);
+    transform: translateY(-1px);
 }
 
 /* Cart icon wrapper */
@@ -233,21 +253,21 @@ textarea:focus {
         background: rgba(255, 255, 255, 0.95);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
-    
+
     /* Mobile logo improvements */
     .header-glass .w-16 {
         width: 3rem;
         height: 3rem;
     }
-    
+
     .header-glass h1 {
         font-size: 1.5rem;
     }
-    
+
     .header-glass p {
         font-size: 0.75rem;
     }
-    
+
     /* Mobile cart improvements */
     .cart-icon-wrapper {
         position: relative;
@@ -257,13 +277,13 @@ textarea:focus {
         align-items: center;
         justify-content: center;
     }
-    
+
     .cart-count {
         font-size: 0.7rem;
         min-width: 1rem;
         min-height: 1rem;
     }
-    
+
     /* Mobile menu button improvements */
     #mobile-menu-button {
         min-width: 44px;
@@ -280,32 +300,32 @@ textarea:focus {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
     }
-    
+
     .header-glass .py-3 {
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
     }
-    
+
     /* Smaller mobile logo */
     .header-glass .w-10 {
         width: 2.25rem;
         height: 2.25rem;
     }
-    
+
     .header-glass .text-base {
         font-size: 0.875rem;
     }
-    
+
     /* Mobile menu improvements */
     #mobile-menu nav {
         padding: 1rem 0.75rem;
     }
-    
+
     #mobile-menu .py-3 {
         padding-top: 0.75rem;
         padding-bottom: 0.75rem;
     }
-    
+
     #mobile-menu .px-3 {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
@@ -315,7 +335,7 @@ textarea:focus {
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     .hero-gradient {
-        min-height: 60vh !important;
+        min-height: 50vh !important;
         padding: 2rem 0 !important;
     }
 
