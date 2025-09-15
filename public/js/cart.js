@@ -31,6 +31,24 @@ class Cart {
             }
         });
 
+        // Direct quantity typing
+        document.addEventListener('input', (e) => {
+            if (e.target.matches('.qty-input')) {
+                let value = parseInt(e.target.value || '1', 10);
+                if (isNaN(value) || value < 1) value = 1;
+                e.target.value = value;
+            }
+        });
+
+        document.addEventListener('change', (e) => {
+            if (e.target.matches('.qty-input')) {
+                const id = e.target.dataset.id;
+                let value = parseInt(e.target.value || '1', 10);
+                if (isNaN(value) || value < 1) value = 1;
+                this.setQuantity(id, value);
+            }
+        });
+
         // Remove item buttons
         document.addEventListener('click', (e) => {
             if (e.target.matches('.remove-item') || e.target.closest('.remove-item')) {
@@ -72,6 +90,10 @@ class Cart {
     }
 
     addToCart(button) {
+        return this.addToCartWithQuantity(button, 1);
+    }
+
+    addToCartWithQuantity(button, quantity) {
         const productData = {
             id: button.dataset.id,
             name: button.dataset.name,
@@ -84,11 +106,11 @@ class Cart {
         const existingItem = this.items.find(item => item.id === productData.id && item.type === productData.type);
 
         if (existingItem) {
-            existingItem.quantity += 1;
+            existingItem.quantity += quantity;
         } else {
             this.items.push({
                 ...productData,
-                quantity: 1
+                quantity: quantity
             });
         }
 
@@ -110,6 +132,15 @@ class Cart {
                 this.saveCart();
                 this.updateCartDisplay();
             }
+        }
+    }
+
+    setQuantity(id, quantity) {
+        const item = this.items.find(item => item.id === id);
+        if (item) {
+            item.quantity = quantity;
+            this.saveCart();
+            this.updateCartDisplay();
         }
     }
 
@@ -199,7 +230,7 @@ class Cart {
                                 <button class="qty-decrease px-3 py-2 sm:py-3 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors" data-id="${item.id}">
                                     <i class="fas fa-minus"></i>
                                 </button>
-                                <input type="number" value="${item.quantity}" min="1" class="w-12 sm:w-16 text-center border-0 focus:outline-none text-sm sm:text-base" readonly>
+                                <input type="number" value="${item.quantity}" min="1" class="w-12 sm:w-16 text-center border-0 focus:outline-none text-sm sm:text-base qty-input" data-id="${item.id}">
                                 <button class="qty-increase px-3 py-2 sm:py-3 text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors" data-id="${item.id}">
                                     <i class="fas fa-plus"></i>
                                 </button>
@@ -611,11 +642,12 @@ class Cart {
     }
 
     getCartTotal() {
-        return this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            e.stopPropagation();
+
+            // Prevent the default add to cart behavior
+            return false;
     }
 }
-
-// Initialize cart when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.cart = new Cart();
 });

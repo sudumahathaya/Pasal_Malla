@@ -430,6 +430,21 @@ textarea:focus {
     .grid-cols-2 {
         gap: 0.75rem;
     }
+
+    /* Mobile filter improvements */
+    .filter-sidebar {
+        position: static !important;
+        top: auto !important;
+    }
+
+    /* Mobile filter toggle */
+    .mobile-filter-toggle {
+        display: block;
+    }
+
+    .desktop-filter-toggle {
+        display: none;
+    }
 }
 
 @media (max-width: 640px) {

@@ -103,7 +103,82 @@ class RealTimeUpdater {
 // Initialize real-time updates when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     new RealTimeUpdater();
+
+    // Initialize product filters
+    initializeProductFilters();
 });
+
+// Product filters functionality
+function initializeProductFilters() {
+    // Auto-submit form when certain filters change
+    const autoSubmitSelects = document.querySelectorAll('select[name="category"], select[name="grade"], select[name="availability"]');
+    autoSubmitSelects.forEach(select => {
+        select.addEventListener('change', function() {
+            // Add a small delay to prevent rapid submissions
+            setTimeout(() => {
+                this.form.submit();
+            }, 100);
+        });
+    });
+
+    // Price range validation
+    const minPriceInput = document.querySelector('input[name="min_price"]');
+    const maxPriceInput = document.querySelector('input[name="max_price"]');
+
+    if (minPriceInput && maxPriceInput) {
+        function validatePriceRange() {
+            const minPrice = parseFloat(minPriceInput.value) || 0;
+            const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+
+            if (minPrice > maxPrice && maxPrice !== Infinity) {
+                maxPriceInput.setCustomValidity('Maximum price must be greater than minimum price');
+            } else {
+                maxPriceInput.setCustomValidity('');
+            }
+        }
+
+        minPriceInput.addEventListener('input', validatePriceRange);
+        maxPriceInput.addEventListener('input', validatePriceRange);
+    }
+
+    // Mobile filter toggle
+    const mobileFilterToggle = document.getElementById('mobile-filter-toggle');
+    const filterSidebar = document.querySelector('.filter-sidebar');
+
+    if (mobileFilterToggle && filterSidebar) {
+        mobileFilterToggle.addEventListener('click', function() {
+            filterSidebar.classList.toggle('hidden');
+            const icon = this.querySelector('i');
+            if (filterSidebar.classList.contains('hidden')) {
+                icon.className = 'fas fa-filter';
+                this.innerHTML = '<i class="fas fa-filter mr-2"></i>Show Filters';
+            } else {
+                icon.className = 'fas fa-times';
+                this.innerHTML = '<i class="fas fa-times mr-2"></i>Hide Filters';
+            }
+        });
+    }
+
+    // Filter count display
+    updateFilterCount();
+}
+
+function updateFilterCount() {
+    const filterCount = document.querySelectorAll('input[type="checkbox"]:checked, select:not([name="sort"]) option:checked:not([value=""]), input[type="text"][value!=""], input[type="number"][value!=""]').length;
+    const filterButton = document.querySelector('.filter-count');
+
+    if (filterButton) {
+        if (filterCount > 0) {
+            filterButton.textContent = `Filters (${filterCount})`;
+            filterButton.classList.add('bg-orange-500', 'text-white');
+            filterButton.classList.remove('bg-gray-100', 'text-gray-700');
+        } else {
+            filterButton.textContent = 'Filters';
+            filterButton.classList.remove('bg-orange-500', 'text-white');
+            filterButton.classList.add('bg-gray-100', 'text-gray-700');
+        }
+    }
+}
 
 // Auto-refresh page data for public pages
 if (!window.location.pathname.includes('/admin/')) {

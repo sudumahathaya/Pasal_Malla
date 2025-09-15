@@ -14,8 +14,17 @@ class Cart {
         document.addEventListener('click', (e) => {
             if (e.target.matches('.add-to-cart') || e.target.closest('.add-to-cart')) {
                 e.preventDefault();
+                e.stopPropagation();
                 const button = e.target.matches('.add-to-cart') ? e.target : e.target.closest('.add-to-cart');
-                this.addToCart(button);
+
+                // Check if we're on a product detail page with quantity input
+                const quantityInput = document.getElementById('quantity-input') || document.getElementById('bundle-quantity-input');
+                if (quantityInput) {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    this.addToCartWithQuantity(button, quantity);
+                } else {
+                    this.addToCart(button);
+                }
             }
         });
 
@@ -72,6 +81,10 @@ class Cart {
     }
 
     addToCart(button) {
+        return this.addToCartWithQuantity(button, 1);
+    }
+
+    addToCartWithQuantity(button, quantity) {
         const productData = {
             id: button.dataset.id,
             name: button.dataset.name,
@@ -84,11 +97,11 @@ class Cart {
         const existingItem = this.items.find(item => item.id === productData.id && item.type === productData.type);
 
         if (existingItem) {
-            existingItem.quantity += 1;
+            existingItem.quantity += quantity;
         } else {
             this.items.push({
                 ...productData,
-                quantity: 1
+                quantity: quantity
             });
         }
 

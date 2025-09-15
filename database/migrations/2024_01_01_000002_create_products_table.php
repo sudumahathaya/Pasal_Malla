@@ -1,34 +1,355 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace Database\Seeders;
 
-return new class extends Migration {
-    public function up()
-    {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('name_sinhala')->nullable();
-            $table->string('slug')->unique();
-            $table->text('description')->nullable();
-            $table->text('description_sinhala')->nullable();
-            $table->decimal('price', 10, 2);
-            $table->decimal('sale_price', 10, 2)->nullable();
-            $table->string('sku')->unique();
-            $table->integer('stock_quantity')->default(0);
-            $table->string('image')->nullable();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->json('grades')->nullable(); // For grade-specific items
-            $table->boolean('is_featured')->default(false);
-            $table->boolean('is_active')->default(true);
-            $table->timestamps();
-        });
-    }
+use Illuminate\Database\Seeder;
+use App\Models\Product;
+use App\Models\Category;
 
-    public function down()
+class ProductSeeder extends Seeder
+{
+    public function run()
     {
-        Schema::dropIfExists('products');
+        $categories = Category::all()->keyBy('slug');
+
+        $products = [
+            // Books & Notebooks
+            [
+                'name' => 'Exercise Book - 200 Pages',
+                'name_sinhala' => 'අභ්‍යාස පොත - පිටු 200',
+                'slug' => 'exercise-book-200-pages',
+                'description' => 'High quality exercise book with 200 ruled pages. Perfect for all subjects with durable cover.',
+                'description_sinhala' => 'උසස් තත්ත්වයේ අභ්‍යාස පොතක්. සියලුම විෂයයන් සඳහා සුදුසුයි.',
+                'price' => 150.00,
+                'sale_price' => 120.00,
+                'sku' => 'EXB-200',
+                'stock_quantity' => 500,
+                'category_id' => $categories['books-notebooks']->id,
+                'image' => 'products/exercise-book.jpg', // This will fallback to getImageUrl() method
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Graph Book - A4 Size',
+                'name_sinhala' => 'ග්‍රැෆ් පොත - A4 ප්‍රමාණය',
+                'slug' => 'graph-book-a4',
+                'description' => 'A4 size graph book with square grid pattern. Ideal for mathematics and science subjects.',
+                'price' => 200.00,
+                'sku' => 'GRB-A4',
+                'stock_quantity' => 300,
+                'category_id' => $categories['books-notebooks']->id,
+                'image' => 'products/graph-book.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Composition Book',
+                'name_sinhala' => 'රචනා පොත',
+                'slug' => 'composition-book',
+                'description' => 'Premium composition book for creative writing and essays. Smooth paper quality.',
+                'price' => 180.00,
+                'sku' => 'COMP-001',
+                'stock_quantity' => 250,
+                'category_id' => $categories['books-notebooks']->id,
+                'image' => 'products/composition-book.jpg',
+            ],
+            [
+                'name' => 'Drawing Book - A4',
+                'name_sinhala' => 'චිත්‍ර පොත - A4',
+                'slug' => 'drawing-book-a4',
+                'description' => 'High quality drawing book with thick paper suitable for pencils, colors and markers.',
+                'price' => 220.00,
+                'sale_price' => 180.00,
+                'sku' => 'DRAW-A4',
+                'stock_quantity' => 180,
+                'category_id' => $categories['books-notebooks']->id,
+                'image' => 'products/drawing-book.jpg',
+                'is_featured' => true,
+            ],
+
+            // Stationery
+            [
+                'name' => 'Blue Ballpoint Pen',
+                'name_sinhala' => 'නිල් බෝල්පොයින්ට් පෑන',
+                'slug' => 'blue-ballpoint-pen',
+                'description' => 'Smooth writing blue ballpoint pen with long lasting ink. Comfortable grip design.',
+                'price' => 25.00,
+                'sale_price' => 20.00,
+                'sku' => 'PEN-BLUE',
+                'stock_quantity' => 1000,
+                'category_id' => $categories['stationery']->id,
+                'image' => 'products/blue-pen.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'HB Pencil Set (12 pieces)',
+                'name_sinhala' => 'HB පැන්සල් කට්ටලය (කෑලි 12)',
+                'slug' => 'hb-pencil-set-12',
+                'description' => 'Set of 12 high quality HB pencils. Perfect for writing and drawing with eraser tips.',
+                'price' => 300.00,
+                'sale_price' => 250.00,
+                'sku' => 'PENCIL-HB-12',
+                'stock_quantity' => 200,
+                'category_id' => $categories['stationery']->id,
+                'image' => 'products/pencil-set.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Eraser - Large Size',
+                'name_sinhala' => 'මකනය - විශාල ප්‍රමාණය',
+                'slug' => 'eraser-large',
+                'description' => 'Large white eraser for clean erasing without smudging. Dust-free formula.',
+                'price' => 15.00,
+                'sku' => 'ERASER-LG',
+                'stock_quantity' => 800,
+                'category_id' => $categories['stationery']->id,
+                'image' => 'products/eraser.jpg',
+            ],
+            [
+                'name' => '30cm Ruler',
+                'name_sinhala' => 'සෙන්ටිමීටර 30 රූලර්',
+                'slug' => '30cm-ruler',
+                'description' => 'Transparent plastic ruler with clear markings. 30cm length with metric measurements.',
+                'price' => 35.00,
+                'sku' => 'RULER-30',
+                'stock_quantity' => 400,
+                'category_id' => $categories['stationery']->id,
+                'image' => 'products/ruler.jpg',
+            ],
+            [
+                'name' => 'Red Ballpoint Pen',
+                'name_sinhala' => 'රතු බෝල්පොයින්ට් පෑන',
+                'slug' => 'red-ballpoint-pen',
+                'description' => 'Smooth writing red ballpoint pen for corrections and marking. Premium quality ink.',
+                'price' => 25.00,
+                'sku' => 'PEN-RED',
+                'stock_quantity' => 600,
+                'category_id' => $categories['stationery']->id,
+                'image' => 'products/red-pen.jpg',
+            ],
+            [
+                'name' => 'Geometry Set',
+                'name_sinhala' => 'ජ්‍යාමිති කට්ටලය',
+                'slug' => 'geometry-set',
+                'description' => 'Complete geometry set with compass, protractor, set squares and ruler in a sturdy case.',
+                'price' => 450.00,
+                'sale_price' => 380.00,
+                'sku' => 'GEO-SET',
+                'stock_quantity' => 120,
+                'category_id' => $categories['stationery']->id,
+                'image' => 'products/geometry-set.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Sharpener with Container',
+                'name_sinhala' => 'කන්ටේනර් සහිත ඇණ කරන්නා',
+                'slug' => 'sharpener-container',
+                'description' => 'High quality pencil sharpener with shavings container. Dual hole design.',
+                'price' => 45.00,
+                'sku' => 'SHARP-001',
+                'stock_quantity' => 350,
+                'category_id' => $categories['stationery']->id,
+                'image' => 'products/sharpener.jpg',
+            ],
+
+            // School Bags
+            [
+                'name' => 'Primary School Backpack - Blue',
+                'name_sinhala' => 'ප්‍රාථමික පාසල් බෑගය - නිල්',
+                'slug' => 'primary-backpack-blue',
+                'description' => 'Comfortable and durable backpack for primary school students. Multiple compartments with padded straps.',
+                'price' => 2500.00,
+                'sale_price' => 2200.00,
+                'sku' => 'BAG-PRI-BLUE',
+                'stock_quantity' => 50,
+                'category_id' => $categories['school-bags']->id,
+                'image' => 'products/backpack-blue.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Secondary School Backpack - Black',
+                'name_sinhala' => 'ද්විතීයික පාසල් බෑගය - කළු',
+                'slug' => 'secondary-backpack-black',
+                'description' => 'Large capacity backpack for secondary school students. Water resistant with laptop compartment.',
+                'price' => 3500.00,
+                'sku' => 'BAG-SEC-BLACK',
+                'stock_quantity' => 30,
+                'category_id' => $categories['school-bags']->id,
+                'image' => 'products/backpack-black.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Primary School Backpack - Pink',
+                'name_sinhala' => 'ප්‍රාථමික පාසල් බෑගය - රෝස',
+                'slug' => 'primary-backpack-pink',
+                'description' => 'Stylish pink backpack perfect for young girls. Lightweight with reflective strips for safety.',
+                'price' => 2500.00,
+                'sale_price' => 2100.00,
+                'sku' => 'BAG-PRI-PINK',
+                'stock_quantity' => 40,
+                'category_id' => $categories['school-bags']->id,
+                'image' => 'products/backpack-pink.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Trolley School Bag',
+                'name_sinhala' => 'ට්‍රොලි පාසල් බෑගය',
+                'slug' => 'trolley-school-bag',
+                'description' => 'Rolling trolley bag to reduce back strain. Detachable wheels with sturdy handle.',
+                'price' => 4200.00,
+                'sale_price' => 3800.00,
+                'sku' => 'BAG-TROLLEY',
+                'stock_quantity' => 25,
+                'category_id' => $categories['school-bags']->id,
+                'image' => 'products/trolley-bag.jpg',
+                'is_featured' => true,
+            ],
+
+            // Lunch & Water Bottles
+            [
+                'name' => 'Lunch Box - 3 Compartments',
+                'name_sinhala' => 'ආහාර පෙට්ටිය - කොටස් 3',
+                'slug' => 'lunch-box-3-compartments',
+                'description' => 'BPA-free lunch box with 3 separate compartments. Leak-proof design with secure locks.',
+                'price' => 800.00,
+                'sale_price' => 650.00,
+                'sku' => 'LUNCH-3COMP',
+                'stock_quantity' => 100,
+                'category_id' => $categories['lunch-water-bottles']->id,
+                'image' => 'products/lunch-box.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Water Bottle - 500ml',
+                'name_sinhala' => 'වතුර බෝතලය - මිලි 500',
+                'slug' => 'water-bottle-500ml',
+                'description' => 'BPA-free water bottle with easy-open cap. 500ml capacity with measurement markings.',
+                'price' => 450.00,
+                'sku' => 'WATER-500',
+                'stock_quantity' => 150,
+                'category_id' => $categories['lunch-water-bottles']->id,
+                'image' => 'products/water-bottle.jpg',
+            ],
+            [
+                'name' => 'Insulated Lunch Bag',
+                'name_sinhala' => 'තාප රෝධී ආහාර බෑගය',
+                'slug' => 'insulated-lunch-bag',
+                'description' => 'Thermal insulated lunch bag to keep food fresh. Waterproof exterior with easy-clean interior.',
+                'price' => 1200.00,
+                'sale_price' => 950.00,
+                'sku' => 'LUNCH-BAG',
+                'stock_quantity' => 80,
+                'category_id' => $categories['lunch-water-bottles']->id,
+                'image' => 'products/lunch-bag.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Sports Water Bottle - 750ml',
+                'name_sinhala' => 'ක්‍රීඩා වතුර බෝතලය - මිලි 750',
+                'slug' => 'sports-water-bottle-750ml',
+                'description' => 'Large capacity sports bottle with push-pull cap. Perfect for active students.',
+                'price' => 650.00,
+                'sku' => 'WATER-SPORT-750',
+                'stock_quantity' => 90,
+                'category_id' => $categories['lunch-water-bottles']->id,
+                'image' => 'products/sports-bottle.jpg',
+            ],
+
+            // Art & Craft
+            [
+                'name' => 'Color Pencil Set - 24 Colors',
+                'name_sinhala' => 'වර්ණ පැන්සල් කට්ටලය - වර්ණ 24',
+                'slug' => 'color-pencil-set-24',
+                'description' => 'Professional quality color pencils in 24 vibrant colors. Perfect for art projects and coloring.',
+                'price' => 1200.00,
+                'sale_price' => 950.00,
+                'sku' => 'COLOR-24',
+                'stock_quantity' => 80,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/color-pencils.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Watercolor Paint Set',
+                'name_sinhala' => 'ජල වර්ණ කට්ටලය',
+                'slug' => 'watercolor-paint-set',
+                'description' => '12 color watercolor paint set with brush included. Non-toxic and washable colors.',
+                'price' => 600.00,
+                'sku' => 'WATER-COLOR',
+                'stock_quantity' => 60,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/watercolor.jpg',
+            ],
+            [
+                'name' => 'Crayons Set - 16 Colors',
+                'name_sinhala' => 'ක්‍රේයන් කට්ටලය - වර්ණ 16',
+                'slug' => 'crayons-set-16',
+                'description' => 'Non-toxic wax crayons in 16 bright colors. Perfect for young children and art activities.',
+                'price' => 350.00,
+                'sale_price' => 280.00,
+                'sku' => 'CRAYON-16',
+                'stock_quantity' => 120,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/crayons.jpg',
+                'is_featured' => true,
+            ],
+            [
+                'name' => 'Marker Set - 12 Colors',
+                'name_sinhala' => 'මාර්කර් කට්ටලය - වර්ණ 12',
+                'slug' => 'marker-set-12',
+                'description' => 'Washable markers in 12 vibrant colors. Safe for children with ventilated caps.',
+                'price' => 450.00,
+                'sku' => 'MARKER-12',
+                'stock_quantity' => 90,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/markers.jpg',
+            ],
+            [
+                'name' => 'Art Brush Set',
+                'name_sinhala' => 'කලා බුරුසු කට්ටලය',
+                'slug' => 'art-brush-set',
+                'description' => 'Set of 6 different sized brushes for painting. Natural bristles with wooden handles.',
+                'price' => 380.00,
+                'sku' => 'BRUSH-SET',
+                'stock_quantity' => 70,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/brushes.jpg',
+            ],
+            [
+                'name' => 'Glue Stick - 40g',
+                'name_sinhala' => 'ගම් ස්ටික් - ග්‍රෑම් 40',
+                'slug' => 'glue-stick-40g',
+                'description' => 'Non-toxic glue stick for paper crafts and school projects. Washable and acid-free.',
+                'price' => 120.00,
+                'sku' => 'GLUE-STICK',
+                'stock_quantity' => 200,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/glue-stick.jpg',
+            ],
+            [
+                'name' => 'Safety Scissors',
+                'name_sinhala' => 'ආරක්ෂිත කතුර',
+                'slug' => 'safety-scissors',
+                'description' => 'Child-safe scissors with rounded tips. Perfect for cutting paper and light materials.',
+                'price' => 180.00,
+                'sku' => 'SCISSORS-SAFE',
+                'stock_quantity' => 150,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/scissors.jpg',
+            ],
+            [
+                'name' => 'Colored Paper Pack - A4',
+                'name_sinhala' => 'වර්ණ කඩදාසි පැකට් - A4',
+                'slug' => 'colored-paper-a4',
+                'description' => 'Pack of 50 sheets in 10 different colors. High quality paper for crafts and projects.',
+                'price' => 250.00,
+                'sku' => 'PAPER-COLOR',
+                'stock_quantity' => 100,
+                'category_id' => $categories['art-craft']->id,
+                'image' => 'products/colored-paper.jpg',
+            ],
+        ];
+
+        foreach ($products as $product) {
+            Product::create($product);
+        }
     }
-};
+}

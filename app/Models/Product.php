@@ -22,13 +22,11 @@ class Product extends Model
         'stock_quantity',
         'image',
         'category_id',
-        'grades',
         'is_featured',
         'is_active'
     ];
 
     protected $casts = [
-        'grades' => 'array',
         'is_featured' => 'boolean',
         'is_active' => 'boolean',
         'price' => 'decimal:2',

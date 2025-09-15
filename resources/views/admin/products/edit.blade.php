@@ -13,7 +13,7 @@
                 <h2 class="text-2xl font-bold text-gray-900">Edit Product</h2>
                 <p class="text-gray-600">Update product information</p>
             </div>
-            <a href="{{ route('admin.products.index') }}" 
+            <a href="{{ route('admin.products.index') }}"
                class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center">
                 <i class="fas fa-arrow-left mr-2"></i>
                 Back to Products
@@ -26,7 +26,7 @@
         <form method="POST" action="{{ route('admin.products.update', $product) }}" enctype="multipart/form-data" class="p-6">
             @csrf
             @method('PUT')
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Left Column -->
                 <div class="space-y-6">
@@ -166,34 +166,16 @@
                         @enderror
                     </div>
 
-                    <!-- Grades -->
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Grades</label>
-                        <div class="grid grid-cols-2 gap-2">
-                            @foreach(['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12', 'Grade 13'] as $grade)
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="grades[]" value="{{ $grade }}" 
-                                           {{ in_array($grade, old('grades', $product->grades ?? [])) ? 'checked' : '' }}
-                                           class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                                    <span class="ml-2 text-sm text-gray-700">{{ $grade }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                        @error('grades')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
-
                     <!-- Status Options -->
                     <div class="space-y-4">
                         <div class="flex items-center">
-                            <input type="checkbox" name="is_active" id="is_active" value="1" 
+                            <input type="checkbox" name="is_active" id="is_active" value="1"
                                    {{ old('is_active', $product->is_active) ? 'checked' : '' }}
                                    class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             <label for="is_active" class="ml-2 text-sm text-gray-700">Active</label>
                         </div>
                         <div class="flex items-center">
-                            <input type="checkbox" name="is_featured" id="is_featured" value="1" 
+                            <input type="checkbox" name="is_featured" id="is_featured" value="1"
                                    {{ old('is_featured', $product->is_featured) ? 'checked' : '' }}
                                    class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
                             <label for="is_featured" class="ml-2 text-sm text-gray-700">Featured</label>
@@ -204,11 +186,11 @@
 
             <!-- Submit Buttons -->
             <div class="flex justify-end space-x-3 mt-8 pt-6 border-t border-gray-200">
-                <a href="{{ route('admin.products.index') }}" 
+                <a href="{{ route('admin.products.index') }}"
                    class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
                     Cancel
                 </a>
-                <button type="submit" 
+                <button type="submit"
                         class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
                     <i class="fas fa-save mr-2"></i>
                     Update Product

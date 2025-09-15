@@ -181,11 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const decreaseBtn = document.querySelector('.qty-btn-decrease');
     const increaseBtn = document.querySelector('.qty-btn-increase');
     const addToCartBtn = document.querySelector('.add-to-cart');
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     if (quantityInput && decreaseBtn && increaseBtn) {
         decreaseBtn.addEventListener('click', function() {
             let currentValue = parseInt(quantityInput.value);
@@ -193,35 +189,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 quantityInput.value = currentValue - 1;
             }
         });
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
         increaseBtn.addEventListener('click', function() {
             let currentValue = parseInt(quantityInput.value);
             quantityInput.value = currentValue + 1;
         });
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
     // Override add to cart to include quantity
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', function(e) {
             e.preventDefault();
             const quantity = parseInt(quantityInput.value);
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 21bd8714d811c712b89c6bec34d5a020b1420858
-            // Add multiple items based on quantity
-            for (let i = 0; i < quantity; i++) {
-                window.cart.addToCart(this);
-            }
+
+            e.stopPropagation();
+            // The cart.js will handle the quantity automatically
         });
     }
 });

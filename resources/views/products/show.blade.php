@@ -182,12 +182,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (addToCartBtn) {
         addToCartBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const quantity = parseInt(quantityInput.value);
 
-            // Add multiple items based on quantity
-            for (let i = 0; i < quantity; i++) {
-                window.cart.addToCart(this);
-            }
+            // Add item with specified quantity
+            window.cart.addToCartWithQuantity(this, quantity);
         });
     }
 });
